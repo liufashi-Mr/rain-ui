@@ -3,7 +3,7 @@ import { cloneElement } from 'react';
 import RcTooltip from 'rc-tooltip';
 import cls from 'classnames';
 import getPlacements, { AdjustOverflow, PlacementsConfig } from './placements';
-import { Button } from 'rain-ui';
+import { Button } from 'raind';
 
 export type TooltipPlacement =
   | 'top'

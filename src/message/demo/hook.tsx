@@ -1,7 +1,7 @@
 import React from 'react';
 import '../style';
 
-import { Button, message } from 'rain-ui';
+import { Button, message } from 'raind';
 
 const Context = React.createContext({ name: '我是Context' });
 
@@ -15,7 +15,7 @@ export default () => {
     });
   };
   return (
-    <Context.Provider value={{ name: 'rain-ui' }}>
+    <Context.Provider value={{ name: 'raind' }}>
       {contextHolder}
       <Button onClick={info}>Hook && Context</Button>
     </Context.Provider>

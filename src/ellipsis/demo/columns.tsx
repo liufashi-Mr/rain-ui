@@ -1,5 +1,5 @@
 import React from 'react';
-import { Ellipsis } from 'rain-ui';
+import { Ellipsis } from 'raind';
 import '../style/index.scss';
 export default () => (
   <div style={{ width: 800 }}>

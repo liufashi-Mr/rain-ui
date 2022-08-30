@@ -1,7 +1,7 @@
 import React from 'react';
 import '../style';
 
-import { Button, message } from 'rain-ui';
+import { Button, message } from 'raind';
 
 export default () => {
   return (

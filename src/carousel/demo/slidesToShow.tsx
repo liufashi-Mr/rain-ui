@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { Carousel } from 'rain-ui';
+import { Carousel } from 'raind';
 
 export default () => {
   const pageStyle: React.CSSProperties | undefined = {

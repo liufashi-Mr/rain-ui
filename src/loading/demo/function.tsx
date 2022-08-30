@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Loading } from 'rain-ui';
+import { Button, Loading } from 'raind';
 
 export default () => {
   let t: any = null;

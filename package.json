@@ -1,7 +1,8 @@
 {
-  "private": true,
-  "name": "rain-ui",
+  "private": false,
+  "name": "raind",
   "version": "1.0.0",
+  "description": "raind 主题组件库", 
   "scripts": {
     "start": "dumi dev",
     "docs:build": "dumi build",

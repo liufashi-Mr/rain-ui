@@ -1,4 +1,4 @@
-# rain-ui
+# raind
 
 ## Getting Started
 

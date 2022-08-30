@@ -1,5 +1,5 @@
 import React from 'react';
-import { Loading } from 'rain-ui';
+import { Loading } from 'raind';
 
 export default () => (
   <Loading loading delay={3000}>

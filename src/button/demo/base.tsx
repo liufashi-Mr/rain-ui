@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from 'rain-ui';
+import { Button } from 'raind';
 import '../style';
 import '../style/base.scss';
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tooltip, Button } from 'rain-ui';
+import { Tooltip, Button } from 'raind';
 import '../style';
 
 export default () => (
