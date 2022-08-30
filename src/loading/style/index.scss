@@ -1,0 +1,99 @@
+:global {
+  .expo-cn-loading-container {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1002;
+  }
+}
+.loadingContainer {
+  position: relative;
+}
+.loadingMask {
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  &.show {
+    animation: maskShow 0.3s ease-in-out normal forwards;
+  }
+  &.hide {
+    animation: maskHide 0.3s ease-in-out normal forwards;
+  }
+  &.mini {
+    .icon,
+    .text {
+      font-size: 14px;
+      line-height: 14px;
+    }
+  }
+  &.normal {
+    .icon,
+    .text {
+      font-size: 22px;
+      line-height: 22px;
+    }
+  }
+  &.large {
+    .icon,
+    .text {
+      font-size: 28px;
+      line-height: 28px;
+    }
+  }
+  .icon {
+    color: #ff4800;
+    opacity: 0;
+    animation: autoRotate 2s infinite linear;
+    transform-origin: center center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .text {
+    color: #ff4800;
+    margin-top: 5px;
+    font-size: 14px;
+    line-height: 1.2em;
+  }
+}
+@keyframes autoRotate {
+  from {
+    opacity: 1;
+    transform: rotate(0deg);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes maskShow {
+  from {
+    background-color: transparent;
+    opacity: 0;
+  }
+  to {
+    background-color: rgba(255, 255, 255, 0.7);
+    opacity: 1;
+  }
+}
+
+@keyframes maskHide {
+  from {
+    background-color: rgba(255, 255, 255, 0.7);
+    opacity: 1;
+  }
+  to {
+    background-color: transparent;
+    opacity: 0;
+  }
+}
