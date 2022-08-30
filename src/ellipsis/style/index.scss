@@ -1,0 +1,20 @@
+$popupPrefix: e-ellipsis;
+$popupPrefixColumns:$popupPrefix+'-columns';
+
+@mixin ellipsis-columns($className) {
+  .#{$className} {
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    white-space: normal;
+  }
+}
+
+.#{$popupPrefix} {
+  width: 100%;
+  height: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@include ellipsis-columns($popupPrefixColumns);
