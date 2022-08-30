@@ -70,7 +70,7 @@ export type NativeButtonProps = {
 
 export type ButtonProps = Partial<NativeButtonProps & AnchorButtonProps>;
 
-const prefixCls = 'yt-btn';
+const prefixCls = 'xy-btn';
 const Button: FC<ButtonProps> = ({
   children,
   style,

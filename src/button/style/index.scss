@@ -1,9 +1,9 @@
-$popupPrefix: yt-btn;
+$popupPrefix: xy-btn;
 $primaryColor: #35EFFF;
-$activedColor: #4181FF;
+$activeColor: #4181FF;
 
 $smallHeight: 24px;
-$defalutHeight: 32px;
+$defaultHeight: 32px;
 $largeHeight: 40px;
 
 .#{$popupPrefix} {
@@ -17,7 +17,7 @@ $largeHeight: 40px;
 
   &:hover {
     cursor: pointer;
-    background-color: $activedColor;
+    background-color: $activeColor;
   }
 }
 
@@ -27,8 +27,8 @@ $largeHeight: 40px;
   color: $primaryColor;
 
   &:hover {
-    border-color: $activedColor;
-    color: $activedColor;
+    border-color: $activeColor;
+    color: $activeColor;
     background-color: #fff;
   }
 }
@@ -39,9 +39,9 @@ $largeHeight: 40px;
   color: #fff;
 
   &:hover {
-    border-color: $activedColor;
+    border-color: $activeColor;
     color: #fff;
-    background-color: $activedColor;
+    background-color: $activeColor;
   }
 }
 
@@ -51,8 +51,8 @@ $largeHeight: 40px;
   color: $primaryColor;
 
   &:hover {
-    border-color: $activedColor;
-    color: $activedColor;
+    border-color: $activeColor;
+    color: $activeColor;
     background-color: #fff;
   }
 }
@@ -63,7 +63,7 @@ $largeHeight: 40px;
   border: none;
 
   &:hover {
-    color: $activedColor;
+    color: $activeColor;
     background-color: #f8f8f8;
   }
 }
@@ -74,7 +74,7 @@ $largeHeight: 40px;
   border: none;
 
   &:hover {
-    color: $activedColor;
+    color: $activeColor;
     background-color: transparent;
   }
 }
@@ -89,7 +89,7 @@ $largeHeight: 40px;
 }
 
 .#{$popupPrefix}-defalut+.#{$popupPrefix}-round {
-  border-radius: $defalutHeight;
+  border-radius: $defaultHeight;
 }
 
 .#{$popupPrefix}-large+.#{$popupPrefix}-round {
@@ -97,13 +97,13 @@ $largeHeight: 40px;
 }
 
 .#{$popupPrefix}-defalut {
-  height: $defalutHeight;
+  height: $defaultHeight;
   padding: 2px 12px;
 }
 
 .#{$popupPrefix}-defalut,
 .#{$popupPrefix}-round {
-  border-radius: $defalutHeight;
+  border-radius: $defaultHeight;
 }
 
 .#{$popupPrefix}-large {
