@@ -1,0 +1,139 @@
+$popupPrefix: yt-btn;
+$primaryColor: #35EFFF;
+$activedColor: #4181FF;
+
+$smallHeight: 24px;
+$defalutHeight: 32px;
+$largeHeight: 40px;
+
+.#{$popupPrefix} {
+  padding: 4px 15px;
+  display: inline-block;
+  line-height: 1.5;
+  font-size: 13px;
+  color: #fff;
+  background: $primaryColor;
+  border-radius: 2px;
+
+  &:hover {
+    cursor: pointer;
+    background-color: $activedColor;
+  }
+}
+
+.#{$popupPrefix}-default {
+  border: 1px $primaryColor solid;
+  background-color: #fff;
+  color: $primaryColor;
+
+  &:hover {
+    border-color: $activedColor;
+    color: $activedColor;
+    background-color: #fff;
+  }
+}
+
+.#{$popupPrefix}-primary {
+  border: 1px $primaryColor solid;
+  background-color: $primaryColor;
+  color: #fff;
+
+  &:hover {
+    border-color: $activedColor;
+    color: #fff;
+    background-color: $activedColor;
+  }
+}
+
+.#{$popupPrefix}-dashed {
+  border: 1px $primaryColor dashed;
+  background-color: #fff;
+  color: $primaryColor;
+
+  &:hover {
+    border-color: $activedColor;
+    color: $activedColor;
+    background-color: #fff;
+  }
+}
+
+.#{$popupPrefix}-text {
+  background-color: transparent;
+  color: $primaryColor;
+  border: none;
+
+  &:hover {
+    color: $activedColor;
+    background-color: #f8f8f8;
+  }
+}
+
+.#{$popupPrefix}-link {
+  background-color: transparent;
+  color: $primaryColor;
+  border: none;
+
+  &:hover {
+    color: $activedColor;
+    background-color: transparent;
+  }
+}
+
+.#{$popupPrefix}-small {
+  height: $smallHeight;
+  padding: 2px 12px;
+}
+
+.#{$popupPrefix}-small+.#{$popupPrefix}-round {
+  border-radius: $smallHeight;
+}
+
+.#{$popupPrefix}-defalut+.#{$popupPrefix}-round {
+  border-radius: $defalutHeight;
+}
+
+.#{$popupPrefix}-large+.#{$popupPrefix}-round {
+  border-radius: $largeHeight;
+}
+
+.#{$popupPrefix}-defalut {
+  height: $defalutHeight;
+  padding: 2px 12px;
+}
+
+.#{$popupPrefix}-defalut,
+.#{$popupPrefix}-round {
+  border-radius: $defalutHeight;
+}
+
+.#{$popupPrefix}-large {
+  height: $largeHeight;
+}
+
+.#{$popupPrefix} {
+
+  &.disabled,
+  &[disabled] {
+    border-color: #d9d9d9;
+    background-color: #f5f5f5;
+    color: #00000040;
+    cursor: not-allowed !important;
+  }
+}
+
+a.e-btn {
+  display: inline-flex;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+button {
+  cursor: default;
+  border: none;
+  touch-action: manipulation;
+  transition: all 0.3s ease-in-out;
+}
+
+a {
+  text-decoration: none;
+}
