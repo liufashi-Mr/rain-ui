@@ -1,8 +1,8 @@
 ---
-title: ytGraphics
+title: rain-ui
 hero:
-  title: ytGraphics
-  desc: 远图大屏组件库
+  title: rain-ui
+  desc: 组件库
   actions:
     - text: 快速上手
       link: /getting-started

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from 'ytGraphics';
+import { Button } from 'rain-ui';
 import '../style';
 import '../style/base.scss';
 
