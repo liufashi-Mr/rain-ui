@@ -2,9 +2,9 @@
 title: Button 按钮
 order: 0
 group:
-  path: /components/others
+  path: /
 nav:
-  title: 其他组件
+  title: 基础组件
   path: /components
 ---
 
