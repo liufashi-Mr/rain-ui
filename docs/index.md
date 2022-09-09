@@ -1,7 +1,7 @@
 ---
-title: raind
+title: rain-ui
 hero:
-  title: raind
+  title: rain-ui
   desc: 组件库
   actions:
     - text: 快速上手
