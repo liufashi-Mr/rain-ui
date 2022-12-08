@@ -9,9 +9,9 @@
     "strict": true,
     "skipLibCheck": true,
     "declaration": true,
-    "baseUrl": "./",
-    "paths": {
-      "raind": ["src"]
-    }
+    "baseUrl": "./"
+    // "paths": {
+    //   "raind": ["src"]
+    // }
   }
 }
