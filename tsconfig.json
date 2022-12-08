@@ -1,14 +1,21 @@
 {
   "compilerOptions": {
-    "target": "esnext",
+    "strictNullChecks": true,
     "module": "esnext",
     "moduleResolution": "node",
-    "jsx": "react",
     "esModuleInterop": true,
-    "types": ["jest"],
-    "strict": true,
+    "experimentalDecorators": true,
+    "jsx": "react",
+    "jsxFactory": "React.createElement",
+    "jsxFragmentFactory": "React.Fragment",
+    "noUnusedParameters": true,
+    "noUnusedLocals": true,
+    "noImplicitAny": true,
+    "target": "es6",
+    "lib": ["dom", "es2017"],
     "skipLibCheck": true,
-    "declaration": true,
+    "stripInternal": true,
+    "declaration": false,
     "baseUrl": "./"
   },
   "exclude": ["node_modules"]

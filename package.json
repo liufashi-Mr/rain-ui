@@ -1,14 +1,14 @@
 {
   "private": false,
   "name": "raind",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "raind 主题组件库",
   "scripts": {
     "start": "dumi dev",
     "docs:build": "dumi build",
     "docs:deploy": "gh-pages -d docs-dist",
-    "webpackBuild": "webpack --config ./webpack.config.js",
-    "build": "father build",
+    "build": "webpack --config ./webpack.config.js",
+    "wepackBuild": "father build",
     "deploy": "npm run docs:build && npm run docs:deploy",
     "prettier": "prettier --write \"**/*.{js,jsx,tsx,ts,less,md,json}\"",
     "test": "umi-test",

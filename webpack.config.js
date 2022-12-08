@@ -2,7 +2,7 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TerserWebpackPlugin = require('terser-webpack-plugin');
-
+console.log(process.cwd(), '====');
 const getStyleLoaders = (preProcessor) => {
   return [
     MiniCssExtractPlugin.loader,
@@ -27,12 +27,6 @@ module.exports = {
     libraryTarget: 'module',
     clean: true,
   },
-  // {
-  //   path: path.resolve(__dirname, './dist'),
-  //   filename: 'umd/index.js',
-  //   clean: true,
-  //   libraryTarget: 'umd',
-  // },
   experiments: {
     outputModule: true,
   },
@@ -65,7 +59,13 @@ module.exports = {
           },
           {
             test: /\.(ts|tsx)$/,
-            use: 'ts-loader',
+            use: {
+              loader: 'ts-loader',
+              options: {
+                transpileOnly: true,
+              },
+            },
+
             include: path.resolve(__dirname, './src'),
           },
         ],
