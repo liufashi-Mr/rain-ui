@@ -17,11 +17,8 @@
     "stripInternal": true,
     "declaration": true,
     "declarationDir": "./dist/esm",
-    "baseUrl": "./",
-    "paths": {
-      "raind": ["src/index.tsx"]
-    }
+    "baseUrl": "./"
   },
-  "include": ["src/*", "typings.d.ts"],
-  "exclude": ["src/**/demo"]
+  "include": ["typings.d.ts", "src"],
+  "exclude": ["src/**/demo", ".umi"]
 }

@@ -58,10 +58,7 @@ module.exports = {
           },
           {
             test: /\.(ts|tsx)$/,
-            use: {
-              loader: 'ts-loader',
-            },
-            include: path.resolve(__dirname, './src'),
+            use: 'ts-loader',
           },
         ],
       },
