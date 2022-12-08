@@ -10,8 +10,6 @@
     "skipLibCheck": true,
     "declaration": true,
     "baseUrl": "./"
-    // "paths": {
-    //   "raind": ["src"]
-    // }
-  }
+  },
+  "include": ["./src/*"]
 }

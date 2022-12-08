@@ -1,6 +1,5 @@
 import React from 'react';
-import { Button } from 'raind';
-import '../style';
+import { Button } from '../../../dist/esm/index.js';
 import '../style/base.scss';
 
 export default () => (

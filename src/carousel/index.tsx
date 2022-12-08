@@ -61,6 +61,7 @@ interface IProps {
    * @type            any
    */
   ref?: any;
+  children?: React.ReactNode;
 }
 
 const Carousel: React.FC<IProps> = React.forwardRef(

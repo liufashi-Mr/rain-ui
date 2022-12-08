@@ -1,12 +1,13 @@
 {
   "private": false,
   "name": "raind",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "raind 主题组件库",
   "scripts": {
     "start": "dumi dev",
     "docs:build": "dumi build",
     "docs:deploy": "gh-pages -d docs-dist",
+    "webpackBuild": "webpack --config ./webpack.config.js",
     "build": "father build",
     "deploy": "npm run docs:build && npm run docs:deploy",
     "prettier": "prettier --write \"**/*.{js,jsx,tsx,ts,less,md,json}\"",
@@ -32,6 +33,7 @@
   },
   "dependencies": {
     "@umijs/plugin-sass": "^1.1.1",
+    "antd": "^5.0.4",
     "node-sass": "^7.0.1",
     "rc-tooltip": "^5.2.2",
     "react": "^18.0.0",
@@ -44,11 +46,21 @@
     "@types/jest": "^27.0.3",
     "@umijs/fabric": "^2.8.1",
     "@umijs/test": "^3.0.5",
+    "babel-loader": "^9.1.0",
+    "css-loader": "^6.7.2",
+    "css-minimizer-webpack-plugin": "^4.2.2",
     "dumi": "1.1.29",
-    "father": "^4.0.0-rc.2",
+    "father": "^4.1.1",
     "gh-pages": "^3.0.0",
     "lint-staged": "^10.0.7",
+    "mini-css-extract-plugin": "^2.7.2",
+    "postcss-loader": "^7.0.2",
     "prettier": "^2.2.1",
+    "sass-loader": "^13.2.0",
+    "terser-webpack-plugin": "^5.3.6",
+    "ts-loader": "^9.4.2",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1",
     "yorkie": "^2.0.0"
   }
 }
