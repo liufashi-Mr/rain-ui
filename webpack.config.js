@@ -2,7 +2,6 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TerserWebpackPlugin = require('terser-webpack-plugin');
-console.log(process.cwd(), '====');
 const getStyleLoaders = (preProcessor) => {
   return [
     MiniCssExtractPlugin.loader,
@@ -61,11 +60,7 @@ module.exports = {
             test: /\.(ts|tsx)$/,
             use: {
               loader: 'ts-loader',
-              options: {
-                transpileOnly: true,
-              },
             },
-
             include: path.resolve(__dirname, './src'),
           },
         ],

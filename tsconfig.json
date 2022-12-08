@@ -15,7 +15,8 @@
     "lib": ["dom", "es2017"],
     "skipLibCheck": true,
     "stripInternal": true,
-    "declaration": false,
+    "declaration": true,
+    "declarationDir": "./dist/esm",
     "baseUrl": "./"
   },
   "exclude": ["node_modules"]

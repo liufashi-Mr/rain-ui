@@ -8,7 +8,7 @@
     "docs:build": "dumi build",
     "docs:deploy": "gh-pages -d docs-dist",
     "build": "webpack --config ./webpack.config.js",
-    "wepackBuild": "father build",
+    "webpackBuild": "father build",
     "deploy": "npm run docs:build && npm run docs:deploy",
     "prettier": "prettier --write \"**/*.{js,jsx,tsx,ts,less,md,json}\"",
     "test": "umi-test",
@@ -19,7 +19,7 @@
     "dist"
   ],
   "module": "dist/esm/index.js",
-  "typings": "dist/esm/index.d.ts",
+  "typings": "dist/esm/src/index.d.ts",
   "gitHooks": {
     "pre-commit": "lint-staged"
   },
@@ -33,6 +33,7 @@
   },
   "dependencies": {
     "@umijs/plugin-sass": "^1.1.1",
+    "concis": "^1.5.10",
     "node-sass": "^7.0.1",
     "rc-tooltip": "^5.2.2",
     "react": "^18.0.0",
