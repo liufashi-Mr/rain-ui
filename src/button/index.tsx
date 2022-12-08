@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import cls from 'classnames';
-import './style';
+// import './style';
 export type ButtonType = 'default' | 'primary' | 'dashed' | 'text' | 'link';
 export type ButtonSize = 'small' | 'default' | 'large';
 export type ButtonShape = 'circle' | 'round';

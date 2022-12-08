@@ -3,7 +3,7 @@ import { useState, useImperativeHandle } from 'react';
 import { useEffect } from 'react';
 import { useRef } from 'react';
 import cls from 'classnames';
-import './style';
+// import './style';
 
 interface IProps {
   /**
