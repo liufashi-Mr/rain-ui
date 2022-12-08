@@ -1,7 +1,7 @@
 import React from 'react';
 // import { Button } from 'raind';
 import '../style/base.scss';
-import { Button } from 'concis';
+import { Button } from 'raind';
 export default () => (
   <div className="btnBase">
     <Button onClick={() => window.alert('你敢点我？')}>Default Button</Button>

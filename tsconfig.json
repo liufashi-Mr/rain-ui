@@ -19,5 +19,5 @@
     "declarationDir": "./dist/esm",
     "baseUrl": "./"
   },
-  "exclude": ["node_modules"]
+  "include": ["./src/*"]
 }

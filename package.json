@@ -1,7 +1,7 @@
 {
   "private": false,
   "name": "raind",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "raind 主题组件库",
   "scripts": {
     "start": "dumi dev",
