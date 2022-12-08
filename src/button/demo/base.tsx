@@ -1,5 +1,4 @@
 import React from 'react';
-// import { Button } from 'raind';
 import '../style/base.scss';
 import { Button } from 'raind';
 export default () => (
