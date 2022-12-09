@@ -79,11 +79,11 @@ const baseConfig = {
 
 module.exports = [
   {
+    name: 'esm',
     output: {
       path: path.resolve(__dirname, './dist'),
       filename: 'esm/index.js',
       libraryTarget: 'module',
-      clean: true,
     },
     experiments: {
       outputModule: true,
@@ -91,11 +91,11 @@ module.exports = [
     ...baseConfig,
   },
   {
+    name: 'umd',
     output: {
       path: path.resolve(__dirname, './dist'),
       filename: 'umd/index.js',
       libraryTarget: 'umd',
-      clean: true,
     },
     ...baseConfig,
   },
