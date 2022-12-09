@@ -1,5 +1,4 @@
 import React from 'react';
-import { useEffect } from 'react';
 import '../style/base.scss';
 import { Button } from 'raind';
 export default () => (
