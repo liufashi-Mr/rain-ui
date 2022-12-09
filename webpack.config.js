@@ -35,19 +35,6 @@ const baseConfig = {
             use: getStyleLoaders('sass-loader'),
           },
           {
-            test: /\.(png|jpe?g|gif|svg)$/,
-            type: 'asset',
-            parser: {
-              dataUrlCondition: {
-                maxSize: 10 * 1024, // 小于10kb的图片会被base64处理
-              },
-            },
-          },
-          {
-            test: /\.(ttf|woff2?)$/,
-            type: 'asset/resource',
-          },
-          {
             test: /\.(ts|tsx)$/,
             use: 'ts-loader',
           },
@@ -55,17 +42,14 @@ const baseConfig = {
       },
     ],
   },
-  plugins: [
-    new MiniCssExtractPlugin({
-      filename: 'style/rain-ui.css',
-    }),
-  ],
   optimization: {
     minimize: true,
     // 压缩的操作
     minimizer: [
       // 压缩css
-      new CssMinimizerPlugin(),
+      new MiniCssExtractPlugin({
+        filename: '../dist/rain-ui.min.css',
+      }),
       // 压缩js
       new TerserWebpackPlugin(),
     ],
@@ -81,8 +65,8 @@ module.exports = [
   {
     name: 'esm',
     output: {
-      path: path.resolve(__dirname, './dist'),
-      filename: 'esm/index.js',
+      path: path.resolve(__dirname, './raind/esm'),
+      filename: 'index.js',
       libraryTarget: 'module',
     },
     experiments: {
@@ -93,8 +77,8 @@ module.exports = [
   {
     name: 'umd',
     output: {
-      path: path.resolve(__dirname, './dist'),
-      filename: 'umd/index.js',
+      path: path.resolve(__dirname, './raind/umd'),
+      filename: 'index.js',
       libraryTarget: 'umd',
     },
     ...baseConfig,

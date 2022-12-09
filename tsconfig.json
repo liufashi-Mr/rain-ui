@@ -17,8 +17,8 @@
     "skipLibCheck": true,
     "stripInternal": true,
     "declaration": true,
-    "declarationDir": "dist/esm"
+    "declarationDir": "raind/types"
   },
-  "include": ["typings.d.ts", "src/**/*"],
-  "exclude": ["**/demo/*"]
+  "include": ["src/**/*"],
+  "exclude": ["src/*/demo/*", "typings.d.ts"]
 }
