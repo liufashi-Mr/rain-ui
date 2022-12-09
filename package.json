@@ -2,13 +2,36 @@
   "private": false,
   "name": "raind",
   "version": "1.0.5",
-  "description": "raind 主题组件库",
+  "description": "a react components lib named rain-ui",
+  "homepage": "https://rain-ui.liufashi.top",
+  "keywords": [
+    "raind",
+    "component",
+    "components",
+    "design",
+    "framework",
+    "frontend",
+    "react",
+    "react-component",
+    "ui"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/liufashi-Mr/rain-ui"
+  },
+  "author": {
+    "name": "fashi",
+    "email": "1325178274@qq.com",
+    "url": "https://blog.liufashi.top"
+  },
+  "engines": {
+    "node": ">=14"
+  },
   "scripts": {
     "start": "dumi dev",
     "docs:build": "dumi build",
     "docs:deploy": "gh-pages -d docs-dist",
     "build": "webpack --config ./webpack.config.js",
-    "webpackBuild": "father build",
     "deploy": "npm run docs:build && npm run docs:deploy",
     "prettier": "prettier --write \"**/*.{js,jsx,tsx,ts,less,md,json}\"",
     "test": "umi-test",
@@ -18,8 +41,9 @@
   "files": [
     "dist"
   ],
+  "main": "dist/umd/index.js",
   "module": "dist/esm/index.js",
-  "typings": "dist/esm/index.d.ts",
+  "types": "./typings.d.ts",
   "gitHooks": {
     "pre-commit": "lint-staged"
   },
@@ -49,7 +73,6 @@
     "css-loader": "^6.7.2",
     "css-minimizer-webpack-plugin": "^4.2.2",
     "dumi": "1.1.29",
-    "father": "^4.1.1",
     "gh-pages": "^3.0.0",
     "lint-staged": "^10.0.7",
     "mini-css-extract-plugin": "^2.7.2",

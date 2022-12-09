@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": "./",
     "strictNullChecks": true,
     "module": "esnext",
     "moduleResolution": "node",
@@ -16,9 +17,11 @@
     "skipLibCheck": true,
     "stripInternal": true,
     "declaration": true,
-    "declarationDir": "./dist/esm",
-    "baseUrl": "./"
+    "declarationDir": "dist/esm",
+    "paths": {
+      "raind": ["src"]
+    }
   },
   "include": ["typings.d.ts", "src"],
-  "exclude": ["src/**/demo", ".umi"]
+  "exclude": ["src/*/demo"]
 }

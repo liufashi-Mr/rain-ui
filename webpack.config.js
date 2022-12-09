@@ -18,17 +18,8 @@ const getStyleLoaders = (preProcessor) => {
   ].filter(Boolean);
 };
 
-module.exports = {
+const baseConfig = {
   entry: './src/index.ts',
-  output: {
-    path: path.resolve(__dirname, './dist'),
-    filename: 'esm/index.js',
-    libraryTarget: 'module',
-    clean: true,
-  },
-  experiments: {
-    outputModule: true,
-  },
   module: {
     rules: [
       {
@@ -85,3 +76,27 @@ module.exports = {
   mode: 'production',
   devtool: 'source-map',
 };
+
+module.exports = [
+  {
+    output: {
+      path: path.resolve(__dirname, './dist'),
+      filename: 'esm/index.js',
+      libraryTarget: 'module',
+      clean: true,
+    },
+    experiments: {
+      outputModule: true,
+    },
+    ...baseConfig,
+  },
+  {
+    output: {
+      path: path.resolve(__dirname, './dist'),
+      filename: 'umd/index.js',
+      libraryTarget: 'umd',
+      clean: true,
+    },
+    ...baseConfig,
+  },
+];
