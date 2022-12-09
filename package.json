@@ -35,11 +35,13 @@
     "build": "rm -rf ./dist &&  npm run build:esm & npm run build:umd",
     "build:esm": "webpack --config-name esm",
     "build:umd": "webpack --config-name umd",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx",
+    "lint:fix": "eslint --fix --cache --ext .js,.jsx,.ts,.tsx --format=pretty ./src ",
+    "lint:style": "stylelint {src,docs}/**/*.(le|sa|sc)ss --fix",
     "deploy": "npm run docs:build && npm run docs:deploy",
     "prettier": "prettier --write \"**/*.{js,jsx,tsx,ts,less,md,json}\"",
     "test": "umi-test",
-    "test:coverage": "umi-test --coverage",
-    "prepublishOnly": "npm run build"
+    "test:coverage": "umi-test --coverage"
   },
   "files": [
     "dist/*"
@@ -55,7 +57,8 @@
       "prettier --write"
     ],
     "*.ts?(x)": [
-      "prettier --parser=typescript --write"
+      "prettier --parser=typescript --write",
+      "npm run lint"
     ]
   },
   "dependencies": {
