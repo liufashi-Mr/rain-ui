@@ -32,7 +32,7 @@
     "start": "dumi dev",
     "docs:build": "dumi build",
     "docs:deploy": "gh-pages -d docs-dist",
-    "build": "rm -rf ./raind &&  npm run build:esm & npm run build:umd",
+    "build": "rm -rf ./dist &&  npm run build:esm & npm run build:umd",
     "build:esm": "webpack --config-name esm",
     "build:umd": "webpack --config-name umd",
     "deploy": "npm run docs:build && npm run docs:deploy",
