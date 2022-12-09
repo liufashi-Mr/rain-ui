@@ -17,10 +17,7 @@
     "skipLibCheck": true,
     "stripInternal": true,
     "declaration": true,
-    "declarationDir": "dist/esm",
-    "paths": {
-      "raind": ["src"]
-    }
+    "declarationDir": "dist/esm"
   },
   "include": ["typings.d.ts", "src"],
   "exclude": ["src/*/demo"]
