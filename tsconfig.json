@@ -19,6 +19,6 @@
     "declaration": true,
     "declarationDir": "dist/esm"
   },
-  "include": ["typings.d.ts", "src"],
-  "exclude": ["src/*/demo"]
+  "include": ["typings.d.ts", "src/**/*"],
+  "exclude": ["**/demo/*"]
 }
