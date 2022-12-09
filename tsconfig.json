@@ -20,5 +20,5 @@
     "declarationDir": "raind/types"
   },
   "include": ["src/**/*"],
-  "exclude": ["src/*/demo/*", "typings.d.ts"]
+  "exclude": ["src/*/demo/*", "src/.umi", "src/.umi-production"]
 }
