@@ -24,6 +24,7 @@
     "email": "1325178274@qq.com",
     "url": "https://blog.liufashi.top"
   },
+  "license": "MIT",
   "engines": {
     "node": ">=14"
   },

@@ -17,8 +17,11 @@
     "skipLibCheck": true,
     "stripInternal": true,
     "declaration": true,
-    "declarationDir": "raind/types"
+    "declarationDir": "raind/types",
+    "paths": {
+      "raind": ["src/index.ts"]
+    }
   },
-  "include": ["src/**/*"],
+  "include": ["src"],
   "exclude": ["src/*/demo/*", "src/.umi", "src/.umi-production"]
 }
