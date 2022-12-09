@@ -17,7 +17,7 @@
     "skipLibCheck": true,
     "stripInternal": true,
     "declaration": true,
-    "declarationDir": "raind/types",
+    "declarationDir": "dist/types",
     "paths": {
       "raind": ["src/index.ts"]
     }

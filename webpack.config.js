@@ -48,7 +48,7 @@ const baseConfig = {
     minimizer: [
       // 压缩css
       new MiniCssExtractPlugin({
-        filename: '../dist/rain-ui.min.css',
+        filename: '../style/rain-ui.min.css',
       }),
       // 压缩js
       new TerserWebpackPlugin(),
@@ -65,7 +65,7 @@ module.exports = [
   {
     name: 'esm',
     output: {
-      path: path.resolve(__dirname, './raind/esm'),
+      path: path.resolve(__dirname, './dist/esm'),
       filename: 'index.js',
       libraryTarget: 'module',
     },
@@ -77,7 +77,7 @@ module.exports = [
   {
     name: 'umd',
     output: {
-      path: path.resolve(__dirname, './raind/umd'),
+      path: path.resolve(__dirname, './dist/umd'),
       filename: 'index.js',
       libraryTarget: 'umd',
     },

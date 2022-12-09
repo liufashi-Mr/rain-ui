@@ -1,7 +1,7 @@
 {
   "private": false,
   "name": "raind",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "a react components lib named rain-ui",
   "homepage": "https://rain-ui.liufashi.top",
   "keywords": [
@@ -42,11 +42,11 @@
     "prepublishOnly": "npm run build"
   },
   "files": [
-    "raind/*"
+    "dist/*"
   ],
-  "main": "raind/umd/index.js",
-  "module": "raind/esm/index.js",
-  "types": "raind/types/index.d.ts",
+  "main": "dist/umd/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
   "gitHooks": {
     "pre-commit": "lint-staged"
   },
