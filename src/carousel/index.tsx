@@ -46,14 +46,14 @@ interface IProps {
    * @default         null
    * @type            function
    */
-  afterChange?(current: number): void;
+  afterChange?: (current: number) => void;
 
   /**
    * @description     轮播开始前的回调
    * @default         null
    * @type            function
    */
-  beforeChange?(from: number, to: number): void;
+  beforeChange?: (from: number, to: number) => void;
 
   /**
    * @description     ref => 用于手动控制前后
@@ -277,13 +277,13 @@ const Carousel: React.FC<IProps> = React.forwardRef(
                       (current === currentArray.length && index === 0),
                   })}
                   onClick={() => goTo(index)}
-                ></span>
+                 />
               ))}
             </div>
           )}
           {/* 预设箭头 start */}
-          {arrows && <div className={cls('arrowLeft', { show: showArrow })} onClick={back}></div>}
-          {arrows && <div className={cls('arrowRight', { show: showArrow })} onClick={next}></div>}
+          {arrows && <div className={cls('arrowLeft', { show: showArrow })} onClick={back} />}
+          {arrows && <div className={cls('arrowRight', { show: showArrow })} onClick={next} />}
           {/* 预设箭头 end */}
         </div>
       </>

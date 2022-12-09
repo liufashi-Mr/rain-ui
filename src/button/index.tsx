@@ -1,4 +1,5 @@
-import React, { FC } from 'react';
+import type { FC } from 'react';
+import React from 'react';
 import cls from 'classnames';
 import './style';
 export type ButtonType = 'default' | 'primary' | 'dashed' | 'text' | 'link';
