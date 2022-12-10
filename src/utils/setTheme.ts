@@ -46,10 +46,3 @@ export const setDarkTheme = (
     }
   });
 };
-
-export const getInitTheme = (element: HTMLElement): ThemeVariables => ({
-  primary: getComputedStyle(element).getPropertyValue('--rain-primary-color'),
-  warning: getComputedStyle(element).getPropertyValue('--rain-warning-color'),
-  error: getComputedStyle(element).getPropertyValue('--rain-error-color'),
-  success: getComputedStyle(element).getPropertyValue('--rain-success-color'),
-});
