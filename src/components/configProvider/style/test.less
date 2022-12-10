@@ -1,0 +1,14 @@
+@import '../../../styles//variable.less';
+.container {
+  margin: 40px auto;
+  width: 100px;
+  height: 100px;
+  background-color: @primary-color;
+  transition: all .3s cubic-bezier(.645,.045,.355,1);
+  &:hover {
+    background-color: @primary-color-hover;
+  }
+  &:active {
+    background-color: @primary-color-active;
+  }
+}

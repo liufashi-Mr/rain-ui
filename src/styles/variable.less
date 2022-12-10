@@ -1,13 +1,19 @@
-// @import './color/colorPalette';
 :root {
+  // color
   --rain-primary-color: #1890ff; // 全局主色
   --rain-primary-color-hover: #40a9ff; // 全局主色-hover
+  --rain-primary-color-active: #096dd9; // 全局主色-active
   --rain-success-color: #52c41a; // 成功色
   --rain-success-color-hover: #73d13d; // 成功色-hover
+  --rain-success-color-active: #73d13d; // 成功色-active
   --rain-warning-color: #faad14; // 警告色
   --rain-warning-color-hover: #ffc53d; // 警告色-hover
+  --rain-warning-color-active: #ffc53d; // 警告色-active
   --rain-error-color: #f5222d; // 错误色
   --rain-error-color-hover: #ff4d4f; // 错误色-hover
+  --rain-error-color-active: #ff4d4f; // 错误色-active
+
+  // text
   --rain-font-size-base: 14px; // 主字号
   --rain-heading-color: rgba(0, 0, 0, 0.85); // 标题色
   --rain-text-color: rgba(0, 0, 0, 0.65); // 主文本色
@@ -19,14 +25,25 @@
     0 9px 28px 8px rgba(0, 0, 0, 0.05); // 浮层阴影
 }
 
+// color
 @primary-color: var(--rain-primary-color);
 @primary-color-hover: var(--rain-primary-color-hover);
+@primary-color-active: var(--rain-primary-color-active);
+
 @success-color: var(--rain-success-color);
 @success-color-hover: var(--rain-success-color-hover);
+@success-color-active: var(--rain-success-color-active);
+
 @warning-color: var(--rain-warning-color);
 @warning-color-hover: var(--rain-warning-color-hover);
+@warning-color-active: var(--rain-warning-color-active);
+
 @error-color: var(--rain-error-color);
 @error-color-hover: var(--rain-error-color-hover);
+@error-color-active: var(--rain-error-color-active);
+
+
+// text
 @font-size-base: var(--rain-font-size-base);
 @heading-color: var(--rain-heading-color);
 @text-color: var(--rain-text-color);
