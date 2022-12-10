@@ -1,5 +1,5 @@
 ---
-title: ConfigProvider全局化配置
+title: ConfigProvider 全局化配置
 order: 0
 group:
   path: /

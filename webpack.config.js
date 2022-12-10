@@ -39,12 +39,12 @@ const baseConfig = {
             use: getStyleLoaders(),
           },
           {
-            test: /\.s[ac]ss$/,
-            use: getStyleLoaders('sass-loader'),
-          },
-          {
             test: /\.less$/,
             use: getStyleLoaders('less-loader'),
+          },
+          {
+            test: /\.(js|jsx)$/,
+            use: 'babel-loader',
           },
           {
             test: /\.(ts|tsx)$/,

@@ -37,7 +37,7 @@
     "build:umd": "webpack --config-name umd",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx",
     "lint:fix": "eslint --fix --cache --ext .js,.jsx,.ts,.tsx --format=pretty ./src ",
-    "lint:style": "stylelint {src,docs}/**/*.{sass,scss,less,css} --fix",
+    "lint:style": "stylelint {src,docs}/**/*.{less,css} --fix",
     "deploy": "npm run docs:build && npm run docs:deploy",
     "prettier": "prettier --write \"**/*.{js,jsx,tsx,ts,less,md,json}\"",
     "test": "umi-test",
@@ -60,7 +60,7 @@
       "prettier --parser=typescript --write",
       "npm run lint:fix"
     ],
-    "*.{sass,scss,less,css}": [
+    "*.{less,css}": [
       "prettier --write",
       "npm run lint:style"
     ]
@@ -69,11 +69,8 @@
     "@ant-design/colors": "^6.0.0",
     "@umijs/plugin-sass": "^1.1.1",
     "less": "^4.1.3",
-    "node-sass": "^7.0.1",
     "rc-tooltip": "^5.2.2",
-    "react": "^18.0.0",
-    "sass": "^1.54.0",
-    "sass-resources-loader": "^2.2.5"
+    "react": "^18.0.0"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.15.1",
@@ -91,7 +88,6 @@
     "mini-css-extract-plugin": "^2.7.2",
     "postcss-loader": "^7.0.2",
     "prettier": "^2.2.1",
-    "sass-loader": "^13.2.0",
     "terser-webpack-plugin": "^5.3.6",
     "ts-loader": "^9.4.2",
     "webpack": "^5.75.0",
