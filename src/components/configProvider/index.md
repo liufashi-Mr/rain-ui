@@ -10,4 +10,4 @@ nav:
 
 <code src="./demo/test.tsx">
 
-<API src="./interface.tsx"></API>
+<API src="./index.tsx"></API>
