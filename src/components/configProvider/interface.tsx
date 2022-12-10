@@ -13,17 +13,12 @@ interface ConfigProviderProps {
    * @description 全局主题
    * @default ThemeVariables
    */
-  globalTheme?: ThemeVariables;
-  /**
-   * @description 子节点主题
-   * @default ThemeVariables
-   */
-  childrenTheme?: ThemeVariables;
+  theme?: ThemeVariables;
   /**
    * @description 深色模式
    * @default false
    */
-  darkTheme?: boolean;
+  dark?: boolean;
   /**
    * @description 项目深色模式背景
    * @default  #141414

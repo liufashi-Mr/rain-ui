@@ -1,14 +1,13 @@
 import React from 'react';
-import '../style/test.less';
 import { ConfigProvider } from 'raind';
 import { useState } from 'react';
-
+import Comp from '.';
 const Test = () => {
   const [isDark, setIsDark] = useState(false);
   return (
-    <ConfigProvider globalTheme={{ primary: 'aqua' }} darkTheme={isDark}>
+    <ConfigProvider theme={{ primary: 'aqua' }} dark={isDark}>
       <div style={{ background: isDark ? '#141414' : '#fff', overflow: 'hidden' }}>
-        <div className="container" />
+        <Comp />
         <button
           style={{ marginTop: 10 }}
           onClick={() => {
@@ -17,6 +16,9 @@ const Test = () => {
         >
           点击
         </button>
+        <ConfigProvider theme={{ primary: 'green' }} dark={isDark}>
+          <Comp />
+        </ConfigProvider>
       </div>
     </ConfigProvider>
   );

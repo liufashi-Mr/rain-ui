@@ -12,3 +12,16 @@
     background-color: @primary-color-active;
   }
 }
+.container2 {
+  width: 100px;
+  height: 100px;
+  margin: 40px auto;
+  background-color: @warning-color;
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  &:hover {
+    background-color: @warning-color-hover;
+  }
+  &:active {
+    background-color: @warning-color-active;
+  }
+}

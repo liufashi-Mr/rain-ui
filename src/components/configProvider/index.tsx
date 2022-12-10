@@ -1,18 +1,22 @@
-import React, { createContext } from 'react';
+import React, { createContext, useEffect, useRef } from 'react';
 import type { ConfigProviderProps } from './interface';
 import { setThemeConfig, setDarkTheme } from '../../utils/setTheme';
-import './style/test.less';
-import { useEffect } from 'react';
+
 export const configCtx = createContext<ConfigProviderProps>({} as ConfigProviderProps); // 顶层通信装置
 
-const ConfigProvider = (props: ConfigProviderProps) => {
-  const { children, globalTheme, darkTheme, darkBackgroundColor, compact, childrenTheme } = props;
+const ConfigProvider: React.FC<ConfigProviderProps> = ({ children, ...rest }) => {
+  const configRef = useRef<any>();
+  const { theme, dark, darkBackgroundColor } = rest;
   useEffect(() => {
-    setThemeConfig(document.documentElement, globalTheme);
-    setDarkTheme(darkBackgroundColor, globalTheme, darkTheme);
-  }, [globalTheme, darkBackgroundColor, darkTheme, compact]);
+    setThemeConfig(configRef?.current, theme);
+    setDarkTheme(configRef?.current, darkBackgroundColor, theme, dark);
+  }, [rest]);
 
-  return <configCtx.Provider value={{ childrenTheme }}>{children}</configCtx.Provider>;
+  return (
+    <configCtx.Provider value={rest}>
+      <div ref={configRef}>{children}</div>
+    </configCtx.Provider>
+  );
 };
 
 export default ConfigProvider;

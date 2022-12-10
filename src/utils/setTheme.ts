@@ -10,9 +10,10 @@ const initTheme = {
 // 主题配色
 export const setThemeConfig = (element: HTMLElement, theme?: ThemeVariables): void => {
   if (!theme) return;
-  Object.keys(theme).forEach((item: keyof ThemeVariables) => {
-    if (theme[item]) {
-      const colors = generate(theme[item] as string);
+  const mergedTheme = { ...initTheme, ...theme };
+  Object.keys(mergedTheme).forEach((item: keyof ThemeVariables) => {
+    if (mergedTheme[item]) {
+      const colors = generate(mergedTheme[item] as string);
       element.style.setProperty(`--rain-${item}-color`, colors[5]);
       element.style.setProperty(`--rain-${item}-color-hover`, colors[4]);
       element.style.setProperty(`--rain-${item}-color-active`, colors[6]);
@@ -22,15 +23,16 @@ export const setThemeConfig = (element: HTMLElement, theme?: ThemeVariables): vo
 
 // 深色模式
 export const setDarkTheme = (
+  element: HTMLElement,
   backgroundColor: string = '#141414',
   theme: ThemeVariables = initTheme,
   isUsed: boolean = true,
 ): void => {
-  const element = document.documentElement;
-  Object.keys(theme).forEach((item: keyof ThemeVariables) => {
-    if (theme[item]) {
+  const mergedTheme = { ...initTheme, ...theme };
+  Object.keys(mergedTheme).forEach((item: keyof ThemeVariables) => {
+    if (mergedTheme[item]) {
       const colors = generate(
-        theme[item] as string,
+        mergedTheme[item] as string,
         isUsed
           ? {
               theme: 'dark',
@@ -44,3 +46,10 @@ export const setDarkTheme = (
     }
   });
 };
+
+export const getInitTheme = (element: HTMLElement): ThemeVariables => ({
+  primary: getComputedStyle(element).getPropertyValue('--rain-primary-color'),
+  warning: getComputedStyle(element).getPropertyValue('--rain-warning-color'),
+  error: getComputedStyle(element).getPropertyValue('--rain-error-color'),
+  success: getComputedStyle(element).getPropertyValue('--rain-success-color'),
+});
