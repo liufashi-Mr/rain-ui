@@ -1,6 +1,5 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TerserWebpackPlugin = require('terser-webpack-plugin');
 const getStyleLoaders = (preProcessor) => {
   return [
@@ -14,7 +13,16 @@ const getStyleLoaders = (preProcessor) => {
         },
       },
     },
-    preProcessor,
+    preProcessor === 'less-loader'
+      ? {
+          loader: 'less-loader',
+          options: {
+            lessOptions: {
+              javascriptEnabled: true,
+            },
+          },
+        }
+      : preProcessor,
   ].filter(Boolean);
 };
 
@@ -33,6 +41,10 @@ const baseConfig = {
           {
             test: /\.s[ac]ss$/,
             use: getStyleLoaders('sass-loader'),
+          },
+          {
+            test: /\.less$/,
+            use: getStyleLoaders('less-loader'),
           },
           {
             test: /\.(ts|tsx)$/,
