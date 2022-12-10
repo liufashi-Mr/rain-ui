@@ -61,7 +61,7 @@
       "npm run lint:fix"
     ],
     "*.{sass,scss,less,css}": [
-      "prettier --parser=typescript --write",
+      "prettier --write",
       "npm run lint:style"
     ]
   },

@@ -10,7 +10,7 @@ const ConfigProvider = (props: ConfigProviderProps) => {
   useEffect(() => {
     setThemeConfig(document.documentElement, globalTheme);
     setDarkTheme(darkBackgroundColor, globalTheme, darkTheme);
-  }, [globalTheme, darkBackgroundColor, darkTheme]);
+  }, [globalTheme, darkBackgroundColor, darkTheme, compact]);
 
   return <configCtx.Provider value={{ childrenTheme }}>{children}</configCtx.Provider>;
 };

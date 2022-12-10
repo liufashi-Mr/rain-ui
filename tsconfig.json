@@ -19,7 +19,7 @@
     "declaration": true,
     "declarationDir": "dist/types",
     "paths": {
-      "raind": ["src/index.ts"],
+      "raind": ["src/index.ts"]
     }
   },
   "include": ["typings.d.ts", "src"],
