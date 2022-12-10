@@ -1,4 +1,4 @@
-import { ThemeVariables } from "src/configProvider/interface";
+import type { ThemeVariables } from "src/configProvider/interface";
 // import { generate } from '@ant-design/colors';
 
 // const createColorVariables = (theme: ThemeVariables) => {

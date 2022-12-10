@@ -1,5 +1,5 @@
 import React, { createContext } from 'react';
-import { ConfigProviderProps } from './interface';
+import type { ConfigProviderProps } from './interface';
 import { setThemeConfig } from '../utils/setTheme';
 
 import './style/test.less';

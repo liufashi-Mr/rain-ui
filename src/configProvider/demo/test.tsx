@@ -11,8 +11,8 @@ const ChildTest = () => {
   return (
     <div
       className="container"
-      style={{ backgroundColor: childrenTheme && childrenTheme['primary'] }}
-    ></div>
+      style={{ backgroundColor: childrenTheme && childrenTheme.primary }}
+     />
   );
 };
 
