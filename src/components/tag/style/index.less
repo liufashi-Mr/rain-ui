@@ -1,1 +1,63 @@
 @import '../../../styles/variables/index';
+
+@tag-prefix-cls: ~'@{rain-prefix}-tag';
+@rain-tag-font-size: 12px;
+
+.@{tag-prefix-cls} {
+  display: inline-block;
+  height: auto;
+  padding: 0 7px;
+  font-size: @rain-tag-font-size;
+  line-height: 20px;
+  border: 1px solid;
+  border-radius: @border-radius-base;
+
+  &-default {
+    border-color: @border-color-base;
+  }
+  &-primary {
+    color: #fff;
+    background-color: @primary-color;
+    border-color: @primary-color;
+    &-bordered {
+      color: @primary-color;
+      background-color: #e6f7ff; // @primary-color-1
+      border-color: #91d5ff; // @primary-color-3
+    }
+  }
+  &-success {
+    color: #fff;
+    background-color: @success-color;
+    border-color: @success-color;
+    &-bordered {
+      color: @success-color;
+      background-color: #fff; // @primary-color-1
+      //   border-color: #91d5ff; // @primary-color-3
+    }
+  }
+  &-warning {
+    color: #fff;
+    background-color: @warning-color;
+    border-color: @warning-color;
+    &-bordered {
+      color: @warning-color;
+      background-color: #fff; // @primary-color-1
+      //   border-color: #91d5ff; // @primary-color-3
+    }
+  }
+  &-error {
+    color: #fff;
+    background-color: @error-color;
+    border-color: @error-color;
+    &-bordered {
+      color: @error-color;
+      background-color: #fff; // @primary-color-1
+
+      //   border-color: #91d5ff; // @primary-color-3
+    }
+  }
+
+  &-compact {
+    line-height: 18px;
+  }
+}
