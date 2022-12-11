@@ -17,6 +17,7 @@ export const setThemeConfig = (element: HTMLElement, theme?: ThemeVariables): vo
       element.style.setProperty(`--rain-${item}-color`, colors[5]);
       element.style.setProperty(`--rain-${item}-color-hover`, colors[4]);
       element.style.setProperty(`--rain-${item}-color-active`, colors[6]);
+      element.style.setProperty(`--rain-${item}-color-outline`, colors[5] + '33');
     }
   });
 };
@@ -43,6 +44,7 @@ export const setDarkTheme = (
       element.style.setProperty(`--rain-${item}-color`, colors[5]);
       element.style.setProperty(`--rain-${item}-color-hover`, colors[4]);
       element.style.setProperty(`--rain-${item}-color-active`, colors[6]);
+      element.style.setProperty(`--rain-${item}-color-outline`, colors[5] + '33');
     }
   });
 };

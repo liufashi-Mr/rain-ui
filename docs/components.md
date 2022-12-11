@@ -1,6 +1,5 @@
 ---
 title: 组件总览
-order: 0
 group:
   path: /components
 nav:

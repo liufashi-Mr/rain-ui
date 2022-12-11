@@ -5,7 +5,7 @@ import Comp from '.';
 const Test = () => {
   const [isDark, setIsDark] = useState(false);
   return (
-    <ConfigProvider theme={{ primary: 'aqua' }} dark={isDark}>
+    <ConfigProvider dark={isDark}>
       <div style={{ background: isDark ? '#141414' : '#fff', overflow: 'hidden' }}>
         <Comp />
         <button

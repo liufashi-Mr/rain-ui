@@ -67,7 +67,7 @@ const baseConfig = {
     ],
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.json'],
+    extensions: ['.tsx', '.ts', '.json', '.js', '.jsx'],
   },
   mode: 'production',
   devtool: 'source-map',

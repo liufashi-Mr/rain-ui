@@ -1,10 +1,11 @@
 ---
-title: ConfigProvider 全局化配置
+title: ConfigProvider 全局配置
 order: 0
 group:
-  path: /
+  title: 其他
+  path: /others
 nav:
-  title: 基础组件
+  title: 组件
   path: /components
 ---
 
