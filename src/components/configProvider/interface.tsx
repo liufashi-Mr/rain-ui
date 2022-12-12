@@ -7,6 +7,17 @@ export type ThemeVariables = {
   error?: string;
 };
 
+export type OtherVariables = {
+  '--rain-font-size-base'?: string; // 主字号
+  '--rain-heading-color'?: string; // 标题色
+  '--rain-text-color'?: string; // 主文本色
+  '--rain-text-color-secondary'?: string; // 次文本色
+  '--rain-disabled-color'?: string; // 失效色
+  '--rain-border-radius-base'?: string; // 组件/浮层圆角
+  '--rain-border-color-base'?: string; // 边框色
+  '--rain-box-shadow-base'?: string; // 浮层阴影
+};
+
 interface ConfigProviderProps {
   children?: ReactNode;
   /**
@@ -14,6 +25,11 @@ interface ConfigProviderProps {
    * @default ThemeVariables
    */
   theme?: ThemeVariables;
+  /**
+   * @description 其他变量配置
+   * @default OtherVariables
+   */
+  config?: OtherVariables;
   /**
    * @description 深色模式
    * @default false

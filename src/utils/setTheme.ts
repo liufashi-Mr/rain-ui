@@ -1,4 +1,4 @@
-import type { ThemeVariables } from 'src/components/configProvider/interface';
+import type { ThemeVariables, OtherVariables } from 'src/components/configProvider/interface';
 import { generate } from '@ant-design/colors';
 const initTheme = {
   primary: '#1890ff',
@@ -7,6 +7,17 @@ const initTheme = {
   error: '#f5222d',
 };
 
+const initVariables = {
+  '--rain-font-size-base': '14px', // 主字号
+  '--rain-heading-color': 'rgba(0, 0, 0, 0.85)', // 标题色
+  '--rain-text-color': ' rgba(0, 0, 0, 0.65)', // 主文本色
+  '--rain-text-color-secondary': ' rgba(0, 0, 0, 0.45)', // 次文本色
+  '--rain-disabled-color': 'rgba(0, 0, 0, 0.25)', // 失效色
+  '--rain-border-radius-base': '2px', // 组件/浮层圆角
+  '--rain-border-color-base': '#d9d9d9', // 边框色
+  '--rain-box-shadow-base':
+    '0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05)', // 浮层阴影
+};
 const setColors = (element: HTMLElement, colors: string[], item: string) => {
   element.style.setProperty(`--rain-${item}-color-1`, colors[1]);
   element.style.setProperty(`--rain-${item}-color-2`, colors[2]);
@@ -33,6 +44,15 @@ export const setThemeConfig = (element: HTMLElement, theme?: ThemeVariables): vo
   });
 };
 
+export const setOtherConfig = (element: HTMLElement, variables?: OtherVariables): void => {
+  if (!variables) return;
+  const mergedVariables = { ...initVariables, ...variables };
+  Object.keys(mergedVariables).forEach((item: keyof OtherVariables) => {
+    if (mergedVariables[item]) {
+      element.style.setProperty(item, mergedVariables[item]);
+    }
+  });
+};
 // 深色模式
 export const setDarkTheme = (
   element: HTMLElement,

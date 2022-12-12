@@ -1,7 +1,26 @@
-@import '../../../styles/variables/index';
+@import '../../../styles/variables/index.less';
 
 @tag-prefix-cls: ~'@{rain-prefix}-tag';
 @rain-tag-font-size: 12px;
+
+.make-color(@i:length(@preset-colors)) when(@i>0) {
+  .make-color(@i - 1);
+  @type: extract(@preset-colors, @i);
+  @mainColor: '@{type}-color';
+  @backgroundColor: '@{type}-color-1';
+  @borderColor: '@{type}-color-3';
+
+  &-@{type} {
+    color: #fff;
+    background-color: @@mainColor;
+    border-color: @@mainColor;
+    &-bordered {
+      color: @@mainColor;
+      background-color: @@backgroundColor;
+      border-color: @@borderColor;
+    }
+  }
+}
 
 .@{tag-prefix-cls} {
   display: inline-block;
@@ -15,46 +34,7 @@
   &-default {
     border-color: @border-color-base;
   }
-  &-primary {
-    color: #fff;
-    background-color: @primary-color;
-    border-color: @primary-color;
-    &-bordered {
-      color: @primary-color;
-      background-color: @primary-color-1;
-      border-color: @primary-color-3;
-    }
-  }
-  &-success {
-    color: #fff;
-    background-color: @success-color;
-    border-color: @success-color;
-    &-bordered {
-      color: @success-color;
-      background-color: @success-color-1;
-      border-color: @success-color-3;
-    }
-  }
-  &-warning {
-    color: #fff;
-    background-color: @warning-color;
-    border-color: @warning-color;
-    &-bordered {
-      color: @warning-color;
-      background-color: @warning-color-1;
-      border-color: @warning-color-3;
-    }
-  }
-  &-error {
-    color: #fff;
-    background-color: @error-color;
-    border-color: @error-color;
-    &-bordered {
-      color: @error-color;
-      background-color: @error-color-1;
-      border-color: @error-color-3;
-    }
-  }
+  .make-color();
 
   &-compact {
     line-height: 18px;

@@ -16,7 +16,11 @@ const Test = () => {
         >
           点击
         </button>
-        <ConfigProvider theme={{ primary: 'green' }} dark={isDark}>
+        <ConfigProvider
+          theme={{ primary: 'green' }}
+          config={{ '--rain-border-radius-base': '6px' }}
+          dark={isDark}
+        >
           <Comp />
         </ConfigProvider>
       </div>
