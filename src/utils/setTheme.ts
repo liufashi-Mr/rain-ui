@@ -7,6 +7,20 @@ const initTheme = {
   error: '#f5222d',
 };
 
+const setColors = (element: HTMLElement, colors: string[], item: string) => {
+  element.style.setProperty(`--rain-${item}-color-1`, colors[1]);
+  element.style.setProperty(`--rain-${item}-color-2`, colors[2]);
+  element.style.setProperty(`--rain-${item}-color-3`, colors[3]);
+  element.style.setProperty(`--rain-${item}-color-hover`, colors[4]);
+  element.style.setProperty(`--rain-${item}-color`, colors[5]);
+  element.style.setProperty(`--rain-${item}-color-active`, colors[6]);
+  element.style.setProperty(`--rain-${item}-color-7`, colors[7]);
+  element.style.setProperty(`--rain-${item}-color-8`, colors[8]);
+  element.style.setProperty(`--rain-${item}-color-9`, colors[9]);
+  element.style.setProperty(`--rain-${item}-color-10`, colors[10]);
+  element.style.setProperty(`--rain-${item}-color-outline`, colors[5] + '33');
+};
+
 // 主题配色
 export const setThemeConfig = (element: HTMLElement, theme?: ThemeVariables): void => {
   if (!theme) return;
@@ -14,10 +28,7 @@ export const setThemeConfig = (element: HTMLElement, theme?: ThemeVariables): vo
   Object.keys(mergedTheme).forEach((item: keyof ThemeVariables) => {
     if (mergedTheme[item]) {
       const colors = generate(mergedTheme[item] as string);
-      element.style.setProperty(`--rain-${item}-color`, colors[5]);
-      element.style.setProperty(`--rain-${item}-color-hover`, colors[4]);
-      element.style.setProperty(`--rain-${item}-color-active`, colors[6]);
-      element.style.setProperty(`--rain-${item}-color-outline`, colors[5] + '33');
+      setColors(element, colors, item);
     }
   });
 };
@@ -41,10 +52,7 @@ export const setDarkTheme = (
             }
           : undefined,
       );
-      element.style.setProperty(`--rain-${item}-color`, colors[5]);
-      element.style.setProperty(`--rain-${item}-color-hover`, colors[4]);
-      element.style.setProperty(`--rain-${item}-color-active`, colors[6]);
-      element.style.setProperty(`--rain-${item}-color-outline`, colors[5] + '33');
+      setColors(element, colors, item);
     }
   });
 };

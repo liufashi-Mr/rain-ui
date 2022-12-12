@@ -23,4 +23,5 @@ module.exports = {
       },
     ],
   },
+  exclude: ['./src/styles/color/*'],
 };
