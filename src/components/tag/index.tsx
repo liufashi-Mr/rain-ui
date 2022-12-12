@@ -28,7 +28,9 @@ const Tag: React.ForwardRefRenderFunction<HTMLSpanElement, TagProps> = (props, r
   const tagAttributes = {
     className: classes,
     style: {
+      color: !isPreset ? '#fff' : '',
       backgroundColor: !isPreset ? color : '',
+      borderColor: !isPreset ? color : '',
     },
   };
 
