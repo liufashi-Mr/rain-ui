@@ -1,6 +1,7 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserWebpackPlugin = require('terser-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const getStyleLoaders = (preProcessor) => {
   return [
     MiniCssExtractPlugin.loader,
@@ -54,6 +55,20 @@ const baseConfig = {
       },
     ],
   },
+  plugins: [
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, './src/styles/rain-ui.less'),
+          to: path.resolve(__dirname, './dist/style'),
+        },
+        {
+          from: path.resolve(__dirname, './src/styles/color/colors.less'),
+          to: path.resolve(__dirname, './dist/style'),
+        },
+      ],
+    }),
+  ],
   optimization: {
     minimize: true,
     // 压缩的操作
