@@ -15,12 +15,19 @@ const Tag: React.ForwardRefRenderFunction<HTMLSpanElement, TagProps> = (props, r
     className,
     onClose,
     children,
+    checkable,
+    onChecked,
+    defaultChecked,
   } = props;
   const [visible, setVisible] = useState(true);
+  const [checked, setChecked] = useState(defaultChecked);
   const { compact } = useContext(configCtx);
   const isPreset = ['primary', 'warning', 'error', 'success', 'default'].includes(color as string);
   const classes = cls(prefixCls, className || '', {
     [`${prefixCls}-compact`]: compact,
+    [`${prefixCls}-checkable`]: checkable,
+    [`${prefixCls}-checkable-checked`]: checkable && checked,
+    [`${prefixCls}-checkable-not-checked`]: checkable && !checked,
     [`${prefixCls}-${color}`]: isPreset,
     [`${prefixCls}-${color}-bordered`]: bordered && isPreset,
   });
@@ -28,9 +35,14 @@ const Tag: React.ForwardRefRenderFunction<HTMLSpanElement, TagProps> = (props, r
   const tagAttributes = {
     className: classes,
     style: {
-      color: !isPreset ? '#fff' : '',
-      backgroundColor: !isPreset ? color : '',
-      borderColor: !isPreset ? color : '',
+      color: !isPreset && !checkable ? '#fff' : '',
+      backgroundColor: !isPreset && !checkable ? color : '',
+      borderColor: !isPreset && !checkable ? color : '',
+    },
+    onClick: (e: React.MouseEvent<HTMLElement>) => {
+      e.stopPropagation();
+      onChecked?.(!checked, children);
+      setChecked((val) => !val);
     },
   };
 

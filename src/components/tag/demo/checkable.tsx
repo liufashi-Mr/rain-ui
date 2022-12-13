@@ -1,34 +1,26 @@
-import { Tag } from 'antd';
-import React, { useState } from 'react';
-
-const { CheckableTag } = Tag;
-
-const tagsData = ['Movies', 'Books', 'Music', 'Sports'];
-
+import React from 'react';
+import { Tag } from 'raind';
+import { message } from 'antd';
+import '../style/demo.less';
 const App: React.FC = () => {
-  const [selectedTags, setSelectedTags] = useState<string[]>(['Books']);
-
-  const handleChange = (tag: string, checked: boolean) => {
-    const nextSelectedTags = checked
-      ? [...selectedTags, tag]
-      : selectedTags.filter((t) => t !== tag);
-    console.log('You are interested in: ', nextSelectedTags);
-    setSelectedTags(nextSelectedTags);
-  };
-
+  const weathers = ['rainy', 'sunny', 'snowy', 'cloudy'];
   return (
-    <>
-      <span style={{ marginRight: 8 }}>Categories:</span>
-      {tagsData.map((tag) => (
-        <CheckableTag
-          key={tag}
-          checked={selectedTags.indexOf(tag) > -1}
-          onChange={(checked) => handleChange(tag, checked)}
+    <div>
+      <span style={{ marginRight: 8 }}>The weather now is :</span>
+      {weathers.map((x) => (
+        <Tag
+          key={x}
+          checkable
+          defaultChecked={x === 'rainy'}
+          onChecked={(checked, value) => {
+            message.success(`您${checked ? '选中' : '取消'}了${value}`);
+          }}
         >
-          {tag}
-        </CheckableTag>
+          {x}
+        </Tag>
       ))}
-    </>
+    </div>
   );
 };
+
 export default App;

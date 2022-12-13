@@ -28,7 +28,9 @@ nav:
 
 ## 边框模式
 
-当你的`color`属性为 rain-ui 下的预设颜色时，可以传入`bordered={true}`，来使`tag`呈现另一种风格，该模式下，切换主题等操作 rain-ui 都能相应的计算出对应的`background-color`和`border-color`。 <code src="./demo/type.tsx"/>
+当你的`color`属性为 rain-ui 下的预设颜色时，可以传入`bordered={true}`，来使`tag`呈现另一种风格，该模式下，边框色和背景色都是根据色板动态计算，切换主题等操作 rain-ui 都能相应的计算出对应的`background-color`和`border-color`，以提供更舒适的视觉体验。
+
+<code src="./demo/type.tsx"/>
 
 ## 添加 icon
 
@@ -36,6 +38,4 @@ nav:
 
 ## 可选中的标签
 
-点击标签可以关闭，可以设置关闭之后的回调函数 <code src="./demo/checkable.tsx"/>
-
-<API src="./index.tsx"></API>
+点击标签可以关闭，可以设置关闭之后的回调函数 <code src="./demo/checkable.tsx"/> <API src="./index.tsx"> </API>

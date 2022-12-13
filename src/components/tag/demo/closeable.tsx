@@ -21,7 +21,7 @@ const App: React.FC = () => (
         alert('谁让你关闭的？');
       }}
     >
-      Tag 2
+      Tag 3
     </Tag>
     <Tag closable color="primary" onClose={preventDefault}>
       Prevent Default

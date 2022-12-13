@@ -26,15 +26,40 @@
   display: inline-block;
   height: auto;
   padding: 0 7px;
+  color: @text-color;
   font-size: @rain-tag-font-size;
   line-height: 20px;
   border: 1px solid;
   border-radius: @border-radius-base;
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 
   &-default {
     border-color: @border-color-base;
   }
   .make-color();
+  &-checkable {
+    border-color: @primary-color;
+    cursor: pointer;
+    &:active {
+      background-color: @primary-color-active;
+    }
+    &-checked {
+      color: #fff;
+      background-color: @primary-color;
+      &:hover {
+        background-color: @primary-color-hover;
+        border-color: @primary-color-hover;
+      }
+    }
+    &-not-checked {
+      color: @text-color;
+      background-color: transparent;
+      border-color: transparent;
+      &:hover {
+        color: @primary-color;
+      }
+    }
+  }
 
   &-compact {
     line-height: 18px;

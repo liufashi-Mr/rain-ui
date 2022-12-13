@@ -32,7 +32,20 @@ interface TagProps {
    */
   className?: string;
   children: ReactNode;
-  // checked?: boolean;
-  // onChange?: (checked: boolean) => void;
+  /**
+   * @description tag是否可以选中
+   * @default false
+   */
+  checkable?: boolean;
+  /**
+   * @description tag是否默认选中
+   * @default false
+   */
+  defaultChecked?: boolean;
+  /**
+   * @description 选中回调
+   * @default -
+   */
+  onChecked?: (checked: boolean, value: ReactNode) => void;
 }
 export type { TagProps };
