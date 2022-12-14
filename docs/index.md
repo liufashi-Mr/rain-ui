@@ -2,9 +2,11 @@
 title: rain-ui
 hero:
   title: rain-ui
-  desc: 组件库
+  desc: 轻便简介，包含开发中组件的常见用法，提供简洁的API，降低使用成本，便捷开发
   actions:
-    - text: 快速上手
+    - text: 使用指南
+      link: /guide
+    - text: 组件
       link: /getting-started
 features:
   - icon: https://gw.alipayobjects.com/zos/bmw-prod/881dc458-f20b-407b-947a-95104b5ec82b/k79dm8ih_w144_h144.png
