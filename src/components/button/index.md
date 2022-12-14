@@ -9,6 +9,6 @@ nav:
   path: /components
 ---
 
-<code src="./index.tsx">
+<code src="./demo/base.tsx">
 
 <API src="./index.tsx"></API>
