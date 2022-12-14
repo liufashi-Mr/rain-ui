@@ -1,0 +1,132 @@
+@import "../../../styles/variables/index.less";
+@popupPrefix: rain-btn;
+
+
+@smallHeight: 24px;
+@default-height: 32px;
+@large-height: 40px;
+
+.@{popupPrefix} {
+  padding: 4px 15px;
+  height: @default-height;
+  display: inline-block;
+  line-height: 1.5;
+  font-size: 13px;
+  color: #fff;
+  background: @primary-color;
+  border-radius: 2px;
+  &:hover {
+    cursor: pointer;
+    background-color: @primary-color-hover;
+  }
+}
+
+.@{popupPrefix}-default {
+  border: 1px @primary-color solid;
+  background-color: #fff;
+  color: @primary-color;
+
+  &:hover {
+    border-color: @primary-color-hover;
+    color: @primary-color-hover;
+    background-color: #fff;
+  }
+}
+
+.@{popupPrefix}-primary {
+  border: 1px @primary-color solid;
+  background-color: @primary-color;
+  color: #fff;
+
+  &:hover {
+    border-color: @primary-color-hover;
+    color: #fff;
+    background-color: @primary-color-hover;
+  }
+}
+
+.@{popupPrefix}-dashed {
+  border: 1px @primary-color dashed;
+  background-color: #fff;
+  color: @primary-color;
+
+  &:hover {
+    border-color: @primary-color-hover;
+    color: @primary-color-hover;
+    background-color: #fff;
+  }
+}
+
+.@{popupPrefix}-text {
+  background-color: transparent;
+  color: @primary-color;
+  border: none;
+  &:hover {
+    color: @primary-color-hover;
+    background-color: #f8f8f8;
+  }
+}
+
+.@{popupPrefix}-link {
+  background-color: transparent;
+  color: @primary-color;
+  border: none;
+  &:hover {
+    color: @primary-color-hover;
+    background-color: transparent;
+  }
+}
+
+.@{popupPrefix}-small {
+  height: @smallHeight;
+  padding: 2px 12px;
+}
+
+.@{popupPrefix}-small + .@{popupPrefix}-round {
+  border-radius: @smallHeight;
+}
+.@{popupPrefix}-defalut + .@{popupPrefix}-round {
+  border-radius: @default-height;
+}
+
+.@{popupPrefix}-large + .@{popupPrefix}-round {
+  border-radius: @large-height;
+}
+
+.@{popupPrefix}-defalut {
+  height: @default-height;
+  padding: 2px 12px;
+}
+
+.@{popupPrefix}-defalut,
+.@{popupPrefix}-round {
+  border-radius: @default-height;
+}
+
+.@{popupPrefix}-large {
+  height: @large-height;
+}
+.@{popupPrefix} {
+  &.disabled,
+  &[disabled] {
+    border-color: #d9d9d9;
+    background-color: #f5f5f5;
+    color: #00000040;
+    cursor: not-allowed !important;
+  }
+}
+a.e-btn {
+  display: inline-flex;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+button {
+  cursor: default;
+  border: none;
+  touch-action: manipulation;
+  transition: all 0.3s ease-in-out;
+}
+a {
+  text-decoration: none;
+}
