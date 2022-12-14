@@ -1,33 +1,5 @@
-# raind
+# raind 组件库 开发指南
 
-## Getting Started
+## 介绍
 
-Install dependencies,
-
-```bash
-$ npm i
-```
-
-Start the dev server,
-
-```bash
-$ npm start
-```
-
-Build documentation,
-
-```bash
-$ npm run docs:build
-```
-
-Run test,
-
-```bash
-$ npm test
-```
-
-Build library via `father`,
-
-```bash
-$ npm run build
-```
+组件库支持紧凑主题和深色主题，开发组件的时候应考虑到这两个配置，使用 `useContext` 获取到 `configProvider` 的`{compact}` 然后进行适配，暗色主题的支持需要再组件开发时采用项目内置的 less 变量，在切换主题的时候会自动计算颜色，达到视觉协调的目的。
