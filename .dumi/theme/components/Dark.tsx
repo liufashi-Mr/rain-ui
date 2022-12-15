@@ -98,19 +98,6 @@ const Dark: FC<darkProps> = ({ darkSwitch, onDarkSwitchClick, isSideMenu }) => {
             {sunSvg}
           </button>
         );
-      case 'auto':
-        return (
-          <button
-            key="dumi-dark-btn-auto"
-            title="Default to system"
-            onClick={(ev) => changeColor(ev, baseColor)}
-            className={`__dumi-default-dark-auto ${
-              baseColor === prefersColor ? '__dumi-default-dark-switch-active' : ''
-            }`}
-          >
-            {autoSvg}
-          </button>
-        );
       default:
     }
   };
