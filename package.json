@@ -41,7 +41,8 @@
     "deploy": "npm run docs:build && npm run docs:deploy",
     "prettier": "prettier --write \"**/*.{js,jsx,tsx,ts,less,md,json}\"",
     "test": "umi-test",
-    "test:coverage": "umi-test --coverage"
+    "test:coverage": "umi-test --coverage",
+    "prepare": "husky install"
   },
   "files": [
     "dist/*"
@@ -65,6 +66,11 @@
       "npm run lint:style"
     ]
   },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
   "dependencies": {
     "@ant-design/colors": "^6.0.0",
     "@ant-design/icons": "^4.8.0",
@@ -76,6 +82,8 @@
     "react": "^18.0.0"
   },
   "devDependencies": {
+    "@commitlint/cli": "^17.1.2",
+    "@commitlint/config-conventional": "^17.1.0",
     "@testing-library/jest-dom": "^5.15.1",
     "@testing-library/react": "^13.0.0",
     "@types/jest": "^27.0.3",
@@ -88,10 +96,11 @@
     "dumi": "1.1.29",
     "gh-pages": "^3.0.0",
     "less-loader": "^11.1.0",
-    "lint-staged": "^10.0.7",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.7.1",
     "mini-css-extract-plugin": "^2.7.2",
     "postcss-loader": "^7.0.2",
-    "prettier": "^2.2.1",
     "terser-webpack-plugin": "^5.3.6",
     "ts-loader": "^9.4.2",
     "webpack": "^5.75.0",
