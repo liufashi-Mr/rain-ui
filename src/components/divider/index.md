@@ -1,6 +1,5 @@
 ---
 title: Divider 分割线
-order: 0
 group:
   title: 通用
   path: /common
