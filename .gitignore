@@ -10,12 +10,14 @@ raind
 # production
 /es
 /docs-dist
-
 # misc
 .DS_Store
 /coverage
 
 # umi
+.dumi/tmp
+.dumi/tmp-test
+.dumi/tmp-production
 .umi
 .umi-production
 .umi-test
