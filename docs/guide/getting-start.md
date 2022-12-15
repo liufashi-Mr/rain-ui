@@ -1,6 +1,7 @@
 ---
 title: 快速开始
 order: 2
+toc:
 nav:
   title: 指南
   path: /guide
@@ -12,11 +13,11 @@ nav:
 
 **使用 npm 或 yarn 安装**
 
-```shell  
+```shell
 npm install raind --save
 ```
 
-```shell  
+```shell
 yarn add raind
 ```
 
@@ -26,7 +27,7 @@ yarn add raind
 
 ## 示例
 
-```tsx  
+```tsx
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
@@ -41,7 +42,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 
 使用：引入直接使用即可
 
-```jsx  
+```jsx
 import { Button } from 'raind';
 ```
 

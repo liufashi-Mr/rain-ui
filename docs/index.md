@@ -1,5 +1,7 @@
 ---
 title: rain-ui
+full: true
+gapless: true
 hero:
   title: rain-ui
   desc: 轻便简介，包含开发中组件的常见用法，提供简洁的API，降低使用成本，便捷开发

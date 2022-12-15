@@ -19,10 +19,9 @@
     "declaration": true,
     "declarationDir": "dist/types",
     "paths": {
-      "raind": ["src/index.ts"],
-      "@@/*": [".dumi/tmp/*"]
+      "raind": ["src/index.ts"]
     }
   },
-  "include": ["typings.d.ts", "src"],
+  "include": ["index.d.ts", "src"],
   "exclude": ["src/.umi", "src/.umi-production"]
 }

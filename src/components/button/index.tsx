@@ -1,5 +1,5 @@
 import React from 'react';
-import { ButtonProps } from './interface';
+import type { ButtonProps } from './interface';
 import cls from 'classnames';
 import './style/index.less';
 const prefixCls = 'rain-btn';
@@ -13,9 +13,9 @@ const Button: React.ForwardRefRenderFunction<HTMLButtonElement, ButtonProps> = (
     [`${prefixCls}-${shape}`]: shape,
   });
 
-  if ('radius' in rest) {
-    style = { ...style, borderRadius: rest.radius + 'px' } as React.CSSProperties;
-  }
+  // if ('radius' in rest) {
+  //   style = { ...style, borderRadius: rest.radius + 'px' } as React.CSSProperties;
+  // }
   if ('href' in rest) {
     return (
       <a className={classes} style={style} {...rest}>
