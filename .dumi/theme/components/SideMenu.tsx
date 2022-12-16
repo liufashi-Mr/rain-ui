@@ -43,18 +43,18 @@ const SideMenu: FC<INavbarProps> = ({ mobileMenuCollapsed, location, darkPrefix 
             to={base}
             className="__dumi-default-menu-logo"
             style={{
-              backgroundImage: logo && `url('${logo}')`,
+              backgroundImage: logo && (`url('${logo}')` as any),
             }}
           />
           <h1>{title}</h1>
           <p>{description}</p>
           {/* github star badge */}
-          {/github\.com/.test(repoUrl) && mode === 'doc' && (
+          {/github\.com/.test(repoUrl as string) && mode === 'doc' && (
             <p>
               <object
                 type="image/svg+xml"
                 data={`https://img.shields.io/github/stars${
-                  repoUrl.match(/((\/[^\/]+){2})$/)[1]
+                  repoUrl?.match(/((\/[^\/]+){2})$/) as any[1]
                 }?style=social`}
               />
             </p>
@@ -102,7 +102,7 @@ const SideMenu: FC<INavbarProps> = ({ mobileMenuCollapsed, location, darkPrefix 
                 hasSlugs &&
                 item.path === location.pathname.replace(/([^^])\/$/, '$1');
               const menuPaths = hasChildren
-                ? item.children.map((i) => i.path)
+                ? item.children?.map((i) => i.path)
                 : [
                     item.path,
                     // handle menu group which has no index route and no valid children
@@ -113,13 +113,16 @@ const SideMenu: FC<INavbarProps> = ({ mobileMenuCollapsed, location, darkPrefix 
 
               return (
                 <li key={item.path || item.title}>
-                  <NavLink to={item.path} isActive={() => menuPaths.includes(location.pathname)}>
+                  <NavLink
+                    to={item.path}
+                    isActive={() => menuPaths?.includes(location.pathname) as any}
+                  >
                     {item.title}
                   </NavLink>
                   {/* group children */}
                   {Boolean(item.children && item.children.length) && (
                     <ul>
-                      {item.children.map((child) => (
+                      {item.children?.map((child) => (
                         <li key={child.path}>
                           <NavLink to={child.path} exact>
                             <span>{child.title}</span>
