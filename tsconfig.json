@@ -13,7 +13,7 @@
     "noUnusedLocals": true,
     "noImplicitAny": true,
     "target": "es6",
-    "lib": ["dom", "es2017"],
+    "lib": ["dom", "esnext"],
     "skipLibCheck": true,
     "stripInternal": true,
     "declaration": true,

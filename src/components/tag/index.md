@@ -28,7 +28,7 @@ nav:
 
 ## 边框模式
 
-当你的`color`属性为 rain-ui 下的预设颜色时，可以传入`bordered={true}`，来使`tag`呈现另一种风格，该模式下，边框色和背景色都是根据色板动态计算，切换主题等操作 rain-ui 都能相应的计算出对应的`background-color`和`border-color`，以提供更舒适的视觉体验。
+当你的`color`属性为 rain-ui 下的预设颜色时，可以传入`bordered={true}`，来使`tag`呈现另一种风格，该模式下，边框色和背景色都是根据色板动态计算，切换主题等操作 rain-ui 都能相应的计算出对应的`background-color`和`border-color`，以提供更舒适的视觉体验。可以点击右上角切换主题感受色彩的变化
 
 <code src="./demo/type.tsx"/>
 

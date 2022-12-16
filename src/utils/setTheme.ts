@@ -9,14 +9,27 @@ const initTheme = {
 
 const initVariables = {
   '--rain-font-size-base': '14px', // 主字号
-  '--rain-heading-color': 'rgba(0, 0, 0, 0.85)', // 标题色
-  '--rain-text-color': ' rgba(0, 0, 0, 0.65)', // 主文本色
-  '--rain-text-color-secondary': ' rgba(0, 0, 0, 0.45)', // 次文本色
-  '--rain-disabled-color': 'rgba(0, 0, 0, 0.25)', // 失效色
-  '--rain-border-radius-base': '2px', // 组件/浮层圆角
+  '--rain-heading-color': '#000000e0', // 标题色
+  '--rain-text-color': '#000000d9', // 主文本色
+  '--rain-text-color-secondary': '#00000073', // 次文本色
+  '--rain-disabled-color': '#ffffff40', // 失效色
+  '--rain-border-radius-base': '4px', // 组件/浮层圆角
   '--rain-border-color-base': '#d9d9d9', // 边框色
+  '--rain-background-color-base': '#00000005', // 背景色
   '--rain-box-shadow-base':
-    '0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05)', // 浮层阴影
+    '0 3px 6px -4px #0000001f, 0 6px 16px 0 #00000014, 0 9px 28px 8px #0000000d', // 浮层阴影
+};
+const initVariablesDark = {
+  '--rain-font-size-base': '14px', // 主字号
+  '--rain-heading-color': '#ffffffe0', // 标题色
+  '--rain-text-color': '#ffffffd9', // 主文本色
+  '--rain-text-color-secondary': '#ffffff73', // 次文本色
+  '--rain-disabled-color': '#ffffff40', // 失效色
+  '--rain-border-radius-base': '4px', // 组件/浮层圆角
+  '--rain-border-color-base': '#434343', // 边框色
+  '--rain-background-color-base': '#ffffff05', // 背景色
+  '--rain-box-shadow-base':
+    '0 3px 6px -4px #ffffff1f, 0 6px 16px 0 #ffffff14, 0 9px 28px 8px #ffffff0d', // 浮层阴影
 };
 const setColors = (element: HTMLElement, colors: string[], item: string) => {
   element.style.setProperty(`--rain-${item}-color-1`, colors[1]);
@@ -44,12 +57,63 @@ export const setThemeConfig = (element: HTMLElement, theme?: ThemeVariables): vo
   });
 };
 
-export const setOtherConfig = (element: HTMLElement, variables?: OtherVariables): void => {
-  if (!variables) return;
+/**
+ * 配置规则一：
+ * 修改全局配置，配置字体相关颜色的时候需要使用十六进制黑色 如#000000 + 十六进制对应的透明度，例如20% 透明度为#00000033
+ * 这样rain-ui在你切换为深色模式的时候会计算出深色下对应的颜色，
+ * 若未按照该规范在正常模式下依然生效，但是深色模式下会采用rain-ui暗色模式下的默认值
+ * 配置规则二：
+ * 另外除box-shadow外的颜色配置 还可以采用中性色板中的颜色，rain-ui同样也会在切换深色模式的时候计算对应的颜色
+ * @param element
+ * @param dark
+ * @param variables
+ * @returns
+ */
+export const setOtherConfig = (
+  element: HTMLElement,
+  dark: boolean = false,
+  variables: OtherVariables = {},
+): void => {
   const mergedVariables = { ...initVariables, ...variables };
+  const neutralColor = [
+    '#ffffff',
+    '#fafafa',
+    '#f5f5f5',
+    '#f0f0f0',
+    '#d9d9d9',
+    '#bfbfbf',
+    '#8c8c8c',
+    '#595959',
+    '#434343',
+    '#262626',
+    '#1f1f1f',
+    '#141414',
+    '#000000',
+  ];
   Object.keys(mergedVariables).forEach((item: keyof OtherVariables) => {
     if (mergedVariables[item]) {
-      element.style.setProperty(item, mergedVariables[item]);
+      // 如果开启深色模式，修改变量
+      if (dark) {
+        // 是否为中心色板中的颜色
+        const colorIndex = neutralColor.indexOf(mergedVariables[item]);
+        console.log(colorIndex);
+        if (colorIndex < 0) {
+          // 不是则按照第一种配置规则
+          element.style.setProperty(
+            item,
+            // 是否是十六进制黑色+十六进制透明度
+            mergedVariables[item].includes('000000')
+              ? mergedVariables[item].replaceAll('000000', 'ffffff')
+              : // rain-ui 默认值
+                initVariablesDark[item],
+          );
+        } else {
+          // 第二种
+          element.style.setProperty(item, neutralColor[neutralColor.length - colorIndex - 1]);
+        }
+      } else {
+        element.style.setProperty(item, mergedVariables[item]);
+      }
     }
   });
 };
