@@ -3,7 +3,15 @@ import { Divider } from 'raind';
 const App: React.FC<Record<string, never>> = () => {
   return (
     <>
-      <Divider>111</Divider>
+      <p>
+        sab发狗 sab发狗 sab发狗 sab发狗 sab发狗 sab发狗 sab发狗 sab发狗 sab发狗 sab发狗 sab发狗
+        sab发狗
+      </p>
+      <Divider />
+      <p>
+        sab发狗 sab发狗 sab发狗 sab发狗 sab发狗 sab发狗 sab发狗 sab发狗 sab发狗 sab发狗 sab发狗
+        sab发狗
+      </p>
     </>
   );
 };
