@@ -31,8 +31,11 @@ interface TagProps {
    * @default -
    */
   className?: string;
-  style: CSSProperties;
-
+  /**
+   * @description tag 样式
+   * @default -
+   */
+  style?: CSSProperties;
   /**
    * @description tag是否可以选中
    * @default false
