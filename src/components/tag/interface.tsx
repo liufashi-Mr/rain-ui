@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import type { ReactNode, CSSProperties } from 'react';
 
 interface TagProps {
   /**
@@ -31,7 +31,8 @@ interface TagProps {
    * @default -
    */
   className?: string;
-  children: ReactNode;
+  style: CSSProperties;
+
   /**
    * @description tag是否可以选中
    * @default false
@@ -47,5 +48,6 @@ interface TagProps {
    * @default -
    */
   onChecked?: (checked: boolean, value: ReactNode) => void;
+  children: ReactNode;
 }
 export type { TagProps };

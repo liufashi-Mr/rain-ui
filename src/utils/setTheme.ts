@@ -96,7 +96,6 @@ export const setOtherConfig = (
       if (dark) {
         // 是否为中心色板中的颜色
         const colorIndex = neutralColor.indexOf(mergedVariables[item]);
-        console.log(colorIndex);
         if (colorIndex < 0) {
           // 不是则按照第一种配置规则
           element.style.setProperty(
