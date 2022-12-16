@@ -26,7 +26,7 @@ const Navbar: FC<INavbarProps> = ({ onMobileMenuClick, navPrefix, location, dark
       <Link
         className="__dumi-default-navbar-logo"
         style={{
-          backgroundImage: logo && `url('${logo}')`,
+          backgroundImage: logo && (`url('${logo}')` as any),
         }}
         to={base}
         data-plaintext={logo === false || undefined}

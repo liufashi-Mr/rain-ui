@@ -36,9 +36,9 @@ export default () => {
 
   useEffect(() => {
     if (Array.isArray(result)) {
-      setItems(result);
+      setItems(result as any);
     } else if (typeof result === 'function') {
-      result(`.${input.current.className}`);
+      result(`.${input.current?.className}`);
     }
   }, [result]);
 
@@ -47,14 +47,14 @@ export default () => {
       <input
         className="__dumi-default-search-input"
         type="search"
-        ref={input}
+        ref={input as any}
         {...(Array.isArray(result)
           ? { value: keywords, onChange: (ev) => setKeywords(ev.target.value) }
           : {})}
       />
       <ul>
         {items.length > 0 &&
-          items.map((meta) => (
+          items.map((meta: any) => (
             <li key={meta.path} onClick={() => setKeywords('')}>
               <AnchorLink to={meta.path}>
                 {meta.parent?.title && <span>{meta.parent.title}</span>}
