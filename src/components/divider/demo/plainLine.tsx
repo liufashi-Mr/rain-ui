@@ -4,9 +4,9 @@ const App: React.FC<Record<string, never>> = () => {
   return (
     <>
       <p>plain文字</p>
-      <Divider plain={true}>sab发狗</Divider>
+      <Divider plain={true}>Plain text</Divider>
       <p>分割线默认文字</p>
-      <Divider plain={false}>sab发狗</Divider>
+      <Divider plain={false}>Divider text</Divider>
     </>
   );
 };

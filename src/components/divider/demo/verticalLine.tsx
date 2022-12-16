@@ -3,11 +3,11 @@ import { Divider } from 'raind';
 const App: React.FC<Record<string, never>> = () => {
   return (
     <>
-      <a>sab 发狗</a>
+      <span>rainy</span>
       <Divider type="vertical" />
-      <a>sab 发狗</a>
+      <span>sunny</span>
       <Divider type="vertical" />
-      <a>sab 发狗</a>
+      <span>cloudy</span>
     </>
   );
 };
