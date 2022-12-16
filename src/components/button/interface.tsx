@@ -1,4 +1,4 @@
-export type ButtonType = 'default' | 'primary' | 'dashed' | 'text' | 'link';
+export type ButtonType = 'default' | 'primary' | 'warning' | 'success' | 'dashed' | 'text' | 'link';
 export type ButtonSize = 'small' | 'default' | 'large';
 export type ButtonShape = 'circle' | 'round';
 export type ButtonHTMLType = 'submit' | 'button' | 'reset';

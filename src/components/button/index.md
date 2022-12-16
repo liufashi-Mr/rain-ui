@@ -1,6 +1,6 @@
 ---
 title: Button 按钮
-order: 1
+order: 0
 group:
   title: 通用
   path: /common
