@@ -16,6 +16,7 @@ const Tag: React.ForwardRefRenderFunction<HTMLSpanElement, TagProps> = (props, r
     onClose,
     children,
     checkable,
+    style,
     onChecked,
     defaultChecked,
   } = props;
@@ -38,6 +39,7 @@ const Tag: React.ForwardRefRenderFunction<HTMLSpanElement, TagProps> = (props, r
       color: !isPreset && !checkable ? '#fff' : '',
       backgroundColor: !isPreset && !checkable ? color : '',
       borderColor: !isPreset && !checkable ? color : '',
+      ...style,
     },
     onClick: (e: React.MouseEvent<HTMLElement>) => {
       e.stopPropagation();
