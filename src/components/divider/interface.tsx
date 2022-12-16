@@ -1,3 +1,5 @@
+import type React from 'react';
+
 interface DividerProps {
   /**
    * @description 嵌套的标题
@@ -34,6 +36,11 @@ interface DividerProps {
    * @default horizontal
    */
   type?: 'horizontal' | 'vertical';
+  /**
+   * @description 分割线样式对象
+   * @default -
+   */
+  style?: React.CSSProperties;
 }
 
 export type { DividerProps };

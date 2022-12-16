@@ -1,11 +1,14 @@
 @import '../../../styles/variables/index.less';
 
 @divider-prefix-cls: ~'@{rain-prefix}-divider';
-@rain-divider-font-size: 14px;
-@rain-divider-color: rgba(5, 5, 5, 0.06);
+@rain-divider-font-size: 16px;
+@rain-divider-color: @border-color-base;
 @border-width-base: 1px;
 
 .@{divider-prefix-cls} {
+  color: @text-color;
+  font-weight: 500;
+  font-size: @rain-divider-font-size;
   border-top: @border-width-base solid @rain-divider-color;
   &-horizontal {
     display: flex;
@@ -77,9 +80,9 @@
     padding: 0 1em;
   }
   &-plain&-with-text {
-    color: rgba(5, 5, 5, 0.88);
+    color: @text-color;
     font-weight: normal;
-    font-size: @rain-divider-font-size;
+    font-size: @font-size-base;
   }
   &-horizontal&-with-text-left&-no-default-orientation-margin-left {
     &::before {

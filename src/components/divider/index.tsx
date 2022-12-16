@@ -15,6 +15,7 @@ const Divider: React.FC<DividerProps> = (props) => {
     orientationMargin,
     plain,
     type = 'horizontal',
+    ...restProps
   } = props;
   const { compact } = useContext(configCtx);
   const hasChildren = !!children;
@@ -39,7 +40,7 @@ const Divider: React.FC<DividerProps> = (props) => {
     ...(hasCustomMarginRight && { marginRight: orientationMargin }),
   };
   return (
-    <div className={classes}>
+    <div className={classes} {...restProps}>
       {children && type !== 'vertical' && (
         <span className={`${prefixCls}-inner-text`} style={innerStyle}>
           {children}
