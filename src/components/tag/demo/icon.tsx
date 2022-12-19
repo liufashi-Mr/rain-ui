@@ -8,7 +8,7 @@ import {
   SyncOutlined,
 } from '@ant-design/icons';
 import { Tag } from 'raind';
-import { Divider } from 'antd';
+import { Divider } from 'raind';
 import '../style/demo.less';
 const App: React.FC = () => (
   <>
