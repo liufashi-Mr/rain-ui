@@ -50,7 +50,7 @@ const Layout: React.FC<IRouteComponentProps> = ({ children, location }) => {
     locale,
   } = useContext(context);
   const [color, setColor] = usePrefersColor();
-  const [compact, setCompact] = useState(true);
+  const [compact, setCompact] = useState(false);
   const { url: repoUrl, branch, platform } = repository;
   const [menuCollapsed, setMenuCollapsed] = useState<boolean>(true);
   const isSiteMode = mode === 'site';

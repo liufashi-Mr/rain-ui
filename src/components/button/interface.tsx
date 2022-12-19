@@ -1,6 +1,16 @@
-export type ButtonType = 'default' | 'primary' | 'warning' | 'success' | 'dashed' | 'text' | 'link';
+import React from 'react';
+
+export type ButtonType =
+  | 'default'
+  | 'primary'
+  | 'warning'
+  | 'success'
+  | 'error'
+  | 'dashed'
+  | 'text'
+  | 'link';
 export type ButtonSize = 'small' | 'default' | 'large';
-export type ButtonShape = 'circle' | 'round';
+export type ButtonShape = 'circle' | 'round' | 'default';
 export type ButtonHTMLType = 'submit' | 'button' | 'reset';
 export interface BaseButtonProps {
   /**
@@ -31,7 +41,17 @@ export interface BaseButtonProps {
    * @description       内联样式
    * @default           -
    */
+  danger?: boolean;
   style?: React.CSSProperties;
+  /**
+   * @description       类名
+   * @default           -
+   */
+  className?: string;
+  children?: React.ReactNode;
+  icon?: React.ReactNode;
+  loading?: boolean;
+  ghost?: boolean;
 }
 
 export type AnchorButtonProps = {

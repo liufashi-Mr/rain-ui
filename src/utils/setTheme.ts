@@ -1,7 +1,7 @@
 import type { ThemeVariables, OtherVariables } from 'src/components/configProvider/interface';
 import { generate } from '@ant-design/colors';
 const initTheme = {
-  primary: '#99d1e3',
+  primary: '#1890ff',
   success: '#52c41a',
   warning: '#faad14',
   error: '#f5222d',
@@ -15,7 +15,7 @@ const initVariables = {
   '--rain-disabled-color': '#ffffff40', // 失效色
   '--rain-border-radius-base': '4px', // 组件/浮层圆角
   '--rain-border-color-base': '#d9d9d9', // 边框色
-  '--rain-background-color-base': '#00000005', // 背景色
+  '--rain-background-color-base': '#fafafa', // 背景色
   '--rain-box-shadow-base':
     '0 3px 6px -4px #0000001f, 0 6px 16px 0 #00000014, 0 9px 28px 8px #0000000d', // 浮层阴影
 };
@@ -27,9 +27,9 @@ const initVariablesDark = {
   '--rain-disabled-color': '#ffffff40', // 失效色
   '--rain-border-radius-base': '4px', // 组件/浮层圆角
   '--rain-border-color-base': '#434343', // 边框色
-  '--rain-background-color-base': '#ffffff05', // 背景色
+  '--rain-background-color-base': '#00000005', // 背景色
   '--rain-box-shadow-base':
-    '0 3px 6px -4px #ffffff1f, 0 6px 16px 0 #ffffff14, 0 9px 28px 8px #ffffff0d', // 浮层阴影
+    '0 3px 6px -4px #ffffff1f, 0 6px 16px 0 #141414, 0 9px 28px 8px #ffffff0d', // 浮层阴影
 };
 const setColors = (element: HTMLElement, colors: string[], item: string) => {
   element.style.setProperty(`--rain-${item}-color-1`, colors[1]);
@@ -59,7 +59,7 @@ export const setThemeConfig = (element: HTMLElement, theme?: ThemeVariables): vo
 
 /**
  * 配置规则一：
- * 修改全局配置，配置字体相关颜色的时候需要使用十六进制黑色 如#000000 + 十六进制对应的透明度，例如20% 透明度为#00000033
+ * 修改全局配置，配置字体相关颜色的时候需要使用十六进制黑色或者白色 如#000000 + 十六进制对应的透明度，例如20% 透明度为#00000033
  * 这样rain-ui在你切换为深色模式的时候会计算出深色下对应的颜色，
  * 若未按照该规范在正常模式下依然生效，但是深色模式下会采用rain-ui暗色模式下的默认值
  * 配置规则二：
@@ -101,8 +101,10 @@ export const setOtherConfig = (
           element.style.setProperty(
             item,
             // 是否是十六进制黑色+十六进制透明度
-            mergedVariables[item].includes('000000')
-              ? mergedVariables[item].replaceAll('000000', 'ffffff')
+            mergedVariables[item].includes('000000') || mergedVariables[item].includes('ffffff')
+              ? mergedVariables[item].includes('000000')
+                ? mergedVariables[item].replaceAll('000000', 'ffffff')
+                : mergedVariables[item].replaceAll('ffffff', '000000')
               : // rain-ui 默认值
                 initVariablesDark[item],
           );
