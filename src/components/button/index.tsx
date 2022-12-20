@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import type { ButtonProps } from './interface';
 import cls from 'classnames';
+import { configCtx } from '../configProvider';
 import './style/index.less';
 import { LoadingOutlined } from '@ant-design/icons';
-// import { LoadingOutlined } from '@ant-design/icons';
 
 const prefixCls = 'rain-btn';
 const Button: React.ForwardRefRenderFunction<HTMLButtonElement, ButtonProps> = (
@@ -24,6 +24,7 @@ const Button: React.ForwardRefRenderFunction<HTMLButtonElement, ButtonProps> = (
   ref,
 ) => {
   const [clickAnimation, setClickAnimation] = useState(false);
+  const { compact } = useContext(configCtx);
   let mergeIcon = icon;
   if (loading) {
     mergeIcon = <LoadingOutlined />;
@@ -35,6 +36,7 @@ const Button: React.ForwardRefRenderFunction<HTMLButtonElement, ButtonProps> = (
     [`${prefixCls}-ghost`]: ghost,
     [`${prefixCls}-loading`]: loading,
     [`${prefixCls}-danger`]: danger,
+    [`${prefixCls}-compact`]: compact,
   });
   const buttonAttributes = {
     className: classes,

@@ -15,19 +15,16 @@ export type ButtonHTMLType = 'submit' | 'button' | 'reset';
 export interface BaseButtonProps {
   /**
    * @description       Button的类型
-   * @type              default、primary、ghost、dashed、text、link
    * @default           default
    */
   type?: ButtonType;
   /**
    * @description       Button的大小
-   * @type              small、default、large
    * @default           default
    */
   size?: ButtonSize;
   /**
    * @description       Button的形状
-   * @type              circle、round
    * @default           default
    */
   shape?: ButtonShape;
@@ -106,4 +103,4 @@ export type NativeButtonProps = {
 } & BaseButtonProps &
   Omit<React.ButtonHTMLAttributes<any>, 'type' | 'onClick'>;
 
-export type ButtonProps = Partial<NativeButtonProps & AnchorButtonProps>;
+export type ButtonProps = Partial<AnchorButtonProps & NativeButtonProps>;

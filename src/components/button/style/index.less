@@ -1,12 +1,27 @@
 @import '../../../styles/variables/index.less';
 @popupPrefix: rain-btn;
-
-@small-height: 24px;
-@default-height: 32px;
-@large-height: 40px;
-@small-padding: 0 7px;
-@default-padding: 4px 15px;
-@large-padding: 6px 16px;
+.@{popupPrefix} {
+  --rain-btn-small-height: 24px;
+  --rain-btn-default-height: 32px;
+  --rain-btn-large-height: 40px;
+  --rain-btn-small-padding: 0 7px;
+  --rain-btn-default-padding: 4px 15px;
+  --rain-btn-large-padding: 6px 16px;
+  --rain-btn-small-font-size: 14px;
+  --rain-btn-default-font-size: 14px;
+  --rain-btn-large-font-size: 16px;
+  --rain-btn-line-height: 1.575;
+}
+@small-height: var(--rain-btn-small-height);
+@default-height: var(--rain-btn-default-height);
+@large-height: var(--rain-btn-large-height);
+@small-padding: var(--rain-btn-small-padding);
+@default-padding: var(--rain-btn-default-padding);
+@large-padding: var(--rain-btn-large-padding);
+@small-font-size: var(--rain-btn-small-font-size);
+@default-font-size: var(--rain-btn-default-font-size);
+@large-font-size: var(--rain-btn-large-font-size);
+@line-height: var(--rain-btn-line-height);
 
 .make-color(@i:length(@preset-colors)) when(@i>0) {
   .make-color(@i - 1);
@@ -87,8 +102,8 @@
 .@{popupPrefix} {
   display: inline-block;
   font-weight: 400;
-  font-size: @font-size-base;
-  line-height: 1.575;
+  font-size: @default-font-size;
+  line-height: @line-height;
   border: 1px solid @border-color-base;
   cursor: pointer;
   transition: all @default-transition;
@@ -175,7 +190,6 @@
     background-color: transparent;
     border: none;
     box-shadow: none;
-    cursor: text;
     &&[disabled] {
       background-color: transparent;
       border: none;
@@ -196,11 +210,12 @@
   &-small {
     height: @small-height;
     padding: @small-padding;
+    font-size: @small-font-size;
   }
   &-large {
     height: @large-height;
     padding: @large-padding;
-    font-size: 16px;
+    font-size: @large-font-size;
   }
   &-circle {
     border-radius: 50%;
@@ -229,6 +244,19 @@
     cursor: not-allowed;
   }
 }
+.@{popupPrefix}-compact {
+  --rain-btn-small-height: 20px;
+  --rain-btn-default-height: 28px;
+  --rain-btn-large-height: 32px;
+  --rain-btn-small-padding: 0 7px;
+  --rain-btn-default-padding: 3px 11px;
+  --rain-btn-large-padding: 4px 13px;
+  --rain-btn-small-font-size: 12px;
+  --rain-btn-default-font-size: 12px;
+  --rain-btn-large-font-size: 14px;
+  --rain-btn-line-height: 1.667;
+}
+
 // shape
 .@{popupPrefix}-round {
   border-radius: @default-height;

@@ -9,7 +9,20 @@ nav:
   path: /components
 ---
 
+# Button 按钮
+
+按钮，用于开始一个操作
+
+## 基本使用
+
+按钮类型
+
 <code src="./demo/base.tsx"></code>
 
-<API src="./index.tsx"></API>
+## 尺寸和形状
 
+<code src="./demo/size.tsx"></code>
+
+<code src="./demo/index.tsx"></code>
+
+<API src="./index.tsx"></API>
