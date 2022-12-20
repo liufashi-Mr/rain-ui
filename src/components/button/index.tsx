@@ -19,6 +19,7 @@ const Button: React.ForwardRefRenderFunction<HTMLButtonElement, ButtonProps> = (
     ghost,
     loading,
     danger,
+    block,
     ...rest
   },
   ref,
@@ -37,12 +38,13 @@ const Button: React.ForwardRefRenderFunction<HTMLButtonElement, ButtonProps> = (
     [`${prefixCls}-loading`]: loading,
     [`${prefixCls}-danger`]: danger,
     [`${prefixCls}-compact`]: compact,
+    [`${prefixCls}-block`]: block,
   });
   const buttonAttributes = {
     className: classes,
     style: {
       ...style,
-      borderRadius: rest.radius || '',
+      borderRadius: rest.radius + 'px' || '',
     },
     type: htmlType || 'button',
     ref,

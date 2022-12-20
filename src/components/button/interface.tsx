@@ -40,10 +40,14 @@ export interface BaseButtonProps {
    */
   danger?: boolean;
   /**
+   * @description       宽按钮 继承父元素宽度
+   * @default           -
+   */
+  block?: boolean;
+  /**
    * @description       内联样式
    * @default           -
    */
-
   style?: React.CSSProperties;
   /**
    * @description       类名

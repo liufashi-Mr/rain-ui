@@ -124,8 +124,15 @@
     &[data-has-shadow='true'] {
       box-shadow: 0 0 0 4px @primary-color-outline;
     }
+    &.@{popupPrefix}-ghost {
+      color: @neutral-color-3;
+      background-color: transparent;
+      border-color: @neutral-color-3;
+    }
   }
-
+  &-block {
+    width: 100%;
+  }
   // types
   &&-dashed {
     border-style: dashed;
@@ -190,10 +197,6 @@
     background-color: transparent;
     border: none;
     box-shadow: none;
-    &&[disabled] {
-      background-color: transparent;
-      border: none;
-    }
     &&.@{popupPrefix}-danger {
       color: @error-color;
       background-color: transparent;
@@ -203,6 +206,11 @@
       &[data-has-shadow='true'] {
         box-shadow: none;
       }
+    }
+    &&[disabled] {
+      color: @border-color-base;
+      background-color: transparent;
+      border: none;
     }
   }
   .make-color();
@@ -228,10 +236,14 @@
     background-color: @error-color;
     border-color: @error-color;
     &:hover {
+      color: #fff;
       background-color: @error-color-hover;
+      border-color: @error-color-hover;
     }
     &:active {
+      color: #fff;
       background-color: @error-color-active;
+      border-color: @error-color-hover;
     }
     &[data-has-shadow='true'] {
       box-shadow: 0 0 0 4px @error-color-outline;
