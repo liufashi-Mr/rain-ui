@@ -15,6 +15,9 @@
   @hoverColor: '@{type}-color-hover';
   @activeColor: '@{type}-color-active';
   @shadowColor: '@{type}-color-outline';
+  @loadingColor: '@{type}-color-3';
+  @loadingHover: '@{type}-color-2';
+  @loadingActive: '@{type}-color-4';
 
   &-@{type} {
     color: #fff;
@@ -28,8 +31,56 @@
       color: #fff;
       background-color: @@activeColor;
     }
-    &[has-shadow='true'] {
-      box-shadow: 0 0 0 2px @@shadowColor;
+    &[data-has-shadow='true'] {
+      box-shadow: 0 0 0 4px @@shadowColor;
+    }
+    &.@{popupPrefix}-ghost {
+      color: @@mainColor;
+      background-color: transparent;
+      border: 1px solid @@mainColor;
+      &:hover {
+        color: @@hoverColor;
+        border-color: @@hoverColor;
+      }
+      &:active {
+        color: @@activeColor;
+        border-color: @@activeColor;
+      }
+      &.@{popupPrefix}-loading {
+        background-color: transparent;
+        &:hover {
+          color: @@hoverColor;
+          background-color: transparent;
+          border-color: @@hoverColor;
+        }
+        &:active {
+          color: @@activeColor;
+          background-color: transparent;
+          border-color: @@activeColor;
+        }
+      }
+      &.@{popupPrefix}-danger {
+        color: @error-color;
+        border-color: @error-color;
+        &:hover {
+          color: @error-color-hover;
+          border-color: @error-color;
+        }
+        &:active {
+          color: @error-color-active;
+          border-color: @error-color-active;
+        }
+      }
+    }
+    &.@{popupPrefix}-loading {
+      background-color: @@loadingColor;
+      cursor: default;
+      &:hover {
+        background-color: @@loadingHover;
+      }
+      &:active {
+        background-color: @@loadingActive;
+      }
     }
   }
 }
@@ -38,36 +89,85 @@
   font-weight: 400;
   font-size: @font-size-base;
   line-height: 1.575;
-  background: @background-color-base;
   border: 1px solid @border-color-base;
-  border-radius: @border-radius-base;
   cursor: pointer;
   transition: all @default-transition;
   &-default {
     height: @default-height;
     padding: @default-padding;
     color: @text-color;
-    &:active {
-      color: @primary-color-active;
-      border-color: @primary-color-active;
-    }
+    background: @background-color-base;
+    border-radius: @border-radius-base;
     &:hover {
       color: @primary-color-hover;
       border-color: @primary-color-hover;
     }
-    &[has-shadow='true'] {
-      box-shadow: 0 0 0 2px @primary-color-outline;
+    &:active {
+      color: @primary-color-active;
+      border-color: @primary-color-active;
+    }
+    &[data-has-shadow='true'] {
+      box-shadow: 0 0 0 4px @primary-color-outline;
     }
   }
-  &-dashed {
+
+  // types
+  &&-dashed {
     border-style: dashed;
+    &.@{popupPrefix}-ghost {
+      color: @neutral-color-3;
+      background-color: transparent;
+      border-color: @neutral-color-3;
+      &:hover {
+        color: @primary-color-hover;
+        border-color: @primary-color-hover;
+      }
+      &:active {
+        color: @primary-color-active;
+        border-color: @primary-color-active;
+      }
+    }
+    &.@{popupPrefix}-danger {
+      color: @error-color;
+      background-color: transparent;
+      border-color: @error-color;
+      &:hover {
+        color: @error-color-hover;
+        background-color: transparent;
+        border-color: @error-color;
+      }
+      &:active {
+        color: @error-color-active;
+        background-color: transparent;
+        border-color: @error-color-active;
+      }
+    }
+    &&[disabled] {
+      color: @border-color-base;
+      background: @background-color-base;
+      border: 1px dashed @border-color-base;
+    }
   }
-  &-link {
+  &&-link {
     color: @primary-color;
     background-color: transparent;
     border: none;
     &:hover {
       color: @primary-color-hover;
+    }
+    &.@{popupPrefix}-danger {
+      color: @error-color;
+      background-color: transparent;
+      &:hover {
+        color: @error-color-hover;
+        background-color: transparent;
+      }
+    }
+    &&[disabled] {
+      color: @border-color-base;
+      background-color: transparent;
+      border: none;
+      pointer-events: none;
     }
   }
   &&-text {
@@ -76,8 +176,23 @@
     border: none;
     box-shadow: none;
     cursor: text;
+    &&[disabled] {
+      background-color: transparent;
+      border: none;
+    }
+    &&.@{popupPrefix}-danger {
+      color: @error-color;
+      background-color: transparent;
+      &:hover {
+        background-color: transparent;
+      }
+      &[data-has-shadow='true'] {
+        box-shadow: none;
+      }
+    }
   }
   .make-color();
+  // size
   &-small {
     height: @small-height;
     padding: @small-padding;
@@ -87,8 +202,57 @@
     padding: @large-padding;
     font-size: 16px;
   }
+  &-circle {
+    border-radius: 50%;
+  }
+  &-loading {
+    cursor: default;
+  }
+  &-danger {
+    color: #fff;
+    background-color: @error-color;
+    border-color: @error-color;
+    &:hover {
+      background-color: @error-color-hover;
+    }
+    &:active {
+      background-color: @error-color-active;
+    }
+    &[data-has-shadow='true'] {
+      box-shadow: 0 0 0 4px @error-color-outline;
+    }
+  }
+  &[disabled] {
+    color: @border-color-base;
+    background: @background-color-base;
+    border: 1px solid @border-color-base;
+    cursor: not-allowed;
+  }
+}
+// shape
+.@{popupPrefix}-round {
+  border-radius: @default-height;
+}
+.@{popupPrefix}-small.@{popupPrefix}-round {
+  border-radius: @small-height;
+}
+.@{popupPrefix}-large.@{popupPrefix}-round {
+  border-radius: @large-height;
+}
+.@{popupPrefix}-circle {
+  width: @default-height;
+  padding: 0;
+}
+.@{popupPrefix}-small.@{popupPrefix}-circle {
+  width: @small-height;
+  padding: 0;
+}
+.@{popupPrefix}-large.@{popupPrefix}-circle {
+  width: @large-height;
+  padding: 0;
 }
 
+// common
 a.@{popupPrefix} {
   display: inline-flex;
   align-items: center;

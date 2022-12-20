@@ -31,6 +31,21 @@ const initVariablesDark = {
   '--rain-box-shadow-base':
     '0 3px 6px -4px #ffffff1f, 0 6px 16px 0 #141414, 0 9px 28px 8px #ffffff0d', // 浮层阴影
 };
+const neutralColor = [
+  '#ffffff',
+  '#fafafa',
+  '#f5f5f5',
+  '#f0f0f0',
+  '#d9d9d9',
+  '#bfbfbf',
+  '#8c8c8c',
+  '#595959',
+  '#434343',
+  '#262626',
+  '#1f1f1f',
+  '#141414',
+  '#000000',
+];
 const setColors = (element: HTMLElement, colors: string[], item: string) => {
   element.style.setProperty(`--rain-${item}-color-1`, colors[1]);
   element.style.setProperty(`--rain-${item}-color-2`, colors[2]);
@@ -75,21 +90,7 @@ export const setOtherConfig = (
   variables: OtherVariables = {},
 ): void => {
   const mergedVariables = { ...initVariables, ...variables };
-  const neutralColor = [
-    '#ffffff',
-    '#fafafa',
-    '#f5f5f5',
-    '#f0f0f0',
-    '#d9d9d9',
-    '#bfbfbf',
-    '#8c8c8c',
-    '#595959',
-    '#434343',
-    '#262626',
-    '#1f1f1f',
-    '#141414',
-    '#000000',
-  ];
+
   Object.keys(mergedVariables).forEach((item: keyof OtherVariables) => {
     if (mergedVariables[item]) {
       // 如果开启深色模式，修改变量
@@ -139,5 +140,11 @@ export const setDarkTheme = (
       );
       setColors(element, colors, item);
     }
+  });
+  neutralColor.forEach((x, i, arr) => {
+    element.style.setProperty(
+      `--rain-neutral-color-${i + 1}`,
+      isUsed ? arr[arr.length - i - 1] : x,
+    );
   });
 };

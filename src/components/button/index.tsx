@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import type { ButtonProps } from './interface';
 import cls from 'classnames';
 import './style/index.less';
+import { LoadingOutlined } from '@ant-design/icons';
 // import { LoadingOutlined } from '@ant-design/icons';
 
 const prefixCls = 'rain-btn';
@@ -16,18 +17,24 @@ const Button: React.ForwardRefRenderFunction<HTMLButtonElement, ButtonProps> = (
     icon,
     className,
     ghost,
+    loading,
+    danger,
     ...rest
   },
   ref,
 ) => {
   const [clickAnimation, setClickAnimation] = useState(false);
-  // if (rest.danger) {
-  //   type = 'error';
-  // }
+  let mergeIcon = icon;
+  if (loading) {
+    mergeIcon = <LoadingOutlined />;
+  }
   const classes = cls(prefixCls, className || '', {
     [`${prefixCls}-${type}`]: type,
     [`${prefixCls}-${size}`]: size,
     [`${prefixCls}-${shape}`]: shape,
+    [`${prefixCls}-ghost`]: ghost,
+    [`${prefixCls}-loading`]: loading,
+    [`${prefixCls}-danger`]: danger,
   });
   const buttonAttributes = {
     className: classes,
@@ -39,16 +46,17 @@ const Button: React.ForwardRefRenderFunction<HTMLButtonElement, ButtonProps> = (
     ref,
     ...rest,
     onClick(e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement, MouseEvent>) {
+      if (loading) {
+        e.preventDefault();
+        return;
+      }
       const { onClick } = rest;
       setClickAnimation(true);
       const timer = setTimeout(() => {
         clearTimeout(timer);
         setClickAnimation(false);
-      }, 300);
-      // if (innerLoading || mergedDisabled) {
-      //   e.preventDefault();
-      //   return;
-      // }
+      }, 200);
+
       (onClick as React.MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>)?.(e);
     },
   };
@@ -60,8 +68,9 @@ const Button: React.ForwardRefRenderFunction<HTMLButtonElement, ButtonProps> = (
     );
   }
   return (
-    <button has-shadow={clickAnimation.toString()} {...buttonAttributes}>
-      <span>{children}</span>
+    <button data-has-shadow={clickAnimation.toString()} {...buttonAttributes}>
+      {mergeIcon && shape !== 'circle' && <span style={{ marginRight: 4 }}>{mergeIcon}</span>}
+      {shape === 'circle' && loading ? <LoadingOutlined /> : <span>{children}</span>}
     </button>
   );
 };

@@ -1,4 +1,4 @@
-import React from 'react';
+import type React from 'react';
 
 export type ButtonType =
   | 'default'
@@ -28,30 +28,47 @@ export interface BaseButtonProps {
   /**
    * @description       Button的形状
    * @type              circle、round
-   * @default           -
+   * @default           default
    */
   shape?: ButtonShape;
   /**
    * @description       Button的圆角
    * @type
-   * @default           2px
+   * @default           4px
    */
   radius?: string;
+  /**
+   * @description       危险操作按钮，通常情况下可以使用type='error'替代，当type='link'时使用到该属性
+   * @default           false
+   */
+  danger?: boolean;
   /**
    * @description       内联样式
    * @default           -
    */
-  danger?: boolean;
+
   style?: React.CSSProperties;
   /**
    * @description       类名
    * @default           -
    */
   className?: string;
-  children?: React.ReactNode;
+  /**
+   * @description       图标
+   * @default           -
+   */
   icon?: React.ReactNode;
+  /**
+   * @description       加载中
+   * @default           false
+   */
   loading?: boolean;
+  /**
+   * @description       幽灵按钮
+   * @default           false
+   */
   ghost?: boolean;
+  children?: React.ReactNode;
 }
 
 export type AnchorButtonProps = {
@@ -63,9 +80,9 @@ export type AnchorButtonProps = {
   href?: string;
   /**
    * @description       target
-   * @default           -
+   * @default           _self
    */
-  target?: string;
+  target?: '_blank' | '_self' | '_parent' | '_top';
   /**
    * @description       点击事件
    */
