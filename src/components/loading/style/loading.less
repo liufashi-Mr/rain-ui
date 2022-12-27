@@ -1,0 +1,310 @@
+@import '../../../styles/variables/index.less';
+@loading-prefix-cls: rain-loading;
+
+// blossom loading style
+.@{loading-prefix-cls}-blossom {
+  position: relative;
+  display: block;
+  font-size: 0;
+  > i {
+    position: absolute;
+    display: inline-block;
+    background-color: currentColor;
+    border: 0 solid currentColor;
+    border-radius: 100%;
+    transform: translate(-50%, -50%);
+    animation: ball-blossom-ball1 1s 0s ease infinite;
+    &:nth-child(1) {
+      top: 0;
+      left: 50%;
+      z-index: 1;
+    }
+    &:nth-child(2) {
+      top: 50%;
+      left: 100%;
+      z-index: 2;
+      animation-name: ball-blossom-ball2;
+    }
+    &:nth-child(3) {
+      top: 100%;
+      left: 50%;
+      z-index: 1;
+      animation-name: ball-blossom-ball3;
+    }
+    &:nth-child(4) {
+      top: 50%;
+      left: 0;
+      z-index: 2;
+      animation-name: ball-blossom-ball4;
+    }
+  }
+  &&-small {
+    width: 4px;
+    height: 4px;
+    > i {
+      width: 6px;
+      height: 6px;
+    }
+  }
+  &&-middle {
+    width: 6px;
+    height: 6px;
+    > i {
+      width: 9px;
+      height: 9px;
+    }
+  }
+  &&-large {
+    width: 8px;
+    height: 8px;
+    > i {
+      width: 12px;
+      height: 12px;
+    }
+  }
+}
+
+@keyframes ball-blossom-ball2 {
+  0% {
+    opacity: 0.35;
+  }
+
+  50% {
+    top: 200%;
+    left: 200%;
+    opacity: 1;
+  }
+
+  100% {
+    top: 100%;
+    left: 50%;
+    z-index: 1;
+    opacity: 0.35;
+  }
+}
+
+@keyframes ball-blossom-ball1 {
+  0% {
+    opacity: 0.35;
+  }
+
+  50% {
+    top: -100%;
+    left: 200%;
+    opacity: 1;
+  }
+
+  100% {
+    top: 50%;
+    left: 100%;
+    z-index: 2;
+    opacity: 0.35;
+  }
+}
+
+@keyframes ball-blossom-ball3 {
+  0% {
+    opacity: 0.35;
+  }
+
+  50% {
+    top: 200%;
+    left: -100%;
+    opacity: 1;
+  }
+
+  100% {
+    top: 50%;
+    left: 0;
+    z-index: 2;
+    opacity: 0.35;
+  }
+}
+
+@keyframes ball-blossom-ball4 {
+  0% {
+    opacity: 0.35;
+  }
+
+  50% {
+    top: -100%;
+    left: -100%;
+    opacity: 1;
+  }
+
+  100% {
+    top: 0;
+    left: 50%;
+    z-index: 1;
+    opacity: 0.35;
+  }
+}
+
+// spin loading style
+
+.@{loading-prefix-cls}-spin {
+  position: relative;
+  display: block;
+  width: 20px;
+  height: 20px;
+  font-size: 0;
+  > i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    margin-top: -4px;
+    margin-left: -4px;
+    background-color: currentColor;
+    border: 0 solid currentColor;
+    border-radius: 100%;
+    animation: ball-spin-clockwise 1s infinite ease-in-out;
+    &:nth-child(1) {
+      top: 5%;
+      left: 50%;
+      animation-delay: -0.875s;
+    }
+    &:nth-child(2) {
+      top: 18.180195%;
+      left: 81.819805%;
+      animation-delay: -0.75s;
+    }
+    &:nth-child(3) {
+      top: 50%;
+      left: 95%;
+      animation-delay: -0.625s;
+    }
+    &:nth-child(4) {
+      top: 81.819806%;
+      left: 81.819805%;
+      animation-delay: -0.5s;
+    }
+    &:nth-child(5) {
+      top: 95%;
+      left: 50%;
+      animation-delay: -0.375s;
+    }
+    &:nth-child(6) {
+      top: 81.819805%;
+      left: 18.18019%;
+      animation-delay: -0.25s;
+    }
+    &:nth-child(7) {
+      top: 50%;
+      left: 5%;
+      animation-delay: -0.125s;
+    }
+    &:nth-child(8) {
+      top: 18.179464%;
+      left: 18.18037%;
+      animation-delay: 0s;
+    }
+  }
+  &&-small {
+    width: 14px;
+    height: 14px;
+    > i {
+      width: 4px;
+      height: 4px;
+    }
+  }
+  &&-middle {
+    width: 20px;
+    height: 20px;
+    > i {
+      width: 6px;
+      height: 6px;
+    }
+  }
+  &&-large {
+    width: 28px;
+    height: 28px;
+    > i {
+      width: 8px;
+      height: 8px;
+    }
+  }
+}
+
+@keyframes ball-spin-clockwise {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  80% {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+// collide loading style
+.@{loading-prefix-cls}-collide {
+  position: relative;
+  display: block;
+  font-size: 0;
+  > i {
+    display: inline-block;
+    background-color: currentColor;
+    border: 0 solid currentColor;
+    border-radius: 100%;
+    &:first-child {
+      transform: translateX(0%);
+      animation: ball-newton-cradle-left 1s 0s ease-out infinite;
+    }
+    &:last-child {
+      transform: translateX(0%);
+      animation: ball-newton-cradle-right 1s 0s ease-out infinite;
+    }
+  }
+  &&-small {
+    > i {
+      width: 6px;
+      height: 6px;
+    }
+  }
+  &&-middle {
+    > i {
+      width: 9px;
+      height: 9px;
+    }
+  }
+  &&-large {
+    > i {
+      width: 12px;
+      height: 12px;
+    }
+  }
+}
+@keyframes ball-newton-cradle-left {
+  25% {
+    transform: translateX(-100%);
+    animation-timing-function: ease-in;
+  }
+
+  50% {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes ball-newton-cradle-right {
+  50% {
+    transform: translateX(0%);
+  }
+
+  75% {
+    transform: translateX(100%);
+    animation-timing-function: ease-in;
+  }
+
+  100% {
+    transform: translateX(0%);
+  }
+}
