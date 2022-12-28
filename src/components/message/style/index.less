@@ -1,0 +1,72 @@
+@import '../../../styles/variables/index.less';
+
+@message-prefix-cls: ~'@{rain-prefix}-message';
+
+.@{message-prefix-cls} {
+  position: fixed;
+  top: 80px;
+  // left: 50%;
+  padding: 10px 16px;
+  color: @text-color;
+  font-size: @font-size-base;
+  background-color: @background-color-base;
+  border-radius: @border-radius-base;
+  box-shadow: @box-shadow-base;
+  // transform: translateX(-50%);
+  &-icon {
+    margin-right: 8px;
+    color: @primary-color;
+  }
+  &-close {
+    margin-left: 12px;
+    cursor: pointer;
+  }
+  &-success {
+    .@{message-prefix-cls}-icon {
+      color: @success-color;
+    }
+  }
+  &-error {
+    .@{message-prefix-cls}-icon {
+      color: @error-color;
+    }
+  }
+  &-warning {
+    .@{message-prefix-cls}-icon {
+      color: @warning-color;
+    }
+  }
+
+  &-dark {
+    border: 1px solid @border-color-base;
+    box-shadow: none;
+  }
+  &-compact {
+    padding: 8px 16px;
+    font-size: 12px;
+  }
+}
+
+.@{message-prefix-cls}-animation-enter,
+.@{message-prefix-cls}-animation-appear {
+  transform: translateY(-10px);
+  opacity: 0;
+}
+
+.@{message-prefix-cls}-animation-enter-active,
+.@{message-prefix-cls}-animation-appear-active {
+  transform: translateY(0);
+  opacity: 1;
+  transition: all 0.3s;
+}
+
+.@{message-prefix-cls}-animation-exit {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.@{message-prefix-cls}-animation-exit-active {
+  transform: translateY(-10px);
+  opacity: 0;
+  transition: all 0.3s;
+}

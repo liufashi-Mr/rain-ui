@@ -13,7 +13,7 @@ const initVariables = {
   '--rain-text-color': '#000000d9', // 主文本色
   '--rain-text-color-secondary': '#00000073', // 次文本色
   '--rain-disabled-color': '#ffffff40', // 失效色
-  '--rain-border-radius-base': '4px', // 组件/浮层圆角
+  '--rain-border-radius-base': '8px', // 组件/浮层圆角
   '--rain-border-color-base': '#d9d9d9', // 边框色
   '--rain-background-color-base': '#fafafa', // 背景色
   '--rain-box-shadow-base':

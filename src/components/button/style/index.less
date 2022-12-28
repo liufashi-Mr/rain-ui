@@ -1,6 +1,7 @@
 @import '../../../styles/variables/index.less';
-@popupPrefix: rain-btn;
-.@{popupPrefix} {
+@btn-prefix-cls: ~'@{rain-prefix}-btn';
+
+.@{btn-prefix-cls} {
   --rain-btn-small-height: 24px;
   --rain-btn-default-height: 32px;
   --rain-btn-large-height: 40px;
@@ -49,7 +50,7 @@
     &[data-has-shadow='true'] {
       box-shadow: 0 0 0 4px @@shadowColor;
     }
-    &.@{popupPrefix}-ghost {
+    &.@{btn-prefix-cls}-ghost {
       color: @@mainColor;
       background-color: transparent;
       border: 1px solid @@mainColor;
@@ -61,7 +62,7 @@
         color: @@activeColor;
         border-color: @@activeColor;
       }
-      &.@{popupPrefix}-loading {
+      &.@{btn-prefix-cls}-loading {
         background-color: transparent;
         &:hover {
           color: @@hoverColor;
@@ -74,7 +75,7 @@
           border-color: @@activeColor;
         }
       }
-      &.@{popupPrefix}-danger {
+      &.@{btn-prefix-cls}-danger {
         color: @error-color;
         border-color: @error-color;
         &:hover {
@@ -87,7 +88,7 @@
         }
       }
     }
-    &.@{popupPrefix}-loading {
+    &.@{btn-prefix-cls}-loading {
       background-color: @@loadingColor;
       cursor: default;
       &:hover {
@@ -99,7 +100,7 @@
     }
   }
 }
-.@{popupPrefix} {
+.@{btn-prefix-cls} {
   display: inline-block;
   font-weight: 400;
   font-size: @default-font-size;
@@ -124,7 +125,7 @@
     &[data-has-shadow='true'] {
       box-shadow: 0 0 0 4px @primary-color-outline;
     }
-    &.@{popupPrefix}-ghost {
+    &.@{btn-prefix-cls}-ghost {
       color: @neutral-color-3;
       background-color: transparent;
       border-color: @neutral-color-3;
@@ -136,7 +137,7 @@
   // types
   &&-dashed {
     border-style: dashed;
-    &.@{popupPrefix}-ghost {
+    &.@{btn-prefix-cls}-ghost {
       color: @neutral-color-3;
       background-color: transparent;
       border-color: @neutral-color-3;
@@ -149,7 +150,7 @@
         border-color: @primary-color-active;
       }
     }
-    &.@{popupPrefix}-danger {
+    &.@{btn-prefix-cls}-danger {
       color: @error-color;
       background-color: transparent;
       border-color: @error-color;
@@ -177,7 +178,7 @@
     &:hover {
       color: @primary-color-hover;
     }
-    &.@{popupPrefix}-danger {
+    &.@{btn-prefix-cls}-danger {
       color: @error-color;
       background-color: transparent;
       &:hover {
@@ -197,7 +198,7 @@
     background-color: transparent;
     border: none;
     box-shadow: none;
-    &&.@{popupPrefix}-danger {
+    &&.@{btn-prefix-cls}-danger {
       color: @error-color;
       background-color: transparent;
       &:hover {
@@ -256,7 +257,7 @@
     cursor: not-allowed;
   }
 }
-.@{popupPrefix}-compact {
+.@{btn-prefix-cls}-compact {
   --rain-btn-small-height: 20px;
   --rain-btn-default-height: 28px;
   --rain-btn-large-height: 32px;
@@ -270,30 +271,30 @@
 }
 
 // shape
-.@{popupPrefix}-round {
+.@{btn-prefix-cls}-round {
   border-radius: @default-height;
 }
-.@{popupPrefix}-small.@{popupPrefix}-round {
+.@{btn-prefix-cls}-small.@{btn-prefix-cls}-round {
   border-radius: @small-height;
 }
-.@{popupPrefix}-large.@{popupPrefix}-round {
+.@{btn-prefix-cls}-large.@{btn-prefix-cls}-round {
   border-radius: @large-height;
 }
-.@{popupPrefix}-circle {
+.@{btn-prefix-cls}-circle {
   width: @default-height;
   padding: 0;
 }
-.@{popupPrefix}-small.@{popupPrefix}-circle {
+.@{btn-prefix-cls}-small.@{btn-prefix-cls}-circle {
   width: @small-height;
   padding: 0;
 }
-.@{popupPrefix}-large.@{popupPrefix}-circle {
+.@{btn-prefix-cls}-large.@{btn-prefix-cls}-circle {
   width: @large-height;
   padding: 0;
 }
 
 // common
-a.@{popupPrefix} {
+a.@{btn-prefix-cls} {
   display: inline-flex;
   align-items: center;
   box-sizing: border-box;
