@@ -26,7 +26,7 @@ const Message: React.FC<MessageProps> = ({
 }) => {
   const [visible, setVisible] = useState(true);
   const { compact, dark } = useContext(configCtx);
-  console.log(compact,dark);
+  console.log(compact, dark);
   const classes = cls(prefixCls, className, {
     [`${prefixCls}-${type}`]: type,
     [`${prefixCls}-dark`]: dark,

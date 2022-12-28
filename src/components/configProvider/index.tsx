@@ -9,9 +9,9 @@ const ConfigProvider: React.FC<ConfigProviderProps> = ({ children, ...rest }) =>
   const { theme, dark, darkBackgroundColor, config } = rest;
   useEffect(() => {
     if (configRef.current) {
-      setThemeConfig(document.documentElement, theme);
-      setOtherConfig(document.documentElement, dark, config);
-      setDarkTheme(document.documentElement, darkBackgroundColor, theme, dark);
+      setThemeConfig(configRef?.current, theme);
+      setOtherConfig(configRef?.current, dark, config);
+      setDarkTheme(configRef?.current, darkBackgroundColor, theme, dark);
     }
   }, [rest]);
 
