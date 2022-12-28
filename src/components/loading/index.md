@@ -2,8 +2,8 @@
 title: Loading 加载中
 order: 0
 group:
-  title: 通用
-  path: /common
+  title: 反馈
+  path: /feedback
 nav:
   title: 组件
   path: /components

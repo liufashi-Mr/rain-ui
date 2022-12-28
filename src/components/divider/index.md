@@ -1,8 +1,8 @@
 ---
 title: Divider 分割线
 group:
-  title: 通用
-  path: /common
+  title: 布局
+  path: /layout
 nav:
   path: /components
 ---
