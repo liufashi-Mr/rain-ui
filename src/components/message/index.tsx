@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-// import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom';
 import {
   ExclamationCircleFilled,
   CheckCircleFilled,
@@ -17,7 +17,7 @@ const prefixCls = 'rain-message';
 const Message: React.FC<MessageProps> = ({
   type,
   content,
-  // duration = 3000,
+  duration = 3000,
   closeable,
   className,
   icon,
@@ -26,6 +26,7 @@ const Message: React.FC<MessageProps> = ({
 }) => {
   const [visible, setVisible] = useState(true);
   const { compact, dark } = useContext(configCtx);
+  console.log(compact,dark);
   const classes = cls(prefixCls, className, {
     [`${prefixCls}-${type}`]: type,
     [`${prefixCls}-dark`]: dark,
@@ -63,7 +64,7 @@ const Message: React.FC<MessageProps> = ({
   return (
     <CSSTransition
       in={visible}
-      timeout={200}
+      timeout={300}
       appear
       mountOnEnter
       classNames={`${prefixCls}-animation`}
@@ -81,5 +82,19 @@ const Message: React.FC<MessageProps> = ({
     </CSSTransition>
   );
 };
+let messageContainer: HTMLDivElement | null = null;
+const createMessage = (messageConfig: MessageProps) => {
+  const containerElement = messageConfig.container || document.body;
+  messageContainer = messageContainer ? messageContainer : document.createElement('div');
+  messageContainer.className = `${prefixCls}-container`;
+  const divElement = document.createElement('div');
+  divElement.style.marginBottom = '12px';
+  ReactDOM.render(<Message {...messageConfig} />, divElement);
+  messageContainer.appendChild(divElement);
+  containerElement.appendChild(messageContainer);
+};
 
+Message.info = (props: string | MessageProps) => {
+  return createMessage({ ...props, type: 'info' });
+};
 export default Message;

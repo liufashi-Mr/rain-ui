@@ -41,6 +41,11 @@ interface MessageProps {
    * @default -
    */
   onClose?: (e: React.MouseEvent<HTMLElement>) => void;
+  /**
+   * @description message的容器
+   * @default  document.body
+   */
+  container?: HTMLElement;
 }
 
 export type { MessageProps };

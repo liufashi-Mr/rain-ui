@@ -1,6 +1,5 @@
 import React from 'react';
-import { Button } from 'raind';
-import { message } from 'antd';
+import { Button, message } from 'raind';
 import Message from '..';
 const App: React.FC<Record<string, never>> = () => {
   return (
@@ -11,7 +10,7 @@ const App: React.FC<Record<string, never>> = () => {
         <Message type="warning" />
         <Message type="loading" /> */}
 
-      <Button type="primary" onClick={() => message.error('111')}>
+      <Button type="primary" onClick={() => message.info({content:'123123'})}>
         message
       </Button>
     </>
