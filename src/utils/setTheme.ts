@@ -16,8 +16,6 @@ const initVariables = {
   '--rain-border-radius-base': '8px', // 组件/浮层圆角
   '--rain-border-color-base': '#d9d9d9', // 边框色
   '--rain-background-color-base': '#fafafa', // 背景色
-  '--rain-box-shadow-base':
-    '0 3px 6px -4px #0000001f, 0 6px 16px 0 #00000014, 0 9px 28px 8px #0000000d', // 浮层阴影
 };
 const initVariablesDark = {
   '--rain-font-size-base': '14px', // 主字号
@@ -25,11 +23,9 @@ const initVariablesDark = {
   '--rain-text-color': '#ffffffd9', // 主文本色
   '--rain-text-color-secondary': '#ffffff73', // 次文本色
   '--rain-disabled-color': '#ffffff40', // 失效色
-  '--rain-border-radius-base': '4px', // 组件/浮层圆角
+  '--rain-border-radius-base': '8px', // 组件/浮层圆角
   '--rain-border-color-base': '#434343', // 边框色
   '--rain-background-color-base': '#00000005', // 背景色
-  '--rain-box-shadow-base':
-    '0 3px 6px -4px #ffffff1f, 0 6px 16px 0 #141414, 0 9px 28px 8px #ffffff0d', // 浮层阴影
 };
 const neutralColor = [
   '#ffffff',

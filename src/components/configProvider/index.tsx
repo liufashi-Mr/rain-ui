@@ -3,15 +3,15 @@ import type { ConfigProviderProps } from './interface';
 import { setThemeConfig, setDarkTheme, setOtherConfig } from '../../utils/setTheme';
 
 export const configCtx = createContext<ConfigProviderProps>({} as ConfigProviderProps); // 顶层通信装置
-
 const ConfigProvider: React.FC<ConfigProviderProps> = ({ children, ...rest }) => {
   const configRef = useRef<HTMLDivElement>(null);
-  const { theme, dark, darkBackgroundColor, config } = rest;
+  const { theme, dark, darkBackgroundColor, config, local } = rest;
   useEffect(() => {
     if (configRef.current) {
-      setThemeConfig(configRef?.current, theme);
-      setOtherConfig(configRef?.current, dark, config);
-      setDarkTheme(configRef?.current, darkBackgroundColor, theme, dark);
+      const element = local ? configRef?.current : document.documentElement;
+      setThemeConfig(element, theme);
+      setOtherConfig(element, dark, config);
+      setDarkTheme(element, darkBackgroundColor, theme, dark);
     }
   }, [rest]);
 

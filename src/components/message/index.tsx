@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import {
   ExclamationCircleFilled,
@@ -8,30 +8,41 @@ import {
   CloseOutlined,
 } from '@ant-design/icons';
 import cls from 'classnames';
-import { configCtx } from '../configProvider';
 import { CSSTransition } from 'react-transition-group';
 import type { MessageProps, MessageType } from './interface';
 import './style/index.less';
 
 const prefixCls = 'rain-message';
-const Message: React.FC<MessageProps> = ({
-  type,
-  content,
-  duration = 3000,
-  closeable,
-  className,
-  icon,
-  onClose,
-  ...rest
-}) => {
+const Message = (props: MessageProps) => {
+  const {
+    type,
+    content,
+    duration = 3000,
+    closeable,
+    className,
+    icon,
+    onClose,
+    handleClose,
+    ...rest
+  } = props;
   const [visible, setVisible] = useState(true);
-  const { compact, dark } = useContext(configCtx);
-  console.log(compact, dark);
   const classes = cls(prefixCls, className, {
     [`${prefixCls}-${type}`]: type,
-    [`${prefixCls}-dark`]: dark,
-    [`${prefixCls}-compact`]: compact,
   });
+
+  useEffect(() => {
+    if (visible) {
+      const timer = setTimeout(() => {
+        setVisible(false);
+      }, duration);
+      return () => clearTimeout(timer);
+    } else {
+      const timer = setTimeout(() => {
+        onClose?.();
+      }, 300);
+      return () => clearTimeout(timer);
+    }
+  }, [visible]);
 
   const messageIcon = (
     messageType?: MessageType,
@@ -55,11 +66,8 @@ const Message: React.FC<MessageProps> = ({
   };
   const handleCloseClick = (e: React.MouseEvent<HTMLElement>) => {
     e.stopPropagation();
-    onClose?.(e);
-    if (e.defaultPrevented) {
-      return;
-    }
     setVisible(false);
+    handleClose?.();
   };
   return (
     <CSSTransition
@@ -84,17 +92,37 @@ const Message: React.FC<MessageProps> = ({
 };
 let messageContainer: HTMLDivElement | null = null;
 const createMessage = (messageConfig: MessageProps) => {
-  const containerElement = messageConfig.container || document.body;
+  const { duration = 3000, container = document.body, ...rest } = messageConfig;
   messageContainer = messageContainer ? messageContainer : document.createElement('div');
   messageContainer.className = `${prefixCls}-container`;
   const divElement = document.createElement('div');
-  divElement.style.marginBottom = '12px';
-  ReactDOM.render(<Message {...messageConfig} />, divElement);
+  divElement.style.marginBottom = '18px';
+  container.appendChild(messageContainer);
   messageContainer.appendChild(divElement);
-  containerElement.appendChild(messageContainer);
+
+  const handleClose = () => {
+    const timer = setTimeout(() => {
+      messageContainer?.removeChild(divElement);
+      if (!messageContainer?.childNodes.length) {
+        container.removeChild(messageContainer as HTMLDivElement);
+      }
+      clearTimeout(timer);
+    }, duration + 300);
+  };
+  ReactDOM.render(
+    <Message {...rest} handleClose={handleClose} duration={duration} container={container} />,
+    divElement,
+  );
 };
 
-Message.info = (props: string | MessageProps) => {
-  return createMessage({ ...props, type: 'info' });
+const getMessageType = (type: MessageType, props: MessageProps | string) => {
+  createMessage(typeof props === 'string' ? { type, content: props } : { ...props, type });
 };
+
+Message.info = (props: MessageProps | string) => getMessageType('info', props);
+Message.success = (props: MessageProps | string) => getMessageType('success', props);
+Message.warning = (props: MessageProps | string) => getMessageType('warning', props);
+Message.error = (props: MessageProps | string) => getMessageType('error', props);
+Message.loading = (props: MessageProps | string) => getMessageType('loading', props);
+
 export default Message;

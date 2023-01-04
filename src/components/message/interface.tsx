@@ -17,9 +17,6 @@ interface MessageProps {
    * @description 对象类型传参时的内容
    */
   content?: ReactNode;
-  /**
-   * @description Message类型
-   */
   type?: MessageType;
   /**
    * @description 显示时间
@@ -37,15 +34,16 @@ interface MessageProps {
    */
   icon?: ReactNode;
   /**
-   * @description 关闭时的回调（可通过 e.preventDefault() 来阻止默认行为）
+   * @description 关闭时的回调
    * @default -
    */
-  onClose?: (e: React.MouseEvent<HTMLElement>) => void;
+  onClose?: () => void;
   /**
    * @description message的容器
    * @default  document.body
    */
   container?: HTMLElement;
+  handleClose?: () => void;
 }
 
 export type { MessageProps };

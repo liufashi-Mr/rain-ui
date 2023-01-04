@@ -15,7 +15,6 @@ export type OtherVariables = {
   '--rain-disabled-color'?: string; // 失效色
   '--rain-border-radius-base'?: string; // 组件/浮层圆角
   '--rain-border-color-base'?: string; // 边框色
-  '--rain-box-shadow-base'?: string; // 浮层阴影
 };
 
 interface ConfigProviderProps {
@@ -35,6 +34,11 @@ interface ConfigProviderProps {
    * @default false
    */
   dark?: boolean;
+  /**
+   * @description 局部配置，全局配置css variables挂载在root，局部配置在configProvider上
+   * @default false
+   */
+  local?: boolean;
   /**
    * @description 项目深色模式背景
    * @default  #141414

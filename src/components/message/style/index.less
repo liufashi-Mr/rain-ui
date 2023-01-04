@@ -3,10 +3,13 @@
 @message-prefix-cls: ~'@{rain-prefix}-message';
 
 .@{message-prefix-cls} {
+  width: fit-content;
+  margin: 0 auto;
   padding: 10px 16px;
   color: @text-color;
   font-size: @font-size-base;
   background-color: @background-color-base;
+  border: 1px solid @border-color-base;
   border-radius: @border-radius-base;
   box-shadow: @box-shadow-base;
   &-icon {
@@ -38,15 +41,6 @@
     left: 50%;
     z-index: 9999;
     transform: translateX(-50%);
-  }
-
-  &-dark {
-    border: 1px solid @border-color-base;
-    box-shadow: none;
-  }
-  &-compact {
-    padding: 8px 16px;
-    font-size: 12px;
   }
 }
 
