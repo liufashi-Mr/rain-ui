@@ -17,7 +17,8 @@ const Message = (props: MessageProps) => {
   const {
     type,
     content,
-    duration = 3000,
+    duration,
+    loadingClose,
     closeable,
     className,
     icon,
@@ -29,7 +30,7 @@ const Message = (props: MessageProps) => {
   const classes = cls(prefixCls, className, {
     [`${prefixCls}-${type}`]: type,
   });
-
+  loadingClose?.(setVisible);
   useEffect(() => {
     if (visible) {
       const timer = setTimeout(() => {
@@ -37,6 +38,7 @@ const Message = (props: MessageProps) => {
       }, duration);
       return () => clearTimeout(timer);
     } else {
+      handleClose?.(); // 在visible为false的时候，动画执行完 销毁
       const timer = setTimeout(() => {
         onClose?.();
       }, 300);
@@ -67,7 +69,6 @@ const Message = (props: MessageProps) => {
   const handleCloseClick = (e: React.MouseEvent<HTMLElement>) => {
     e.stopPropagation();
     setVisible(false);
-    handleClose?.();
   };
   return (
     <CSSTransition
@@ -92,7 +93,9 @@ const Message = (props: MessageProps) => {
 };
 let messageContainer: HTMLDivElement | null = null;
 const createMessage = (messageConfig: MessageProps) => {
-  const { duration = 3000, container = document.body, ...rest } = messageConfig;
+  const { container = document.body, ...rest } = messageConfig;
+  let { duration } = rest;
+  duration = rest.type === 'loading' && !duration ? 10000 : 3000;
   messageContainer = messageContainer ? messageContainer : document.createElement('div');
   messageContainer.className = `${prefixCls}-container`;
   const divElement = document.createElement('div');
@@ -100,6 +103,7 @@ const createMessage = (messageConfig: MessageProps) => {
   container.appendChild(messageContainer);
   messageContainer.appendChild(divElement);
 
+  // 销毁dom
   const handleClose = () => {
     const timer = setTimeout(() => {
       messageContainer?.removeChild(divElement);
@@ -107,16 +111,29 @@ const createMessage = (messageConfig: MessageProps) => {
         container.removeChild(messageContainer as HTMLDivElement);
       }
       clearTimeout(timer);
-    }, duration + 300);
+    }, 300);
+  };
+  let hide: any = null;
+  const loadingClose = (setVisible: React.Dispatch<React.SetStateAction<boolean>>) => {
+    hide = () => setVisible(false);
   };
   ReactDOM.render(
-    <Message {...rest} handleClose={handleClose} duration={duration} container={container} />,
+    <Message
+      {...rest}
+      handleClose={handleClose}
+      loadingClose={loadingClose}
+      duration={duration}
+      container={container}
+    />,
     divElement,
   );
+  if (rest.type === 'loading') {
+    return hide;
+  }
 };
 
 const getMessageType = (type: MessageType, props: MessageProps | string) => {
-  createMessage(typeof props === 'string' ? { type, content: props } : { ...props, type });
+  return createMessage(typeof props === 'string' ? { type, content: props } : { ...props, type });
 };
 
 Message.info = (props: MessageProps | string) => getMessageType('info', props);

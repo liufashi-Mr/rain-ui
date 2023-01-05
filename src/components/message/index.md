@@ -15,7 +15,11 @@ nav:
 
 ### message 的类型
 
-`rain-ui` 自带一下类型的 `'info' | 'success' | 'warning' | 'error' | 'loading'` <code src="./demo/type.tsx"/>
+`rain-ui` 自带一下类型的 `'info' | 'success' | 'warning' | 'error' | 'loading'` 其中`type=loading` 的时候默认时间是`10s`，我们将在下面将介绍原因 <code src="./demo/type.tsx"/>
+
+### loading message 的使用
+
+`rain-ui`希望我们在使用`loading message` 的时候是发送一个异步请求，然后请求成功后手动关闭， <code src="./demo/loading.tsx"/>
 
 ### 可手动关闭的 message
 

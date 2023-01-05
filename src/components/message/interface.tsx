@@ -44,6 +44,7 @@ interface MessageProps {
    */
   container?: HTMLElement;
   handleClose?: () => void;
+  loadingClose?: (callback: React.Dispatch<React.SetStateAction<boolean>>) => void;
 }
 
 export type { MessageProps };

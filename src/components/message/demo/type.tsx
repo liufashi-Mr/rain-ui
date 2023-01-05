@@ -15,7 +15,19 @@ const App: React.FC = () => {
       <Button type="error" onClick={() => message.error('error message')}>
         error
       </Button>
-      <Button onClick={() => message.loading('loading something')}>loading</Button>
+      <Button onClick={() => message.loading('default loading (10s)')}>
+        default loading (10s)
+      </Button>
+      <Button
+        onClick={() =>
+          message.loading({
+            content: 'loading duration',
+            duration: 3000,
+          })
+        }
+      >
+        loading duration
+      </Button>
     </>
   );
 };
