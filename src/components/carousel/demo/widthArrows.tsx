@@ -12,17 +12,7 @@ export default () => {
     lineHeight: '200px',
   };
   return (
-    <Carousel
-      autoPlay
-      dots
-      arrows
-      //   beforeChange={(from, to) => {
-      //     console.log(`变化前：从${from}到${to}`);
-      //   }}
-      //   afterChange={(c) => {
-      //     console.log(`回调${c}`);
-      //   }}
-    >
+    <Carousel autoPlay dots arrows>
       <div style={pageStyle}>1</div>
       <div style={pageStyle}>2</div>
       <div style={pageStyle}>3</div>

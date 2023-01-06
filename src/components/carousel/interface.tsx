@@ -12,7 +12,6 @@ interface CarouselProps {
    * @type            boolean
    */
   dots?: boolean;
-
   /**
    * @description     展示预设箭头
    * @default         false
