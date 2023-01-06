@@ -70,6 +70,7 @@ const Message = (props: MessageProps) => {
     e.stopPropagation();
     setVisible(false);
   };
+  console.log(content);
   return (
     <CSSTransition
       in={visible}
@@ -132,8 +133,10 @@ const createMessage = (messageConfig: MessageProps) => {
   }
 };
 
-const getMessageType = (type: MessageType, props: MessageProps | string) => {
-  return createMessage(typeof props === 'string' ? { type, content: props } : { ...props, type });
+const getMessageType = (type: MessageType, props: MessageProps | string | any) => {
+  return createMessage(
+    typeof props === 'string' || props.$$typeof ? { type, content: props } : { ...props, type },
+  );
 };
 
 Message.info = (props: MessageProps | string) => getMessageType('info', props);
