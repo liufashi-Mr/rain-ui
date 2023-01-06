@@ -1,17 +1,27 @@
 {
   "compilerOptions": {
-    "target": "esnext",
+    "baseUrl": "./",
+    "strictNullChecks": true,
     "module": "esnext",
     "moduleResolution": "node",
-    "jsx": "react",
     "esModuleInterop": true,
-    "types": ["jest"],
-    "strict": true,
+    "experimentalDecorators": true,
+    "jsx": "react",
+    "jsxFactory": "React.createElement",
+    "jsxFragmentFactory": "React.Fragment",
+    "noUnusedParameters": true,
+    "noUnusedLocals": true,
+    "noImplicitAny": true,
+    "target": "es6",
+    "lib": ["dom", "es2017"],
     "skipLibCheck": true,
+    "stripInternal": true,
     "declaration": true,
-    "baseUrl": "./",
+    "declarationDir": "dist/types",
     "paths": {
-      "raind": ["src"]
+      "raind": ["src/index.ts"]
     }
-  }
+  },
+  "include": ["typings.d.ts", "src"],
+  "exclude": ["src/.umi", "src/.umi-production"]
 }

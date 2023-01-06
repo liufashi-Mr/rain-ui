@@ -1,7 +1,4 @@
-export { default as Alert } from './alert';
-export { default as Button } from './button';
-export { default as Tooltip } from './tooltip';
-export { default as message } from './message';
-export { default as Loading } from './loading';
-export { default as Carousel } from './carousel';
-export { default as Ellipsis } from './ellipsis';
+export { default as ConfigProvider } from './components/configProvider';
+export { default as Tag } from './components/tag';
+export { default as Divider } from './components/divider';
+export { default as Button } from './components/button';

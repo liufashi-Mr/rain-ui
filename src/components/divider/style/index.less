@@ -1,0 +1,107 @@
+@import '../../../styles/variables/index.less';
+
+@divider-prefix-cls: ~'@{rain-prefix}-divider';
+@rain-divider-font-size: 14px;
+@rain-divider-color: rgba(5, 5, 5, 0.06);
+@border-width-base: 1px;
+
+.@{divider-prefix-cls} {
+  border-top: @border-width-base solid @rain-divider-color;
+  &-horizontal {
+    display: flex;
+    clear: both;
+    width: 100%;
+    min-width: 100%;
+    margin: 24px 0;
+  }
+  &-vertical {
+    position: relative;
+    top: -0.06em;
+    display: inline-block;
+    height: 0.9em;
+    margin: 0 8px;
+    vertical-align: middle;
+    border-top: 0;
+    border-left: @border-width-base solid @rain-divider-color;
+  }
+  &-horizontal&-with-text {
+    display: flex;
+    margin: 6px 0;
+    border-top: 0;
+    border-top-color: @rain-divider-color;
+    &::before,
+    &::after {
+      position: relative;
+      width: 50%;
+      border-top: @border-width-base solid transparent;
+      border-top-color: inherit;
+      border-bottom: 0;
+      transform: translateY(50%);
+      content: '';
+    }
+  }
+  &-horizontal&-with-text-left {
+    &::before {
+      width: 5%;
+    }
+    &::after {
+      width: 95%;
+    }
+  }
+  &-horizontal&-with-text-right {
+    &::before {
+      width: 95%;
+    }
+    &::after {
+      width: 5%;
+    }
+  }
+  &-dashed {
+    border-color: @rain-divider-color;
+    border-style: dashed;
+    border-width: @border-width-base 0 0;
+  }
+  &-horizontal&-with-text&-dashed {
+    &::before,
+    &::after {
+      border-style: dashed none none;
+    }
+  }
+  &-vertical&-dashed {
+    border-width: 0 0 0 @border-width-base;
+  }
+  &-inner-text {
+    display: inline-block;
+    padding: 0 1em;
+  }
+  &-plain&-with-text {
+    color: rgba(5, 5, 5, 0.88);
+    font-weight: normal;
+    font-size: @rain-divider-font-size;
+  }
+  &-horizontal&-with-text-left&-no-default-orientation-margin-left {
+    &::before {
+      width: 0;
+    }
+    &::after {
+      width: 100%;
+    }
+    .@{divider-prefix-cls}-inner-text {
+      padding-left: 0;
+    }
+  }
+  &-horizontal&-with-text-right&-no-default-orientation-margin-right {
+    &::before {
+      width: 100%;
+    }
+    &::after {
+      width: 0;
+    }
+    .@{divider-prefix-cls}-inner-text {
+      padding-right: 0;
+    }
+  }
+  &-compact {
+    font-size: 14px;
+  }
+}
