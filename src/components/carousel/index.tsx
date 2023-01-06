@@ -29,10 +29,10 @@ const Carousel: React.ForwardRefRenderFunction<CarouselHandle, CarouselProps> = 
   const [init, setInit] = useState(true);
   const [wrapperWidth, setWrapperWidth] = useState(0);
   const [wrapperHeight, setWrapperHeight] = useState(0);
-  const [renderArray, setRenderArray] = useState([] as any[]);
+  const [renderArray, setRenderArray] = useState<any[]>([]);
   const [current, setCurrent] = useState(0);
   const [offset, setOffset] = useState(0);
-  const [aniDuration, setAniDuration] = useState(0);
+  const [animationDuration, setAnimationDuration] = useState(0);
   const [action, setAction] = useState(true);
   // 是否展示箭头
   const [showArrow, setShowArrow] = useState(false);
@@ -60,13 +60,12 @@ const Carousel: React.ForwardRefRenderFunction<CarouselHandle, CarouselProps> = 
 
   // 计算容器宽高
   useEffect(() => {
-    const { current: el } = itemRef;
-    if (el) {
+    if (itemRef.current) {
       //@ts-ignore
-      const { children: elChildren }: { children: HTMLCollection } = el;
+      const { children: itemRefChildren }: { children: HTMLCollection } = itemRef.current;
       let maxWidth = 0,
         maxHeight = 0;
-      Array.from(elChildren).forEach((item) => {
+      Array.from(itemRefChildren).forEach((item) => {
         if (item.clientWidth > maxWidth) maxWidth = item.clientWidth;
         if (item.clientHeight > maxHeight) maxHeight = item.clientHeight;
       });
@@ -102,16 +101,16 @@ const Carousel: React.ForwardRefRenderFunction<CarouselHandle, CarouselProps> = 
     // 边界处理 && 回调
     const timer = setTimeout(() => {
       if (current === -1) {
-        setAniDuration(0);
+        setAnimationDuration(0);
         setCurrent(currentArray.length - 1);
       } else if (current === currentArray.length) {
-        setAniDuration(0);
+        setAnimationDuration(0);
         setCurrent(0);
       } else {
         afterChange?.(current);
       }
       setAction(true);
-    }, aniDuration);
+    }, animationDuration);
     return () => {
       clearTimeout(timer);
     };
@@ -120,7 +119,7 @@ const Carousel: React.ForwardRefRenderFunction<CarouselHandle, CarouselProps> = 
   // 前进
   const next = () => {
     if (!action) return;
-    if (!aniDuration) setAniDuration(600);
+    if (!animationDuration) setAnimationDuration(600);
     beforeChange?.(current, current === currentArray.length - 1 ? 0 : current + 1);
     setCurrent((n) => n + 1);
   };
@@ -128,7 +127,7 @@ const Carousel: React.ForwardRefRenderFunction<CarouselHandle, CarouselProps> = 
   // 后退
   const previous = () => {
     if (!action) return;
-    if (!aniDuration) setAniDuration(600);
+    if (!animationDuration) setAnimationDuration(600);
     beforeChange?.(current, current === 0 ? currentArray.length - 1 : current - 1);
     setCurrent((n) => n - 1);
   };
@@ -136,7 +135,7 @@ const Carousel: React.ForwardRefRenderFunction<CarouselHandle, CarouselProps> = 
   // 跳转到指定位置
   const goTo = (n: number) => {
     if (!action) return;
-    if (!aniDuration) setAniDuration(600);
+    if (!animationDuration) setAnimationDuration(600);
     beforeChange?.(current, n);
     setCurrent(n);
   };
@@ -166,80 +165,78 @@ const Carousel: React.ForwardRefRenderFunction<CarouselHandle, CarouselProps> = 
     };
   }, [action]);
   return (
-    <>
+    <div
+      className={`${prefixCls}-wrap`}
+      style={{ width: wrapperWidth + 'px', height: wrapperHeight + 'px' }}
+      onMouseEnter={() => {
+        handleArrowShow(true);
+      }}
+      onMouseLeave={() => {
+        handleArrowShow(false);
+      }}
+    >
       <div
-        className={`${prefixCls}-wrap`}
-        style={{ width: wrapperWidth + 'px', height: wrapperHeight + 'px' }}
-        onMouseEnter={() => {
-          handleArrowShow(true);
-        }}
-        onMouseLeave={() => {
-          handleArrowShow(false);
+        ref={itemRef}
+        className={`${prefixCls}-inner-wrapper`}
+        style={{
+          transform: `translateX(${offset - wrapperWidth}px)`,
+          transition: `${animationDuration / 1000}s`,
         }}
       >
-        <div
-          ref={itemRef}
-          className={`${prefixCls}-inner-wrapper`}
-          style={{
-            transform: `translateX(${offset - wrapperWidth}px)`,
-            transition: `${aniDuration / 1000}s`,
-          }}
-        >
-          {/* 预留最后一屏 */}
-          {renderArray.slice(renderArray.length - slidesToShow).map((item, index) => (
-            <div className={`${prefixCls}-item-wrap`} key={`last_wrap_${index}`}>
-              {item}
-            </div>
-          ))}
-          {renderArray.map((item, index) => (
-            <div className={`${prefixCls}-item-wrap`} key={`wrap_${index}`}>
-              {item}
-            </div>
-          ))}
-          {/* 预留第一屏 */}
-          {renderArray.slice(0, slidesToShow).map((item, index) => (
-            <div className={`${prefixCls}-item-wrap`} key={`last_wrap_${index}`}>
-              {item}
-            </div>
+        {/* 预留最后一屏 */}
+        {renderArray.slice(renderArray.length - slidesToShow).map((item, index) => (
+          <div className={`${prefixCls}-item-wrap`} key={`last_wrap_${index}`}>
+            {item}
+          </div>
+        ))}
+        {renderArray.map((item, index) => (
+          <div className={`${prefixCls}-item-wrap`} key={`wrap_${index}`}>
+            {item}
+          </div>
+        ))}
+        {/* 预留第一屏 */}
+        {renderArray.slice(0, slidesToShow).map((item, index) => (
+          <div className={`${prefixCls}-item-wrap`} key={`last_wrap_${index}`}>
+            {item}
+          </div>
+        ))}
+      </div>
+      {/* 点位 */}
+      {dots && (
+        <div className={`${prefixCls}-dots`}>
+          {currentArray.map((_, index) => (
+            <span
+              key={`dot_${index}`}
+              className={cls(`${prefixCls}-dot`, {
+                [`${prefixCls}-active`]:
+                  current === index ||
+                  (current === -1 && index === currentArray.length - 1) ||
+                  (current === currentArray.length && index === 0),
+              })}
+              onClick={() => goTo(index)}
+            />
           ))}
         </div>
-        {/* 点位 */}
-        {dots && (
-          <div className={`${prefixCls}-dots`}>
-            {currentArray.map((_, index) => (
-              <span
-                key={`dot_${index}`}
-                className={cls(`${prefixCls}-dot`, {
-                  [`${prefixCls}-active`]:
-                    current === index ||
-                    (current === -1 && index === currentArray.length - 1) ||
-                    (current === currentArray.length && index === 0),
-                })}
-                onClick={() => goTo(index)}
-              />
-            ))}
-          </div>
-        )}
-        {/* 预设箭头 start */}
-        {arrows && (
-          <div
-            className={cls(`${prefixCls}-arrow-left`, {
-              [`${prefixCls}-arrow-left-show`]: showArrow,
-            })}
-            onClick={previous}
-          />
-        )}
-        {arrows && (
-          <div
-            className={cls(`${prefixCls}-arrow-right`, {
-              [`${prefixCls}-arrow-right-show`]: showArrow,
-            })}
-            onClick={next}
-          />
-        )}
-        {/* 预设箭头 end */}
-      </div>
-    </>
+      )}
+      {/* 预设箭头 start */}
+      {arrows && (
+        <div
+          className={cls(`${prefixCls}-arrow-left`, {
+            [`${prefixCls}-arrow-left-show`]: showArrow,
+          })}
+          onClick={previous}
+        />
+      )}
+      {arrows && (
+        <div
+          className={cls(`${prefixCls}-arrow-right`, {
+            [`${prefixCls}-arrow-right-show`]: showArrow,
+          })}
+          onClick={next}
+        />
+      )}
+      {/* 预设箭头 end */}
+    </div>
   );
 };
 
