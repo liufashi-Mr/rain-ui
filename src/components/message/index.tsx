@@ -70,7 +70,6 @@ const Message = (props: MessageProps) => {
     e.stopPropagation();
     setVisible(false);
   };
-  console.log(content);
   return (
     <CSSTransition
       in={visible}
