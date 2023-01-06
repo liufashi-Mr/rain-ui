@@ -11,6 +11,7 @@ type CarouselHandle = {
   goTo: (index: number) => void;
 };
 
+const prefixCls = 'rain-carousel';
 const Carousel: React.ForwardRefRenderFunction<CarouselHandle, CarouselProps> = (
   {
     children,
@@ -85,7 +86,6 @@ const Carousel: React.ForwardRefRenderFunction<CarouselHandle, CarouselProps> = 
       if ((current - 1) * slidesToScroll + slidesToShow >= renderArray.length) {
         // 当前帧已到底，下一帧走预留
         needMove = renderArray.length - (current - 1) * slidesToScroll;
-        console.log(needMove);
       } else if ((current - 1) * slidesToScroll + slidesToShow < renderArray.length) {
         // 当前帧还未到底，下一帧移到底部
         needMove = renderArray.length - ((current - 1) * slidesToScroll + slidesToShow);
@@ -168,7 +168,7 @@ const Carousel: React.ForwardRefRenderFunction<CarouselHandle, CarouselProps> = 
   return (
     <>
       <div
-        className={'wrap'}
+        className={`${prefixCls}-wrap`}
         style={{ width: wrapperWidth + 'px', height: wrapperHeight + 'px' }}
         onMouseEnter={() => {
           handleArrowShow(true);
@@ -179,7 +179,7 @@ const Carousel: React.ForwardRefRenderFunction<CarouselHandle, CarouselProps> = 
       >
         <div
           ref={itemRef}
-          className={'innerWrapper'}
+          className={`${prefixCls}-inner-wrapper`}
           style={{
             transform: `translateX(${offset - wrapperWidth}px)`,
             transition: `${aniDuration / 1000}s`,
@@ -187,34 +187,30 @@ const Carousel: React.ForwardRefRenderFunction<CarouselHandle, CarouselProps> = 
         >
           {/* 预留最后一屏 */}
           {renderArray.slice(renderArray.length - slidesToShow).map((item, index) => (
-            <div className={'itemWrap'} key={`last_wrap_${index}`}>
+            <div className={`${prefixCls}-item-wrap`} key={`last_wrap_${index}`}>
               {item}
             </div>
           ))}
-          {/* <div className={'itemWrap'}>
-              {renderArray[renderArray.length - 1]}
-            </div> */}
           {renderArray.map((item, index) => (
-            <div className={'itemWrap'} key={`wrap_${index}`}>
+            <div className={`${prefixCls}-item-wrap`} key={`wrap_${index}`}>
               {item}
             </div>
           ))}
           {/* 预留第一屏 */}
           {renderArray.slice(0, slidesToShow).map((item, index) => (
-            <div className={'itemWrap'} key={`last_wrap_${index}`}>
+            <div className={`${prefixCls}-item-wrap`} key={`last_wrap_${index}`}>
               {item}
             </div>
           ))}
-          {/* <div className={'itemWrap'}>{renderArray[0]}</div> */}
         </div>
         {/* 点位 */}
         {dots && (
-          <div className="dots">
+          <div className={`${prefixCls}-dots`}>
             {currentArray.map((_, index) => (
               <span
                 key={`dot_${index}`}
-                className={cls('dot', {
-                  ['active']:
+                className={cls(`${prefixCls}-dot`, {
+                  [`${prefixCls}-active`]:
                     current === index ||
                     (current === -1 && index === currentArray.length - 1) ||
                     (current === currentArray.length && index === 0),
@@ -225,8 +221,22 @@ const Carousel: React.ForwardRefRenderFunction<CarouselHandle, CarouselProps> = 
           </div>
         )}
         {/* 预设箭头 start */}
-        {arrows && <div className={cls('arrowLeft', { show: showArrow })} onClick={previous} />}
-        {arrows && <div className={cls('arrowRight', { show: showArrow })} onClick={next} />}
+        {arrows && (
+          <div
+            className={cls(`${prefixCls}-arrow-left`, {
+              [`${prefixCls}-arrow-left-show`]: showArrow,
+            })}
+            onClick={previous}
+          />
+        )}
+        {arrows && (
+          <div
+            className={cls(`${prefixCls}-arrow-right`, {
+              [`${prefixCls}-arrow-right-show`]: showArrow,
+            })}
+            onClick={next}
+          />
+        )}
         {/* 预设箭头 end */}
       </div>
     </>
