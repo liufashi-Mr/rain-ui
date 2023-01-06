@@ -1,0 +1,92 @@
+.wrap {
+  position: relative;
+  overflow: hidden;
+  .innerWrapper {
+    display: flex;
+    white-space: nowrap;
+  }
+  .dots {
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    display: flex;
+    transform: translateX(-50%);
+    cursor: pointer;
+    .dot {
+      width: 16px;
+      height: 3px;
+      margin: 0 3px;
+      background-color: #fff;
+      opacity: 0.3;
+      transition: all 0.5s;
+      &.active {
+        width: 24px;
+        opacity: 1;
+      }
+    }
+  }
+  .arrowLeft {
+    position: absolute;
+    top: 50%;
+    left: -28px;
+    width: 28px;
+    height: 56px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    transition: all 0.12s ease-in-out;
+    &.show {
+      left: 0;
+    }
+    &::after {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 10px;
+      width: 13px;
+      height: 13px;
+      margin: auto;
+      border: 1px solid #fff;
+      border-top-color: transparent;
+      border-right-color: transparent;
+      transform: rotate(45deg);
+      content: '';
+    }
+  }
+  .arrowRight {
+    position: absolute;
+    top: 50%;
+    right: -28px;
+    width: 28px;
+    height: 56px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    transition: all 0.12s ease-in-out;
+    &.show {
+      right: 0;
+    }
+    &::after {
+      position: absolute;
+      top: 0;
+      right: 10px;
+      bottom: 0;
+      width: 13px;
+      height: 13px;
+      margin: auto;
+      border: 1px solid #fff;
+      border-bottom-color: transparent;
+      border-left-color: transparent;
+      transform: rotate(45deg);
+      content: '';
+    }
+  }
+}
+.itemWrap {
+  //   display: inline-block;
+  float: left;
+}
