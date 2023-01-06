@@ -1,10 +1,5 @@
-import { Tag } from 'raind';
+import { Tag, message } from 'raind';
 import React from 'react';
-
-const preventDefault = (e: React.MouseEvent<HTMLElement>) => {
-  e.preventDefault();
-  alert('这下关不掉了吧！');
-};
 
 const App: React.FC = () => (
   <>
@@ -18,12 +13,19 @@ const App: React.FC = () => (
       color="primary"
       bordered
       onClose={() => {
-        alert('谁让你关闭的？');
+        message.warning('谁让你关闭的？');
       }}
     >
       Tag 3
     </Tag>
-    <Tag closable color="primary" onClose={preventDefault}>
+    <Tag
+      closable
+      color="primary"
+      onClose={(e: React.MouseEvent<HTMLElement>) => {
+        e.preventDefault();
+        message.warning('这下关不掉了吧！');
+      }}
+    >
       Prevent Default
     </Tag>
   </>
