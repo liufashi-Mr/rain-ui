@@ -33,7 +33,7 @@ const App: React.FC = () => {
       <div style={{ padding: 24, background: dark ? '#141414' : '#ffffff', borderRadius: 8 }}>
         <ConfigProvider
           config={{
-            '--rain-border-radius-base': '2px',
+            '--rain-border-radius-base': '4px',
             '--rain-border-color-base': '#00000033',
             '--rain-background-color-base': '#ffffff33',
           }}
