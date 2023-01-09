@@ -51,6 +51,6 @@ interface TagProps {
    * @default -
    */
   onChecked?: (checked: boolean, value: ReactNode) => void;
-  children: ReactNode;
+  children?: ReactNode;
 }
 export type { TagProps };

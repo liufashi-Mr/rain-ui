@@ -15,6 +15,7 @@ export type OtherVariables = {
   '--rain-disabled-color'?: string; // 失效色
   '--rain-border-radius-base'?: string; // 组件/浮层圆角
   '--rain-border-color-base'?: string; // 边框色
+  '--rain-background-color-base'?: string; //背景色
 };
 
 interface ConfigProviderProps {

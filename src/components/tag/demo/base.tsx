@@ -1,6 +1,5 @@
 import React from 'react';
-import { Tag } from 'raind';
-import { Divider } from 'raind';
+import { Tag, Divider } from 'raind';
 import '../style/demo.less';
 const App: React.FC<Record<string, never>> = () => {
   return (

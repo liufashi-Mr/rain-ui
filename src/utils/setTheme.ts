@@ -43,17 +43,17 @@ const neutralColor = [
   '#000000',
 ];
 const setColors = (element: HTMLElement, colors: string[], item: string) => {
-  element.style.setProperty(`--rain-${item}-color-1`, colors[1]);
-  element.style.setProperty(`--rain-${item}-color-2`, colors[2]);
-  element.style.setProperty(`--rain-${item}-color-3`, colors[3]);
-  element.style.setProperty(`--rain-${item}-color-hover`, colors[4]);
-  element.style.setProperty(`--rain-${item}-color`, colors[5]);
-  element.style.setProperty(`--rain-${item}-color-active`, colors[6]);
-  element.style.setProperty(`--rain-${item}-color-7`, colors[7]);
-  element.style.setProperty(`--rain-${item}-color-8`, colors[8]);
-  element.style.setProperty(`--rain-${item}-color-9`, colors[9]);
-  element.style.setProperty(`--rain-${item}-color-10`, colors[10]);
-  element.style.setProperty(`--rain-${item}-color-outline`, colors[5] + '33');
+  element.style.setProperty(`--rain-${item}-color-1`, colors[0]);
+  element.style.setProperty(`--rain-${item}-color-2`, colors[1]);
+  element.style.setProperty(`--rain-${item}-color-3`, colors[2]);
+  element.style.setProperty(`--rain-${item}-color-hover`, colors[3]);
+  element.style.setProperty(`--rain-${item}-color`, colors[4]);
+  element.style.setProperty(`--rain-${item}-color-active`, colors[5]);
+  element.style.setProperty(`--rain-${item}-color-7`, colors[6]);
+  element.style.setProperty(`--rain-${item}-color-8`, colors[7]);
+  element.style.setProperty(`--rain-${item}-color-9`, colors[8]);
+  element.style.setProperty(`--rain-${item}-color-10`, colors[9]);
+  element.style.setProperty(`--rain-${item}-color-outline`, colors[4] + '33');
 };
 
 // 主题配色
@@ -86,7 +86,6 @@ export const setOtherConfig = (
   variables: OtherVariables = {},
 ): void => {
   const mergedVariables = { ...initVariables, ...variables };
-
   Object.keys(mergedVariables).forEach((item: keyof OtherVariables) => {
     if (mergedVariables[item]) {
       // 如果开启深色模式，修改变量
@@ -100,10 +99,12 @@ export const setOtherConfig = (
             // 是否是十六进制黑色+十六进制透明度
             mergedVariables[item].includes('000000') || mergedVariables[item].includes('ffffff')
               ? mergedVariables[item].includes('000000')
-                ? mergedVariables[item].replaceAll('000000', 'ffffff')
-                : mergedVariables[item].replaceAll('ffffff', '000000')
+                ? mergedVariables[item].replace('000000', 'ffffff')
+                : mergedVariables[item].replace('ffffff', '000000')
               : // rain-ui 默认值
-                initVariablesDark[item],
+              mergedVariables[item].includes('px')
+              ? mergedVariables[item]
+              : initVariablesDark[item],
           );
         } else {
           // 第二种
@@ -120,14 +121,14 @@ export const setDarkTheme = (
   element: HTMLElement,
   backgroundColor: string = '#141414',
   theme: ThemeVariables = initTheme,
-  isUsed: boolean = true,
+  dark: boolean = false,
 ): void => {
   const mergedTheme = { ...initTheme, ...theme };
   Object.keys(mergedTheme).forEach((item: keyof ThemeVariables) => {
     if (mergedTheme[item]) {
       const colors = generate(
         mergedTheme[item] as string,
-        isUsed
+        dark
           ? {
               theme: 'dark',
               backgroundColor,
@@ -138,9 +139,6 @@ export const setDarkTheme = (
     }
   });
   neutralColor.forEach((x, i, arr) => {
-    element.style.setProperty(
-      `--rain-neutral-color-${i + 1}`,
-      isUsed ? arr[arr.length - i - 1] : x,
-    );
+    element.style.setProperty(`--rain-neutral-color-${i + 1}`, dark ? arr[arr.length - i - 1] : x);
   });
 };
