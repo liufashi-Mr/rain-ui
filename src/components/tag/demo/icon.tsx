@@ -7,13 +7,11 @@ import {
   MinusCircleOutlined,
   SyncOutlined,
 } from '@ant-design/icons';
-import { Tag } from 'raind';
-import { Divider } from 'raind';
-import '../style/demo.less';
+import { Tag, Divider, Space } from 'raind';
 const App: React.FC = () => (
   <>
     <Divider orientation="left">Without bordered</Divider>
-    <div>
+    <Space>
       <Tag icon={<CheckCircleOutlined />} color="success">
         success
       </Tag>
@@ -26,9 +24,9 @@ const App: React.FC = () => (
       <Tag icon={<ExclamationCircleOutlined />} color="warning">
         warning
       </Tag>
-    </div>
+    </Space>
     <Divider orientation="left">With bordered</Divider>
-    <div>
+    <Space>
       <Tag icon={<CheckCircleOutlined />} color="success" bordered>
         success
       </Tag>
@@ -47,7 +45,7 @@ const App: React.FC = () => (
       <Tag icon={<MinusCircleOutlined />} color="default" bordered>
         stop
       </Tag>
-    </div>
+    </Space>
   </>
 );
 

@@ -1,8 +1,8 @@
 import React from 'react';
-import { Button, message } from 'raind';
+import { Button, message, Space } from 'raind';
 const App: React.FC = () => {
   return (
-    <>
+    <Space>
       <Button
         onClick={() =>
           message.info({
@@ -26,7 +26,7 @@ const App: React.FC = () => {
       >
         closed callback
       </Button>
-    </>
+    </Space>
   );
 };
 

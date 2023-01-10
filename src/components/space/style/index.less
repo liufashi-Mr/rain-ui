@@ -1,0 +1,46 @@
+@import '../../../styles/variables/index.less';
+
+@space-prefix-cls: ~'@{rain-prefix}-space';
+
+.@{space-prefix-cls} {
+  display: flex;
+  &-wrap {
+    flex-wrap: wrap;
+  }
+  &-horizontal {
+    flex-direction: row;
+  }
+  &-vertical {
+    flex-direction: column;
+  }
+  &-small {
+    gap: 8px;
+    &-compact {
+      gap: 4px;
+    }
+  }
+  &-middle {
+    gap: 16px;
+    &-compact {
+      gap: 8px;
+    }
+  }
+  &-large {
+    gap: 24px;
+    &-compact {
+      gap: 16px;
+    }
+  }
+  &-center {
+    align-items: center;
+  }
+  &-start {
+    align-items: flex-start;
+  }
+  &-end {
+    align-items: flex-end;
+  }
+  &-baseline {
+    align-items: baseline;
+  }
+}

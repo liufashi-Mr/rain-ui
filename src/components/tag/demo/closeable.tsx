@@ -1,8 +1,8 @@
-import { Tag, message } from 'raind';
+import { Tag, message, Space } from 'raind';
 import React from 'react';
 
 const App: React.FC = () => (
-  <>
+  <Space>
     <Tag>Tag 1</Tag>
     <Tag>
       <a href="https:blog.liufashi.top">Link</a>
@@ -28,7 +28,7 @@ const App: React.FC = () => (
     >
       Prevent Default
     </Tag>
-  </>
+  </Space>
 );
 
 export default App;

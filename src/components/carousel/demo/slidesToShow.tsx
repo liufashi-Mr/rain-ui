@@ -20,12 +20,12 @@ export default () => {
         autoPlay
         slidesToShow={3}
         slidesToScroll={2}
-        //   beforeChange={(from, to) => {
-        //     console.log(`变化前：从${from}到${to}`);
-        //   }}
-        //   afterChange={(c) => {
-        //     console.log(`回调${c}`);
-        //   }}
+        beforeChange={(from, to) => {
+          console.log(`变化前：从${from}到${to}`);
+        }}
+        afterChange={(c) => {
+          console.log(`回调${c}`);
+        }}
       >
         <div style={pageStyle}>1-1</div>
         <div style={pageStyle}>1-2</div>

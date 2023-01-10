@@ -33,6 +33,6 @@ nav:
 
 ### 指定数目一屏
 
-<code src="./demo/slidesToShow.tsx"></code>
+提供了`beforeChange` 和 `afterChange` 两个钩子 <code src="./demo/slidesToShow.tsx"></code>
 
 <API></API>

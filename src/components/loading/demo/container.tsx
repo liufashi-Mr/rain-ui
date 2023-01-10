@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Loading, Button } from 'raind';
-import '../style/demo.less';
 import { Alert } from 'antd';
 const App: React.FC = () => {
   const [loading, setLoading] = useState(true);
@@ -8,6 +7,7 @@ const App: React.FC = () => {
     <>
       <Button
         type="primary"
+        style={{ marginBottom: 12 }}
         onClick={() => {
           setLoading((v) => !v);
         }}

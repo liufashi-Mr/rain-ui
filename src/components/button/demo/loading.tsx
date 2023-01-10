@@ -1,6 +1,5 @@
 import React from 'react';
-import { Button, Divider } from 'raind';
-import '../style/demo.less';
+import { Button, Divider, Space } from 'raind';
 import { SearchOutlined } from '@ant-design/icons';
 import { useState } from 'react';
 const App: React.FC = () => {
@@ -12,8 +11,8 @@ const App: React.FC = () => {
           点 我
         </Button>
       </div>
-      <div>
-        <Divider>base</Divider>
+      <Divider>base</Divider>
+      <Space>
         <Button loading={loading}>default</Button>
         <Button loading={loading} type="primary">
           primary
@@ -30,7 +29,9 @@ const App: React.FC = () => {
         <Button loading={loading} type="dashed">
           dashed
         </Button>
-        <Divider>size</Divider>
+      </Space>
+      <Divider>size</Divider>
+      <Space>
         <Button loading={loading} size="small">
           small
         </Button>
@@ -47,7 +48,9 @@ const App: React.FC = () => {
         <Button loading={loading} size="large" type="primary">
           large
         </Button>
-        <Divider>shape</Divider>
+      </Space>
+      <Divider>shape</Divider>
+      <Space>
         <Button shape="circle" type="primary" loading={loading}>
           <SearchOutlined />
         </Button>
@@ -57,10 +60,9 @@ const App: React.FC = () => {
         <Button loading={loading} radius="10" type="primary">
           radius
         </Button>
-      </div>
+      </Space>
       <Divider>ghost</Divider>
-
-      <div className="bg">
+      <Space style={{ padding: '12px 24px', background: '#545959', marginTop: 12 }}>
         <Button loading={loading} ghost>
           default
         </Button>
@@ -79,7 +81,7 @@ const App: React.FC = () => {
         <Button loading={loading} ghost type="dashed">
           dashed
         </Button>
-      </div>
+      </Space>
     </>
   );
 };

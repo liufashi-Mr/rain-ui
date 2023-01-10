@@ -1,6 +1,5 @@
 import React from 'react';
-import { Button, Tag, Loading, Divider } from 'raind';
-import { Space } from 'antd';
+import { Button, Tag, Loading, Divider, Space } from 'raind';
 import {
   SyncOutlined,
   SearchOutlined,
@@ -28,7 +27,6 @@ const App: React.FC = () => {
           bordered tag
         </Tag>
       </Space>
-      <br />
       <Space style={{ marginTop: 24 }} size="large">
         <Loading />
         <Loading type="collide" />

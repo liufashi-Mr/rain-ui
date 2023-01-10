@@ -1,9 +1,8 @@
 import React from 'react';
-import { Button } from 'raind';
-import '../style/demo.less';
+import { Button, Space } from 'raind';
 const App: React.FC = () => {
   return (
-    <div>
+    <Space>
       <Button>default</Button>
       <Button type="primary">primary</Button>
       <Button type="success">success</Button>
@@ -14,7 +13,7 @@ const App: React.FC = () => {
       <Button type="link" href="https://blog.liufashi.top" target="_blank">
         link
       </Button>
-    </div>
+    </Space>
   );
 };
 

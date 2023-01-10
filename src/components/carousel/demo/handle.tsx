@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { Button, Carousel } from 'raind';
+import { Button, Carousel, Space } from 'raind';
 
 export default () => {
   const pageStyle: React.CSSProperties | undefined = {
@@ -14,15 +14,11 @@ export default () => {
   const ref = useRef<any>(null);
   return (
     <>
-      <Button style={{ margin: '10px' }} onClick={() => ref?.current?.previous()}>
-        上一张
-      </Button>
-      <Button style={{ margin: '10px' }} onClick={() => ref?.current?.next()}>
-        下一张
-      </Button>
-      <Button style={{ margin: '10px' }} onClick={() => ref?.current?.goTo(1)}>
-        跳转到第二张
-      </Button>
+      <Space style={{ marginBottom: 8 }}>
+        <Button onClick={() => ref?.current?.previous()}>上一张</Button>
+        <Button onClick={() => ref?.current?.next()}>下一张</Button>
+        <Button onClick={() => ref?.current?.goTo(1)}>跳转到第二张</Button>
+      </Space>
       <Carousel dots ref={ref}>
         <div style={pageStyle}>1</div>
         <div style={pageStyle}>2</div>

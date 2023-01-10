@@ -1,19 +1,12 @@
 import React from 'react';
-import { Loading } from 'raind';
-import '../style/demo.less';
+import { Loading, Space } from 'raind';
 const App: React.FC = () => {
   return (
-    <div style={{ display: 'flex', alignItems: 'center' }}>
-      <div className="item">
-        <Loading size="small" />
-      </div>
-      <div className="item">
-        <Loading />
-      </div>
-      <div className="item">
-        <Loading size="large" />
-      </div>
-    </div>
+    <Space size="large">
+      <Loading size="small" />
+      <Loading />
+      <Loading size="large" />
+    </Space>
   );
 };
 

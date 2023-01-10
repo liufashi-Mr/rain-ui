@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { SketchPicker } from 'react-color';
-import { Button, Tag, Loading, Divider, ConfigProvider } from 'raind';
+import { Button, Tag, Loading, Divider, ConfigProvider, Space } from 'raind';
 import type { ThemeVariables } from '../interface';
-import { Space } from 'antd';
 import {
   SyncOutlined,
   SearchOutlined,
@@ -26,12 +25,15 @@ const App: React.FC = () => {
   return (
     <ConfigProvider theme={theme} local dark={dark} compact={compact}>
       <div style={{ padding: 24, background: dark ? '#141414' : '#fff', borderRadius: 8 }}>
-        <Button type="primary" block onClick={() => setDark((val) => !val)}>
-          {dark ? '关闭' : '开启'}深色模式
-        </Button>
-        <Button type="primary" block onClick={() => setCompact((val) => !val)}>
-          {compact ? '关闭' : '开启'}紧凑模式
-        </Button>
+        <Space direction="vertical" spaceItemStyle={{ width: 400 }}>
+          <Button type="primary" block onClick={() => setDark((val) => !val)}>
+            {dark ? '关闭' : '开启'}深色模式
+          </Button>
+          <Button type="primary" block onClick={() => setCompact((val) => !val)}>
+            {compact ? '关闭' : '开启'}紧凑模式
+          </Button>
+        </Space>
+
         <div style={{ display: 'flex' }}>
           <Space>
             <div>
@@ -102,7 +104,6 @@ const App: React.FC = () => {
               bordered tag
             </Tag>
           </Space>
-          <br />
           <Space style={{ marginTop: 24 }} size="large">
             <Loading />
             <Loading type="collide" />

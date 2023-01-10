@@ -1,50 +1,33 @@
 import React from 'react';
-import { Loading, Divider } from 'raind';
+import { Loading, Divider, Space } from 'raind';
 import { LoadingOutlined } from '@ant-design/icons';
-import '../style/demo.less';
 const App: React.FC = () => {
   return (
     <>
       <Divider>spin</Divider>
-      <div style={{ display: 'flex', alignItems: 'center' }}>
-        <div className="item">
-          <Loading size="small" />
-        </div>
-        <div className="item">
-          <Loading />
-        </div>
-        <div className="item">
-          <Loading size="large" />
-        </div>
-      </div>
+      <Space size="large">
+        <Loading size="small" />
+        <Loading />
+        <Loading size="large" />
+      </Space>
       <Divider>blossom</Divider>
-      <div style={{ display: 'flex', alignItems: 'center' }}>
-        <div className="item">
-          <Loading type="blossom" size="small" />
-        </div>
-        <div className="item">
-          <Loading type="blossom" />
-        </div>
-        <div className="item">
-          <Loading type="blossom" size="large" />
-        </div>
-      </div>
+      <Space size="large">
+        <Loading type="blossom" size="small" />
+        <Loading type="blossom" />
+        <Loading type="blossom" size="large" />
+      </Space>
       <Divider>collide</Divider>
-      <div style={{ display: 'flex', alignItems: 'center' }}>
-        <div className="item">
-          <Loading type="collide" size="small" />
-        </div>
-        <div className="item">
-          <Loading type="collide" />
-        </div>
-        <div className="item">
-          <Loading type="collide" size="large" />
-        </div>
-      </div>
+      <Space size="large">
+        <Loading type="collide" size="small" />
+        <Loading type="collide" />
+        <Loading type="collide" size="large" />
+      </Space>
       <Divider>custom</Divider>
-      <div className="item">
+      <Space size="large">
+        <Loading indicator={<LoadingOutlined style={{ fontSize: 12 }} />} />
         <Loading indicator={<LoadingOutlined style={{ fontSize: 24 }} />} />
-      </div>
+        <Loading indicator={<LoadingOutlined style={{ fontSize: 36 }} />} />
+      </Space>
     </>
   );
 };

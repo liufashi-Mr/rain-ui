@@ -1,10 +1,9 @@
 import React from 'react';
-import { Button } from 'raind';
-import '../style/demo.less';
+import { Button, Space } from 'raind';
 const App: React.FC = () => {
   return (
     <>
-      <div style={{ paddingLeft: 24 }}>
+      <Space style={{ paddingLeft: 24 }}>
         <Button ghost>default</Button>
         <Button ghost type="primary">
           primary
@@ -21,8 +20,8 @@ const App: React.FC = () => {
         <Button ghost type="dashed">
           dashed
         </Button>
-      </div>
-      <div className="bg">
+      </Space>
+      <Space style={{ padding: '12px 24px', background: '#545959', marginTop: 12 }}>
         <Button ghost>default</Button>
         <Button ghost type="primary">
           primary
@@ -39,7 +38,7 @@ const App: React.FC = () => {
         <Button ghost type="dashed">
           dashed
         </Button>
-      </div>
+      </Space>
     </>
   );
 };
