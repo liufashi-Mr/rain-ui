@@ -90,6 +90,7 @@
     "@testing-library/react": "^13.0.0",
     "@types/jest": "^27.0.3",
     "@types/react-color": "^3.0.6",
+    "@types/react-dom": "^18.0.10",
     "@types/react-transition-group": "^4.4.5",
     "@umijs/fabric": "^2.8.1",
     "@umijs/test": "^3.0.5",

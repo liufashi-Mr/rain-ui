@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import {
   ExclamationCircleFilled,
   CheckCircleFilled,
@@ -9,8 +9,8 @@ import {
 } from '@ant-design/icons';
 import cls from 'classnames';
 import { CSSTransition } from 'react-transition-group';
-import type { MessageProps, MessageType } from './interface';
 import './style/index.less';
+import type { MessageProps, MessageType } from './interface';
 
 const prefixCls = 'rain-message';
 const Message = (props: MessageProps) => {
@@ -117,7 +117,7 @@ const createMessage = (messageConfig: MessageProps) => {
   const loadingClose = (setVisible: React.Dispatch<React.SetStateAction<boolean>>) => {
     hide = () => setVisible(false);
   };
-  ReactDOM.render(
+  createRoot(divElement).render(
     <Message
       {...rest}
       handleClose={handleClose}
@@ -125,7 +125,6 @@ const createMessage = (messageConfig: MessageProps) => {
       duration={duration}
       container={container}
     />,
-    divElement,
   );
   if (rest.type === 'loading') {
     return hide;

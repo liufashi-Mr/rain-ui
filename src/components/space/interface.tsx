@@ -1,4 +1,4 @@
-import type { CSSProperties } from 'react';
+import type { CSSProperties, ReactNode } from 'react';
 
 export type SpaceSize = 'mini' | 'small' | 'middle' | 'large';
 export type SpaceDirection = 'horizontal' | 'vertical';
@@ -8,7 +8,7 @@ interface SpaceProps {
    * @description 布局元素
    * @default -
    */
-  children?: React.ReactNode;
+  children?: ReactNode;
   /**
    * @description Space容器样式
    * @default -
