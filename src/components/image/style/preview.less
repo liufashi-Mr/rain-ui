@@ -1,0 +1,111 @@
+@import '../../../styles/variables/index.less';
+@image-prefix-cls: ~'@{rain-prefix}-image-preview';
+
+.@{image-prefix-cls} {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 999;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.4);
+  transform: translate(-50%, -50%);
+  user-select: none;
+
+  &-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100vw;
+    height: 60px;
+    padding: 0 22px;
+    background-color: rgba(0, 0, 0, 0.4);
+    &-close {
+      width: 40px;
+      height: 40px;
+      line-height: 40px;
+      text-align: center;
+      background-color: rgba(0, 0, 0, 0.3);
+      border-radius: 50%;
+      cursor: pointer;
+    }
+  }
+
+  &-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 9;
+    transform: translate(-50%, -50%);
+    cursor: move;
+    transition: transform @default-transition;
+    img {
+      -webkit-user-drag: none;
+    }
+  }
+
+  &-previous,
+  &-next {
+    position: absolute;
+    top: 50%;
+    width: 50px;
+    height: 50px;
+    color: #fff;
+    font-size: 16px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    transform: translateY(-50%);
+  }
+  &-previous {
+    left: 30px;
+  }
+  &-next {
+    right: 30px;
+  }
+  &-operation {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    z-index: 999;
+    display: flex;
+    gap: 36px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: @border-radius-base;
+    transform: translateX(-50%);
+  }
+}
+.@{image-prefix-cls}-animation-enter,
+.@{image-prefix-cls}-animation-appear {
+  width: 0;
+  height: 0;
+  opacity: 0;
+}
+
+.@{image-prefix-cls}-animation-enter-active,
+.@{image-prefix-cls}-animation-appear-active {
+  width: 100vw;
+  height: 100vh;
+  opacity: 1;
+  transition: all @default-transition;
+}
+
+.@{image-prefix-cls}-animation-exit {
+  width: 100vw;
+  height: 100vh;
+  opacity: 1;
+}
+
+.@{image-prefix-cls}-animation-exit-active {
+  width: 0;
+  height: 0;
+  opacity: 0;
+  transition: all @default-transition;
+}

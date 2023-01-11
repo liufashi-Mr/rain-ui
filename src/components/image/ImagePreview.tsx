@@ -1,7 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
-import styles from './style/index.less';
+import './style/preview.less';
 import { createPortal } from 'react-dom';
 import { getBarWidth, hasScrollbar } from '../../utils/scrollBar';
+import cls from 'classnames';
+import { CSSTransition } from 'react-transition-group';
 import {
   CloseOutlined,
   ZoomInOutlined,
@@ -10,6 +12,7 @@ import {
   LeftOutlined,
   RightOutlined,
   ZoomOutOutlined,
+  RedoOutlined,
 } from '@ant-design/icons';
 
 export interface ImagePreviewProps {
@@ -18,10 +21,9 @@ export interface ImagePreviewProps {
   picList: any[];
   startIndex?: number;
 }
-
+const prefixCls = 'rain-image-preview';
 const ImagePreview = (props: ImagePreviewProps): React.ReactPortal => {
   const { visible, onClose, picList = [], startIndex = 0 } = props;
-
   const [picIndex, setPicIndex] = useState(startIndex);
   const [deg, setDeg] = useState(0);
   const [size, setSize] = useState(0);
@@ -29,16 +31,34 @@ const ImagePreview = (props: ImagePreviewProps): React.ReactPortal => {
   const initImagePreView = () => {
     setSize(1);
     setDeg(0);
-    picture.current.style.left = '50%';
-    picture.current.style.top = '50%';
+    if (picture.current) {
+      picture.current.style.left = '50%';
+      picture.current.style.top = '50%';
+    }
   };
   useEffect(() => {
     initImagePreView();
     setPicIndex(0);
-    document.body.style.overflow = visible ? 'hidden' : '';
-    hasScrollbar()
-      ? (document.body.style.width = visible ? `calc( 100% - ${getBarWidth() + 'px'})` : '')
-      : '';
+    // document.body.style.overflow = visible ? 'hidden' : '';
+    if (hasScrollbar()) {
+      if (visible) {
+        // document.body.style.width = `calc( 100% - ${getBarWidth()}px )`;
+        // document.body.style.overflowY = 'hidden';
+        document.documentElement.style.width = `calc( 100% - ${getBarWidth()}px )`;
+        document.documentElement.style.paddingRight = `${getBarWidth()}px`;
+        document.documentElement.style.overflowY = 'hidden';
+      } else {
+        const timer = setTimeout(() => {
+          // document.body.style.width = '100%';
+          // document.body.style.overflowY = 'auto';
+          document.documentElement.style.width = '100%';
+          document.documentElement.style.overflowY = 'auto';
+          document.documentElement.style.paddingRight = '0px';
+
+          clearTimeout(timer);
+        }, 300);
+      }
+    }
   }, [visible]);
 
   useEffect(() => {
@@ -46,10 +66,12 @@ const ImagePreview = (props: ImagePreviewProps): React.ReactPortal => {
   }, [picIndex]);
 
   useEffect(() => {
-    picture.current.style.transform = `translate(-50%,-50%) scale(${size}) rotate(${deg}deg) `;
+    if (picture.current) {
+      picture.current.style.transform = `translate(-50%,-50%) scale(${size}) rotate(${deg}deg) `;
+    }
   }, [size, deg]);
 
-  const ImageRotate = (flag: boolean) => (flag ? setDeg(deg + 90) : setDeg(deg - 90));
+  const rotate = (flag: boolean) => (flag ? setDeg(deg + 90) : setDeg(deg - 90));
 
   const setPicSize = (flag: boolean) =>
     size > 1
@@ -86,59 +108,65 @@ const ImagePreview = (props: ImagePreviewProps): React.ReactPortal => {
   };
 
   return createPortal(
-    <div
-      style={visible ? { width: '100vw', height: '100vh', opacity: 1, zIndex: 2000 } : {}}
-      className={styles.mask}
-      onWheel={(e) => handleChangeSize(e)}
+    <CSSTransition
+      in={visible}
+      timeout={300}
+      appear
+      mountOnEnter
+      classNames={`${prefixCls}-animation`}
+      unmountOnExit
     >
-      <header>
-        <div onClick={() => ImageRotate(false)}>
-          <RotateLeftOutlined />
+      <div className={prefixCls} onWheel={(e) => handleChangeSize(e)}>
+        <header className={`${prefixCls}-header`}>
+          <div />
+          <div>{`${picIndex + 1}/${picList.length}`}</div>
+          <div className={`${prefixCls}-header-close`} onClick={onClose}>
+            <CloseOutlined />
+          </div>
+        </header>
+        <div
+          className={`${prefixCls}-content`}
+          ref={picture}
+          onMouseDown={(e) => {
+            handleMove(e);
+          }}
+          onDoubleClick={initImagePreView}
+        >
+          {picList.length && <img src={picList[picIndex]} />}
         </div>
-        <div onClick={() => ImageRotate(true)}>
-          <RotateRightOutlined />
+
+        <div className={`${prefixCls}-operation`}>
+          <RotateLeftOutlined onClick={() => rotate(false)} />
+          <RotateRightOutlined onClick={() => rotate(true)} />
+          <RedoOutlined onClick={initImagePreView} />
+          <ZoomOutOutlined
+            style={{ opacity: size <= 1 ? '0.5' : '1' }}
+            onClick={() => setPicSize(false)}
+          />
+          <ZoomInOutlined onClick={() => setPicSize(true)} />
         </div>
-        <div style={{ opacity: size <= 1 ? '0.5' : '1' }} onClick={() => setPicSize(false)}>
-          <ZoomOutOutlined />
-        </div>
-        <div onClick={() => setPicSize(true)}>
-          <ZoomInOutlined />
-        </div>
-        <div className={styles.delete} onClick={onClose}>
-          <CloseOutlined />
-        </div>
-      </header>
-      <div
-        className={styles.content}
-        ref={picture}
-        onMouseDown={(e) => {
-          handleMove(e);
-        }}
-        onDoubleClick={initImagePreView}
-      >
-        {picList.length && <img src={picList[picIndex]} />}
+        {picList.length > 0 && (
+          <>
+            <button
+              style={{ opacity: picIndex !== 0 ? 1 : 0.5 }}
+              disabled={picIndex <= 0}
+              className={`${prefixCls}-previous`}
+              onClick={() => setPicIndex(picIndex - 1)}
+            >
+              <LeftOutlined />
+            </button>
+            <button
+              style={{ opacity: picIndex !== picList.length - 1 ? 1 : 0.5 }}
+              disabled={picIndex >= picList.length - 1}
+              className={`${prefixCls}-next`}
+              onClick={() => setPicIndex(picIndex + 1)}
+            >
+              <RightOutlined />
+            </button>
+          </>
+        )}
       </div>
-      {picList.length > 1 && (
-        <div className={styles.btn}>
-          <button
-            style={picIndex !== 0 ? {} : { cursor: 'not-allowed', opacity: '0.5' }}
-            disabled={picIndex <= 0}
-            className={styles.left}
-            onClick={() => setPicIndex(picIndex - 1)}
-          >
-            <LeftOutlined />
-          </button>
-          <button
-            style={picIndex !== picList.length - 1 ? {} : { cursor: 'not-allowed', opacity: '0.5' }}
-            disabled={picIndex >= picList.length - 1}
-            className={styles.right}
-            onClick={() => setPicIndex(picIndex + 1)}
-          >
-            <RightOutlined />
-          </button>
-        </div>
-      )}
-    </div>,
+    </CSSTransition>,
     document.body,
   );
 };
