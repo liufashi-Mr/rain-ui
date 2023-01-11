@@ -3,7 +3,7 @@ import { Tag, message, Space } from 'raind';
 const App: React.FC = () => {
   const weathers = ['rainy', 'sunny', 'snowy', 'cloudy'];
   return (
-    <div>
+    <Space>
       <span style={{ marginRight: 8 }}>The weather now is :</span>
       <Space>
         {weathers.map((x) => (
@@ -19,7 +19,7 @@ const App: React.FC = () => {
           </Tag>
         ))}
       </Space>
-    </div>
+    </Space>
   );
 };
 
