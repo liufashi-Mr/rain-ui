@@ -2,6 +2,7 @@
 title: Button 按钮
 order: 0
 group:
+  order: 0
   title: 通用
   path: /common
 nav:

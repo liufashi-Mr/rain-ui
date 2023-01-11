@@ -21,8 +21,12 @@ const Space: React.FC<SpaceProps> = ({
   const isPresetSize = typeof size === 'string';
   const mapChildren = () => {
     if (Array.isArray(children)) {
-      return children.map((item) => {
-        return <div style={spaceItemStyle}>{item}</div>;
+      return children.map((item, index) => {
+        return (
+          <div key={index} style={spaceItemStyle}>
+            {item}
+          </div>
+        );
       });
     }
     return children;

@@ -1,8 +1,8 @@
 import React from 'react';
-import { Tag } from 'raind';
+import { Tag, Space } from 'raind';
 const App: React.FC<Record<string, never>> = () => {
   return (
-    <div>
+    <Space>
       <Tag>default</Tag>
       <Tag bordered color="primary">
         primary
@@ -16,7 +16,7 @@ const App: React.FC<Record<string, never>> = () => {
       <Tag bordered color="error">
         error
       </Tag>
-    </div>
+    </Space>
   );
 };
 
