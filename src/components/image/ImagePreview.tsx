@@ -2,8 +2,8 @@ import React, { useState, useRef, useEffect } from 'react';
 import './style/preview.less';
 import { createPortal } from 'react-dom';
 import { getBarWidth, hasScrollbar } from '../../utils/scrollBar';
-import cls from 'classnames';
 import { CSSTransition } from 'react-transition-group';
+import { ImagePreviewProps } from './interface';
 import {
   CloseOutlined,
   ZoomInOutlined,
@@ -15,46 +15,36 @@ import {
   RedoOutlined,
 } from '@ant-design/icons';
 
-export interface ImagePreviewProps {
-  visible?: boolean;
-  onClose?: () => void;
-  picList: any[];
-  startIndex?: number;
-}
 const prefixCls = 'rain-image-preview';
 const ImagePreview = (props: ImagePreviewProps): React.ReactPortal => {
-  const { visible, onClose, picList = [], startIndex = 0 } = props;
-  const [picIndex, setPicIndex] = useState(startIndex);
+  const { visible, onClose, startIndex = 0 } = props;
+  let imagePreviewSrc = props.imagePreviewSrc || [];
+  if (typeof imagePreviewSrc === 'string') {
+    imagePreviewSrc = [imagePreviewSrc];
+  }
+  const [imageIndex, setImageIndex] = useState<number>(startIndex);
   const [deg, setDeg] = useState(0);
   const [size, setSize] = useState(0);
-  const picture: any = useRef();
+  const ImageRef = useRef<HTMLDivElement>(null);
   const initImagePreView = () => {
     setSize(1);
     setDeg(0);
-    if (picture.current) {
-      picture.current.style.left = '50%';
-      picture.current.style.top = '50%';
+    if (ImageRef.current) {
+      ImageRef.current.style.left = '50%';
+      ImageRef.current.style.top = '50%';
     }
   };
   useEffect(() => {
     initImagePreView();
-    setPicIndex(0);
-    // document.body.style.overflow = visible ? 'hidden' : '';
+    setImageIndex(0);
     if (hasScrollbar()) {
       if (visible) {
-        // document.body.style.width = `calc( 100% - ${getBarWidth()}px )`;
-        // document.body.style.overflowY = 'hidden';
-        document.documentElement.style.width = `calc( 100% - ${getBarWidth()}px )`;
-        document.documentElement.style.paddingRight = `${getBarWidth()}px`;
-        document.documentElement.style.overflowY = 'hidden';
+        document.body.style.overflowY = 'hidden';
+        document.body.style.width = `calc( 100% - ${getBarWidth()}px )`;
       } else {
         const timer = setTimeout(() => {
-          // document.body.style.width = '100%';
-          // document.body.style.overflowY = 'auto';
-          document.documentElement.style.width = '100%';
-          document.documentElement.style.overflowY = 'auto';
-          document.documentElement.style.paddingRight = '0px';
-
+          document.body.style.width = ``;
+          document.body.style.overflowY = '';
           clearTimeout(timer);
         }, 300);
       }
@@ -63,17 +53,17 @@ const ImagePreview = (props: ImagePreviewProps): React.ReactPortal => {
 
   useEffect(() => {
     initImagePreView();
-  }, [picIndex]);
+  }, [imageIndex]);
 
   useEffect(() => {
-    if (picture.current) {
-      picture.current.style.transform = `translate(-50%,-50%) scale(${size}) rotate(${deg}deg) `;
+    if (ImageRef.current) {
+      ImageRef.current.style.transform = `translate(-50%,-50%) scale(${size}) rotate(${deg}deg) `;
     }
   }, [size, deg]);
 
   const rotate = (flag: boolean) => (flag ? setDeg(deg + 90) : setDeg(deg - 90));
 
-  const setPicSize = (flag: boolean) =>
+  const setImageSize = (flag: boolean) =>
     size > 1
       ? flag
         ? setSize(size + 0.5)
@@ -92,15 +82,17 @@ const ImagePreview = (props: ImagePreviewProps): React.ReactPortal => {
       : setSize(size + 0.5);
 
   const handleMove = (event: React.MouseEvent) => {
+    if (!ImageRef.current) return;
     const initPageX = event.pageX;
     const initPageY = event.pageY;
-    const initLeft = picture.current.offsetLeft;
-    const initTop = picture.current.offsetTop;
+    const initLeft = ImageRef.current.offsetLeft;
+    const initTop = ImageRef.current.offsetTop;
     window.onmousemove = (e) => {
+      if (!ImageRef.current) return;
       const distanceX = e.pageX - initPageX;
       const distanceY = e.pageY - initPageY;
-      picture.current.style.left = initLeft + distanceX + 'px';
-      picture.current.style.top = initTop + distanceY + 'px';
+      ImageRef.current.style.left = initLeft + distanceX + 'px';
+      ImageRef.current.style.top = initTop + distanceY + 'px';
       window.onmouseup = () => {
         window.onmousemove = null;
       };
@@ -119,20 +111,20 @@ const ImagePreview = (props: ImagePreviewProps): React.ReactPortal => {
       <div className={prefixCls} onWheel={(e) => handleChangeSize(e)}>
         <header className={`${prefixCls}-header`}>
           <div />
-          <div>{`${picIndex + 1}/${picList.length}`}</div>
+          {imagePreviewSrc.length > 1 && <div>{`${imageIndex + 1}/${imagePreviewSrc.length}`}</div>}
           <div className={`${prefixCls}-header-close`} onClick={onClose}>
             <CloseOutlined />
           </div>
         </header>
         <div
           className={`${prefixCls}-content`}
-          ref={picture}
+          ref={ImageRef}
           onMouseDown={(e) => {
             handleMove(e);
           }}
           onDoubleClick={initImagePreView}
         >
-          {picList.length && <img src={picList[picIndex]} />}
+          {imagePreviewSrc.length && <img src={imagePreviewSrc[imageIndex]} />}
         </div>
 
         <div className={`${prefixCls}-operation`}>
@@ -141,25 +133,25 @@ const ImagePreview = (props: ImagePreviewProps): React.ReactPortal => {
           <RedoOutlined onClick={initImagePreView} />
           <ZoomOutOutlined
             style={{ opacity: size <= 1 ? '0.5' : '1' }}
-            onClick={() => setPicSize(false)}
+            onClick={() => setImageSize(false)}
           />
-          <ZoomInOutlined onClick={() => setPicSize(true)} />
+          <ZoomInOutlined onClick={() => setImageSize(true)} />
         </div>
-        {picList.length > 0 && (
+        {imagePreviewSrc.length > 1 && (
           <>
             <button
-              style={{ opacity: picIndex !== 0 ? 1 : 0.5 }}
-              disabled={picIndex <= 0}
+              style={{ opacity: imageIndex !== 0 ? 1 : 0.5 }}
+              disabled={imageIndex <= 0}
               className={`${prefixCls}-previous`}
-              onClick={() => setPicIndex(picIndex - 1)}
+              onClick={() => setImageIndex(imageIndex - 1)}
             >
               <LeftOutlined />
             </button>
             <button
-              style={{ opacity: picIndex !== picList.length - 1 ? 1 : 0.5 }}
-              disabled={picIndex >= picList.length - 1}
+              style={{ opacity: imageIndex !== imagePreviewSrc.length - 1 ? 1 : 0.5 }}
+              disabled={imageIndex >= imagePreviewSrc.length - 1}
               className={`${prefixCls}-next`}
-              onClick={() => setPicIndex(picIndex + 1)}
+              onClick={() => setImageIndex(imageIndex + 1)}
             >
               <RightOutlined />
             </button>

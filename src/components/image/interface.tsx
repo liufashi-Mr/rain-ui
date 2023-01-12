@@ -21,6 +21,21 @@ interface ImageProps {
   preview?: boolean;
   error?: string;
   previewRender?: () => ReactNode;
+  handlePreview?: () => void;
+}
+interface ImagePreviewProps {
+  visible?: boolean;
+  onClose?: () => void;
+  imagePreviewSrc?: string[] | string;
+  startIndex?: number;
+  children?: ReactNode;
 }
 
-export type { ImageProps };
+interface PreviewGroupProps {
+  visible?: boolean;
+  onClose?: () => void;
+  imagePreviewSrc?: string[] | string;
+  startIndex?: number;
+  children?: ReactNode;
+}
+export type { ImageProps, ImagePreviewProps, PreviewGroupProps };
