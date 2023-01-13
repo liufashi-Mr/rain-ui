@@ -17,12 +17,13 @@ const Image: CompositionImage<ImageProps> = ({
   width,
   height,
   title,
-  description,
   titlePlacement = 'inner',
   className,
   style,
+  titleWidth,
   imageStyle = {},
   titleStyle,
+  radius,
   error,
   preview = false,
   previewRender,
@@ -51,17 +52,23 @@ const Image: CompositionImage<ImageProps> = ({
   });
 
   return (
-    <div style={style} className={classes}>
+    <div style={{ borderRadius: radius, ...style }} className={classes}>
       <img {...imageAttributes} />
-      <div className={titleClasses} style={titleStyle}>
-        {titlePlacement === 'nether' && !isLoadingError && (
-          <img src={rest.src} className={`${prefixCls}-title-filter`} />
-        )}
-        <div className={`${prefixCls}-title-text`}>{title}</div>
-      </div>
+      {title && (
+        <div className={titleClasses} style={{ width: width || style?.width, ...titleStyle }}>
+          {titlePlacement === 'nether' && !isLoadingError && (
+            <img src={rest.src} className={`${prefixCls}-title-filter`} />
+          )}
+          <div className={`${prefixCls}-title-text`}>{title}</div>
+        </div>
+      )}
       {!isLoadingError && preview && (
         <div className={`${prefixCls}-mask`}>
-          <EyeOutlined onClick={() => (handlePreview ? handlePreview() : setVisible(true))} />
+          {previewRender ? (
+            previewRender(() => (handlePreview ? handlePreview() : setVisible(true)))
+          ) : (
+            <EyeOutlined onClick={() => (handlePreview ? handlePreview() : setVisible(true))} />
+          )}
         </div>
       )}
       <ImagePreview

@@ -3,7 +3,7 @@ import './style/preview.less';
 import { createPortal } from 'react-dom';
 import { getBarWidth, hasScrollbar } from '../../utils/scrollBar';
 import { CSSTransition } from 'react-transition-group';
-import { ImagePreviewProps } from './interface';
+import type { ImagePreviewProps } from './interface';
 import {
   CloseOutlined,
   ZoomInOutlined,
@@ -43,7 +43,7 @@ const ImagePreview = (props: ImagePreviewProps): React.ReactPortal => {
         document.body.style.width = `calc( 100% - ${getBarWidth()}px )`;
       } else {
         const timer = setTimeout(() => {
-          document.body.style.width = ``;
+          document.body.style.width = '';
           document.body.style.overflowY = '';
           clearTimeout(timer);
         }, 300);
