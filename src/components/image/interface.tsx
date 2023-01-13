@@ -1,4 +1,4 @@
-import type { CSSProperties, ReactNode } from 'react';
+import type { CSSProperties, ReactNode, ReactElement } from 'react';
 
 export type SpaceSize = 'mini' | 'small' | 'middle' | 'large';
 export type SpaceDirection = 'horizontal' | 'vertical';
@@ -36,6 +36,6 @@ interface PreviewGroupProps {
   onClose?: () => void;
   imagePreviewSrc?: string[] | string;
   startIndex?: number;
-  children?: ReactNode;
+  children?: ReactElement | ReactElement[];
 }
 export type { ImageProps, ImagePreviewProps, PreviewGroupProps };

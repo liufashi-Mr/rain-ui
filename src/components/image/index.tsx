@@ -1,5 +1,5 @@
-import React, { forwardRef, useState } from 'react';
-import type { ImageProps, ImagePreviewProps, PreviewGroupProps } from './interface';
+import React, { useState } from 'react';
+import type { ImageProps } from './interface';
 import cls from 'classnames';
 import './style/index.less';
 import { EyeOutlined } from '@ant-design/icons';
@@ -13,7 +13,7 @@ export interface CompositionImage<T> extends React.FC<T> {
   PreviewGroup: typeof PreviewGroup;
   ImagePreview: typeof ImagePreview;
 }
-const InternalImage: React.FC<ImageProps> = ({
+const Image: CompositionImage<ImageProps> = ({
   width,
   height,
   title,
@@ -30,6 +30,7 @@ const InternalImage: React.FC<ImageProps> = ({
   ...rest
 }) => {
   const [isLoadingError, setIsLoadingError] = useState(false);
+  const [visible, setVisible] = useState(false);
   const imageAttributes = {
     ...rest,
     style: {
@@ -60,22 +61,18 @@ const InternalImage: React.FC<ImageProps> = ({
       </div>
       {!isLoadingError && preview && (
         <div className={`${prefixCls}-mask`}>
-          <div>{previewRender?.() || <EyeOutlined onClick={handlePreview} />}</div>
+          <EyeOutlined onClick={() => (handlePreview ? handlePreview() : setVisible(true))} />
         </div>
       )}
+      <ImagePreview
+        visible={visible}
+        onClose={() => setVisible(false)}
+        imagePreviewSrc={rest.src}
+      />
     </div>
   );
 };
 
-const Image: CompositionImage<ImageProps> = (props) => {
-  const [previewVisible, setPreviewVisible] = useState(false);
-
-  return (
-    <PreviewGroup visible={previewVisible} onClose={() => setPreviewVisible(false)}>
-      <InternalImage {...props} handlePreview={() => setPreviewVisible(true)} />
-    </PreviewGroup>
-  );
-};
 Image.ImagePreview = ImagePreview;
 Image.PreviewGroup = PreviewGroup;
 export default Image;

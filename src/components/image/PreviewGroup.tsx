@@ -1,20 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import ImagePreview from './ImagePreview';
 import type { PreviewGroupProps } from './interface';
-const PreviewGroup: React.FC<PreviewGroupProps> = ({ onClose, visible, children }) => {
-  let imagePreviewSrc;
-  if (Array.isArray(children)) {
-    imagePreviewSrc = children.map((x) => x.props.src);
-  } else {
-    imagePreviewSrc = children ? (children as React.ReactElement).props.src : '';
-  } 
-
-  console.log(imagePreviewSrc);
-
+const PreviewGroup: React.FC<PreviewGroupProps> = ({ children }) => {
+  const [visible, setVisible] = useState(false);
+  const imagePreviewSrc: string[] = [];
+  const mapChildren = React.Children.map(children, (child) => {
+    if (child) {
+      imagePreviewSrc.push(child.props.src);
+      return React.cloneElement(child, { handlePreview: () => setVisible(true) });
+    }
+    return child;
+  });
   return (
     <>
-      {children}
-      <ImagePreview visible={visible} onClose={onClose} imagePreviewSrc={imagePreviewSrc} />
+      {mapChildren}
+      <ImagePreview
+        visible={visible}
+        onClose={() => setVisible(false)}
+        imagePreviewSrc={imagePreviewSrc.filter(Boolean)}
+      />
     </>
   );
 };
