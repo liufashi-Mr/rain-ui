@@ -19,7 +19,17 @@ nav:
 
 ### 图片展示和预览
 
-使用 image 组件传入`src`,默认宽高为图片大小，可以通过`width`和`height`属性设置宽高，设置 `preview`开启预览 <code src="./demo/base.tsx">
+使用 image 组件传入`src`,默认宽高为图片大小，可以通过`width`和`height`属性设置宽高，设置 `preview`开启预览。
+
+<code src="./demo/base.tsx">
+
+### 自定义遮罩层预览栏
+
+通过 ` previewRender：(onPreview: () => void) => ReactNode``自定义操作栏，通过callback ` 回调开启预览 <code src="./demo/opt.tsx">
+
+### 加载失败的图片
+
+加载失败使用 `rain-ui` 默认的失败样式，也可以是用 `error` 属性自定义失败时显示的图片 <code src="./demo/error.tsx">
 
 ### 添加图片描述
 
@@ -27,10 +37,18 @@ nav:
 
 ### 自定义 title
 
-通过样式的设置，我们可以使用`Image` 写出好看的样式。 <code src="./demo/nether.tsx">
+`Image` 组件的 `title` 可以传入任意的 `ReactNode` ，通过样式的设置，我们可以使用`Image` 写出好看的样式。 <code src="./demo/nether.tsx">
 
 ### 多张图片预览
 
+使用 `PreviewGroup` 包裹 `Image` 组件
+
 <code src="./demo/group.tsx">
+
+### 单独使用预览
+
+使用`Image.ImagePreview` 传入 `imagePreviewSrc: src | src[]`,需要手动维护一个`state`。
+
+<code src="./demo/preview.tsx">
 
 <API src="./index.tsx"/>

@@ -8,7 +8,7 @@ const App: React.FC = () => {
       <Divider>inner title</Divider>
       <Space size="middle">
         <Image
-          title="use radius"
+          title="The girl took the picture"
           radius={0}
           titlePlacement="inner"
           titleStyle={{ padding: '4px 12px', fontSize: 14 }}
@@ -16,21 +16,21 @@ const App: React.FC = () => {
           src={src}
         />
         <Image
-          title="use title-style"
+          title="The girl took the picture"
           titlePlacement="inner"
           titleStyle={{ padding: '4px 12px', fontSize: 14 }}
           height={150}
           src={src}
         />
         <Image
-          title="use image-style"
+          title="The girl took the picture"
           height={150}
           src={src}
           titleStyle={{ padding: '4px 12px', fontSize: 14, textAlign: 'center' }}
           imageStyle={{ filter: 'blur(2px)' }}
         />
         <Image
-          title="use style"
+          title="The girl took the picture"
           titlePlacement="inner"
           titleStyle={{ padding: '4px 12px', fontSize: 14 }}
           style={{ borderRadius: 16 }}
@@ -47,7 +47,13 @@ const App: React.FC = () => {
         />
       </Space>
       <Divider>nether title</Divider>
-      <Image title="take photos " titlePlacement="nether" height={200} width={300} src={src} />
+      <Image
+        title="The girl took the picture"
+        titlePlacement="nether"
+        height={200}
+        width={300}
+        src={src}
+      />
     </>
   );
 };

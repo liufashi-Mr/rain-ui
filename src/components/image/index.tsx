@@ -40,7 +40,7 @@ const Image: CompositionImage<ImageProps> = ({
       height,
     },
     className: `${prefixCls}-img`,
-    src: isLoadingError ? errorFallback : rest.src,
+    src: isLoadingError ? error || errorFallback : rest.src,
     onError() {
       setIsLoadingError(true);
     },

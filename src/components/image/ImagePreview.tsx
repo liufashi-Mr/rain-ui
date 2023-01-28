@@ -36,7 +36,7 @@ const ImagePreview = (props: ImagePreviewProps): React.ReactPortal => {
   };
   useEffect(() => {
     initImagePreView();
-    setImageIndex(0);
+    setImageIndex(startIndex);
     if (hasScrollbar()) {
       if (visible) {
         document.body.style.overflowY = 'hidden';
