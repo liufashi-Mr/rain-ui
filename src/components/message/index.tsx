@@ -30,8 +30,8 @@ const Message = (props: MessageProps) => {
   const classes = cls(prefixCls, className, {
     [`${prefixCls}-${type}`]: type,
   });
-  loadingClose?.(setVisible);
   useEffect(() => {
+    loadingClose?.(setVisible);
     if (visible) {
       const timer = setTimeout(() => {
         setVisible(false);
@@ -92,7 +92,7 @@ const Message = (props: MessageProps) => {
   );
 };
 let messageContainer: HTMLDivElement | null = null;
-const createMessage = (messageConfig: MessageProps) => {
+const createMessage = async (messageConfig: MessageProps) => {
   const { container = document.body, ...rest } = messageConfig;
   let { duration } = rest;
   duration = rest.type === 'loading' && !duration ? 10000 : 3000;
@@ -117,7 +117,8 @@ const createMessage = (messageConfig: MessageProps) => {
   const loadingClose = (setVisible: React.Dispatch<React.SetStateAction<boolean>>) => {
     hide = () => setVisible(false);
   };
-  createRoot(divElement).render(
+
+  await createRoot(divElement).render(
     <Message
       {...rest}
       handleClose={handleClose}
@@ -126,9 +127,7 @@ const createMessage = (messageConfig: MessageProps) => {
       container={container}
     />,
   );
-  if (rest.type === 'loading') {
-    return hide;
-  }
+  return hide;
 };
 
 const getMessageType = (type: MessageType, props: MessageProps | string | any) => {
