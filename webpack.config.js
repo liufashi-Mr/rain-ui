@@ -45,7 +45,16 @@ const baseConfig = {
           },
           {
             test: /\.(js|jsx)$/,
-            use: 'babel-loader',
+            use: [
+              {
+                loader: 'babel-loader',
+                options: {
+                  cacheDirectory: true,
+                  cacheCompression: false,
+                  plugins: ['@babel/plugin-transform-runtime'], // 减少代码体积
+                },
+              },
+            ],
           },
           {
             test: /\.(ts|tsx)$/,

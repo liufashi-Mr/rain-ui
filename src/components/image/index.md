@@ -52,3 +52,34 @@ nav:
 <code src="./demo/preview.tsx">
 
 <API src="./index.tsx"/>
+
+## API
+
+### Image
+
+| Name | Description | Type | Default |
+| --- | --- | --- | --- |
+| style | 最外层容器样式 | `CSSProperties` | {} |
+| style | 最外层容器样式 | `CSSProperties` | {} |
+| imageStyle | 图片样式 | `CSSProperties` | {} |
+| titleStyle | 标题样式 | `CSSProperties` | {} |
+| className | 外层容器类名 | `string` | {} |
+| src | 图片 src | `string` | - |
+| radius | 图片圆角 | `number` | `8px` |
+| width | 图片宽度 | `string \| number` | - |
+| height | 图片高度 | `string \| number` | - |
+| title | 图片描述 | `ReactNode` | - |
+| titlePlacement | 图片描述位置 | `'inner' \| 'nether'` | `inner` |
+| titleWidth | 图片描述文字宽度，文字超长是使用 | `string \| number` | - |
+| preview | 预览模式 | `boolean` | `false` |
+| previewRender | 自定义遮罩层操作栏 | `(onPreview: () => void) => ReactNode` | `<EyeOutlined/>` |
+| error | 加载失败显示的图片 src | `string` | rain-ui 内置图片 |
+
+### Image.ImagePreview
+
+| Name            | Description      | Type                 | Default |
+| --------------- | ---------------- | -------------------- | ------- |
+| visible         | 是否显示         | `boolean`            | `false` |
+| onClose         | 点击关闭的回调   | `() => void`         | -       |
+| imagePreviewSrc | 点击关闭的回调   | `string[] \| string` | -       |
+| startIndex      | 开始预览时的索引 | `number`             | `0`     |

@@ -1,33 +1,21 @@
 import type React from 'react';
 
-export type ButtonType =
-  | 'default'
-  | 'primary'
-  | 'warning'
-  | 'success'
-  | 'error'
-  | 'dashed'
-  | 'text'
-  | 'link';
-export type ButtonSize = 'small' | 'default' | 'large';
-export type ButtonShape = 'circle' | 'round' | 'default';
-export type ButtonHTMLType = 'submit' | 'button' | 'reset';
 export interface BaseButtonProps {
   /**
    * @description       Button的类型
    * @default           default
    */
-  type?: ButtonType;
+  type?: 'default' | 'primary' | 'warning' | 'success' | 'error' | 'dashed' | 'text' | 'link';
   /**
    * @description       Button的大小
    * @default           default
    */
-  size?: ButtonSize;
+  size?: 'small' | 'default' | 'large';
   /**
    * @description       Button的形状
    * @default           default
    */
-  shape?: ButtonShape;
+  shape?: 'circle' | 'round' | 'default';
   /**
    * @description       Button的圆角
    * @type
@@ -97,7 +85,7 @@ export type NativeButtonProps = {
    * @type              button、submit、reset
    * @default           button
    */
-  htmlType?: ButtonHTMLType;
+  htmlType?: 'submit' | 'button' | 'reset';
   /**
    * @description       点击事件
    * @type              Funcation
