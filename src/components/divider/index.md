@@ -22,6 +22,12 @@ nav:
 
 <code src="./demo/base.tsx">
 
+## 虚线分割线
+
+虚线分割线，可在中间插入文字。
+
+<code src="./demo/dash.tsx">
+
 ## 垂直分割线
 
 使用 type=`vertical` 设置为行内的垂直分割线(除了 dashed 其它 api 不会生效)。
