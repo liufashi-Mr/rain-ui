@@ -10,3 +10,5 @@ nav:
 # Modal 对话框
 
 <code src="./demo/index.tsx"/>
+
+<API src="./index.tsx"> </API>

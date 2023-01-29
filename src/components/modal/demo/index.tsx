@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Modal, Button, message } from 'raind';
+
 const App: React.FC = () => {
   const [visible, setVisible] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -19,7 +20,6 @@ const App: React.FC = () => {
         Open Modal
       </Button>
       <Modal
-        closeIcon={<>1</>}
         confirmLoading={loading}
         title="Modal title"
         visible={visible}
