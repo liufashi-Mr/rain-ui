@@ -7,3 +7,4 @@ export { default as message } from './components/message';
 export { default as Carousel } from './components/carousel';
 export { default as Space } from './components/space';
 export { default as Image } from './components/image';
+export { default as Modal } from './components/modal';

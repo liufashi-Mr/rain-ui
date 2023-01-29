@@ -1,0 +1,104 @@
+@import '../../../styles/variables/index.less';
+
+@modal-prefix-cls: ~'@{rain-prefix}-modal';
+
+.@{modal-prefix-cls} {
+  position: fixed;
+  top: 100px;
+  z-index: 9999;
+  max-width: calc(100vw - 32px);
+  height: fit-content;
+  padding: 20px 24px;
+  color: #000000e0;
+  background-color: #fff;
+  border-radius: @border-radius-base;
+  box-shadow: 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 3px 6px -4px rgba(0, 0, 0, 0.12),
+    0 9px 28px 8px rgba(0, 0, 0, 0.05);
+  &-closed {
+    position: absolute;
+    top: 17px;
+    right: 20px;
+    width: 22px;
+    height: 22px;
+    color: rgba(0, 0, 0, 0.45);
+    line-height: 22px;
+    text-align: center;
+    border-radius: @border-radius-base;
+    transition: all @default-transition;
+
+    &:hover {
+      color: #000000e0;
+      background-color: rgba(0, 0, 0, 0.06);
+      cursor: pointer;
+    }
+  }
+  &-header {
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 16px;
+    text-align: center;
+  }
+  &-footer {
+    margin-top: 12px;
+    text-align: end;
+  }
+  &-mask {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 999;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.45);
+  }
+}
+
+.@{modal-prefix-cls}-mask-animation-enter,
+.@{modal-prefix-cls}-mask-animation-appear {
+  opacity: 0;
+}
+
+.@{modal-prefix-cls}-mask-animation-enter-active,
+.@{modal-prefix-cls}-mask-animation-appear-active {
+  opacity: 1;
+  transition: opacity @default-transition;
+}
+
+.@{modal-prefix-cls}-mask-animation-exit {
+  opacity: 1;
+}
+
+.@{modal-prefix-cls}-mask-animation-exit-active {
+  opacity: 0;
+  transition: opacity @default-transition;
+}
+
+.@{modal-prefix-cls}-animation-enter,
+.@{modal-prefix-cls}-animation-appear {
+  top: 0;
+  transform: scale(0);
+  opacity: 0;
+}
+
+.@{modal-prefix-cls}-animation-enter-active,
+.@{modal-prefix-cls}-animation-appear-active {
+  top: 100px;
+  transform: scale(1);
+  opacity: 1;
+  transition: all @default-transition;
+}
+
+.@{modal-prefix-cls}-animation-exit {
+  top: 100px;
+  transform: scale(1);
+  opacity: 1;
+}
+
+.@{modal-prefix-cls}-animation-exit-active {
+  top: 0;
+  transform: scale(0);
+  opacity: 0;
+  transition: all @default-transition;
+}
