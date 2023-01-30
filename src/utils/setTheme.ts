@@ -13,7 +13,7 @@ const initVariables = {
   '--rain-text-color': '#000000d9', // 主文本色
   '--rain-text-color-secondary': '#00000073', // 次文本色
   '--rain-disabled-color': '#ffffff40', // 失效色
-  '--rain-border-radius-base': '8px', // 组件/浮层圆角
+  '--rain-border-radius-base': '4px', // 组件/浮层圆角
   '--rain-border-color-base': '#d9d9d9', // 边框色
   '--rain-background-color-base': '#fafafa', // 背景色
 };
@@ -23,7 +23,7 @@ const initVariablesDark = {
   '--rain-text-color': '#ffffffd9', // 主文本色
   '--rain-text-color-secondary': '#ffffff73', // 次文本色
   '--rain-disabled-color': '#ffffff40', // 失效色
-  '--rain-border-radius-base': '8px', // 组件/浮层圆角
+  '--rain-border-radius-base': '4px', // 组件/浮层圆角
   '--rain-border-color-base': '#434343', // 边框色
   '--rain-background-color-base': '#00000005', // 背景色
 };
