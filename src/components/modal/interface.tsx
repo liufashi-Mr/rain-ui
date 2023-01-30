@@ -1,6 +1,14 @@
 import type { ReactNode, CSSProperties } from 'react';
 import type { ButtonProps } from '../button/interface';
+
+export type ModalTypes = 'info' | 'warning' | 'success' | 'error';
 interface ModalProps {
+  /**
+   * @description 弹窗类型
+   * @default -
+   */
+  type?: ModalTypes;
+  icon?: ReactNode;
   /**
    * @description 自定义类名
    * @default -
@@ -82,5 +90,9 @@ interface ModalProps {
    */
   closeIcon?: ReactNode;
   children?: ReactNode;
+  useFunction?: boolean;
 }
-export type { ModalProps };
+interface ModalConfigProps extends Exclude<ModalProps, 'children'> {
+  content?: React.ReactNode;
+}
+export type { ModalProps, ModalConfigProps };

@@ -57,6 +57,21 @@
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.45);
   }
+  &-icon {
+    margin-right: 8px;
+  }
+  &-info {
+    color: @primary-color;
+  }
+  &-success {
+    color: @success-color;
+  }
+  &-warning {
+    color: @warning-color;
+  }
+  &-error {
+    color: @error-color;
+  }
   &-compact {
     padding: 14px 16px;
     .@{modal-prefix-cls}-header {
@@ -76,6 +91,9 @@
       height: 20px;
       font-size: 14px;
       line-height: 22px;
+    }
+    .@{modal-prefix-cls}-icon {
+      margin-right: 4px;
     }
   }
 }
