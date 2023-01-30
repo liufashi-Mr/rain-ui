@@ -34,3 +34,7 @@ nav:
 使用 modal 需要维持一个`state`可能还会有`confirmLoading`，如果少量信息或者是少量操作的时候不够便捷，`rain-ui`提供函数式调用的方式使用 modal。若是这些不符合您的业务需求，你仍可以使用 Modal 的配置项修改他。 <code src="./demo/func.tsx"/>
 
 <API src="./index.tsx"> </API>
+
+## Modal.[type]
+
+和上面一致，去掉了 `visible` 和 `children` 新增 `content` 为 modal 的内容。

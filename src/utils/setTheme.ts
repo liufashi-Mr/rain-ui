@@ -1,7 +1,7 @@
 import type { ThemeVariables, OtherVariables } from 'src/components/configProvider/interface';
 import { generate } from '@ant-design/colors';
 const initTheme = {
-  primary: '#1890ff',
+  primary: '#165dff',
   success: '#52c41a',
   warning: '#faad14',
   error: '#f5222d',
