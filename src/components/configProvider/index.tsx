@@ -1,8 +1,8 @@
 import React, { createContext, useEffect, useRef } from 'react';
 import type { ConfigProviderProps } from './interface';
 import { setThemeConfig, setDarkTheme, setOtherConfig } from '../../utils/setTheme';
-
 export const configCtx = createContext<ConfigProviderProps>({} as ConfigProviderProps); // 顶层通信装置
+
 const ConfigProvider: React.FC<ConfigProviderProps> = ({ children, ...rest }) => {
   const configRef = useRef<HTMLDivElement>(null);
   const { theme, dark, darkBackgroundColor, config, local } = rest;

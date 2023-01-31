@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './home.less';
+import './home.less';
 import packageJson from '../../package.json';
 import { Link } from 'dumi';
 const { version } = packageJson;
@@ -27,44 +27,44 @@ export default () => {
     },
   ];
   return (
-    <div className={styles.homePage}>
+    <div className={'homePage'}>
       {/* 内容部分 */}
-      <div className={styles.main}>
-        <div className={styles.header}>
-          <div className={styles.headerLeft}>
-            <h1 className={styles.title}>Rain-ui</h1>
-            <p className={styles.description}>
+      <div className={'main'}>
+        <div className={'header'}>
+          <div className={'headerLeft'}>
+            <h1 className={'title'}>Rain-ui</h1>
+            <p className={'description'}>
               体验轻量级React Web开发体验
-              <span className={styles.version}>v{version}</span>
+              <span className={version}>v{version}</span>
             </p>
-            <p className={styles.buttons}>
+            <p className={'buttons'}>
               <Link to="/guide">使用指南</Link>
               <Link to="/components">组件</Link>
               <a href="https://github.com/liufashi-Mr/rain-ui">在Github上查看</a>
             </p>
           </div>
-          <div className={styles.headerRight}>
+          <div className={'headerRight'}>
             <img
-              className={styles.headerImage}
+              className={'headerImage'}
               alt="header-image"
               src="https://blog.liufashi.top/img/rain-ui.png"
             />
-            <span className={styles.plus}>+</span>
+            <span className={'plus'}>+</span>
             <img
-              className={styles.headerImage}
+              className={'headerImage'}
               alt="header-image"
               src="http://concis.org.cn/images/react-icon.svg"
             />
           </div>
         </div>
         {/* 功能特性 */}
-        <div className={styles.group}>
-          <div className={styles.groupTitle}>
+        <div className={'group'}>
+          <div className={'groupTitle'}>
             <div />
             <span>功能特性</span>
             <div />
           </div>
-          <ul className={styles.features}>
+          <ul className={'features'}>
             {characteristics.map((item) => {
               return (
                 <li key={item.title}>
