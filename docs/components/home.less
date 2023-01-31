@@ -1,0 +1,189 @@
+.homePage {
+  overflow: hidden;
+  a {
+    text-decoration: none;
+  }
+  .main {
+    box-sizing: content-box;
+    min-width: 960px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 48px;
+    .header {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      .headerLeft {
+        position: relative;
+        z-index: 1;
+        .buttons {
+          margin-top: 20px;
+        }
+        .title {
+          margin: 0;
+          color: rgba(0, 0, 0, 0.9);
+          font-weight: 700;
+          font-size: 52px;
+          line-height: 1;
+          [data-prefers-color='dark'] & {
+            color: unset;
+          }
+        }
+        .description {
+          margin-bottom: 56px;
+          color: rgba(0, 0, 0, 0.85);
+          font-size: 20px;
+          line-height: 28px;
+          [data-prefers-color='dark'] & {
+            color: unset;
+          }
+          .version {
+            margin-left: 6px;
+            padding: 4px 8px;
+            color: #fff;
+            font-weight: 700;
+            font-size: 14px;
+            background: #3978ff;
+            border-radius: 10px;
+          }
+        }
+        .buttons {
+          margin-top: 28px;
+          a {
+            display: inline-block;
+            margin-right: 14px;
+            padding: 8px 20px;
+            color: #3978ff;
+            font-size: 16px;
+            background-color: #fff;
+            border: 1px solid #3978ff;
+            border-radius: 100px;
+            transition: 0.2s linear;
+            &:hover {
+              opacity: 0.8;
+            }
+          }
+          a:first-child {
+            color: #ffff;
+            background-color: #3978ff;
+          }
+        }
+      }
+      .headerRight {
+        display: flex;
+        align-items: center;
+        .plus {
+          font-size: 40px;
+        }
+        .headerImage {
+          z-index: 0;
+          width: 350px;
+          &:last-of-type {
+            margin-left: 30px;
+          }
+          @media (max-width: 1300px) {
+            & {
+              width: 420px;
+              margin-left: -30%;
+              transform: translateX(30%);
+            }
+          }
+        }
+      }
+    }
+    .group {
+      margin-top: 90px;
+      padding: 32px 0 24px;
+    }
+    .groupTitle {
+      display: flex;
+      margin-top: 12px;
+      margin-bottom: 48px;
+      color: #697a8c;
+      font-size: 24px;
+      line-height: 32px;
+      div {
+        flex: 1 1;
+        height: 1px;
+        margin-top: 18px;
+        border-top: 1px solid #ebf0f4;
+      }
+      span {
+        margin: 0 10px;
+      }
+      [data-prefers-color='dark'] & span {
+        color: #ebf0f4;
+      }
+    }
+    ul.features {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 30px;
+      li {
+        list-style: none;
+        p:nth-child(1) {
+          margin: 0 auto;
+          text-align: center;
+        }
+        p:nth-child(2) {
+          width: 100%;
+          height: 24px;
+          margin-top: 30px;
+          margin-bottom: 8px;
+          color: rgba(0, 0, 0, 0.85);
+          font-size: 16px;
+          line-height: 24px;
+          text-align: center;
+
+          [data-prefers-color='dark'] & {
+            color: unset;
+          }
+        }
+        p:nth-child(3) {
+          width: 210px;
+          margin-top: 8px;
+          color: #697a8c;
+          font-size: 16px;
+          line-height: 24px;
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 769px) {
+  .homePage {
+    .main {
+      padding: 0;
+      .header {
+        padding-left: 40px;
+        .headerLeft {
+          margin-top: 30px;
+        }
+        .headerRight {
+          display: none;
+        }
+      }
+      .group {
+        padding: 0;
+        ul.features {
+          position: relative;
+          right: 20px;
+          display: flex;
+          flex-wrap: wrap;
+          width: 100vw;
+          li {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+          }
+        }
+      }
+      .groupTitle {
+        width: 100vw;
+      }
+    }
+  }
+}

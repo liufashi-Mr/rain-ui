@@ -4,7 +4,7 @@ import { createRoot } from 'react-dom/client';
 import { CSSTransition } from 'react-transition-group';
 import { getBarWidth, hasScrollbar } from '../../utils/scrollBar';
 import { configCtx } from '../configProvider';
-import { Button, message, Space } from 'raind';
+import { Button, message, Space } from '../../index';
 import {
   ExclamationCircleFilled,
   CheckCircleFilled,

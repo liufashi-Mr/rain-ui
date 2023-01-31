@@ -2,6 +2,7 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserWebpackPlugin = require('terser-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const CompressionPlugin = require('compression-webpack-plugin');
 const getStyleLoaders = (preProcessor) => {
   return [
     MiniCssExtractPlugin.loader,
@@ -51,7 +52,7 @@ const baseConfig = {
                 options: {
                   cacheDirectory: true,
                   cacheCompression: false,
-                  plugins: ['@babel/plugin-transform-runtime'], // 减少代码体积
+                  plugins: ['@babel/plugin-transform-runtime'],
                 },
               },
             ],
@@ -76,6 +77,13 @@ const baseConfig = {
           to: path.resolve(__dirname, './dist/style'),
         },
       ],
+    }),
+    new CompressionPlugin({
+      algorithm: 'gzip',
+      test: /\.(js|css|json|txt|html|ico|svg)(\?.*)?$/i,
+      threshold: 10240,
+      minRatio: 0.8,
+      deleteOriginalAssets: false,
     }),
   ],
   optimization: {
