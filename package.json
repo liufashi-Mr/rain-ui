@@ -31,7 +31,6 @@
   "scripts": {
     "start": "dumi dev",
     "docs:build": "dumi build",
-    "docs:deploy": "gh-pages -d docs-dist",
     "build": "rm -rf ./dist &&  npm run build:esm & npm run build:umd & npm run build:cjs",
     "build:esm": "webpack --config-name esm",
     "build:cjs": "webpack --config-name cjs",
