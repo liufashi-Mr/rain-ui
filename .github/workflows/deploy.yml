@@ -52,11 +52,9 @@ jobs:
       - name: oss上传
         uses: easingthemes/ssh-deploy@v2.1.1
         env:
-          # 私钥
           SSH_PRIVATE_KEY: ${{ secrets.SSH_KEY }}
-          ARGS: ""-avzr --delete""
+          ARGS: "-avzr --delete"
           SOURCE: "docs-dist"
           REMOTE_HOST: ${{ secrets.HOST }}
           REMOTE_USER: "root"
-          # 目标地址 你在服务器上部署代码的地方
           TARGET: "/apps/rain-ui/"
