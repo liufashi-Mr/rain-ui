@@ -68,7 +68,9 @@ const baseConfig = {
                 options: {
                   cacheDirectory: true,
                   cacheCompression: false,
-                  plugins: ['@babel/plugin-transform-runtime'],
+                  plugins: [['@babel/plugin-transform-runtime']],
+                  presets: [['@babel/preset-env']],
+                  ignore: ['node_modules/**'],
                 },
               },
             ],
@@ -128,6 +130,7 @@ module.exports = [
       path: path.resolve(__dirname, './dist/esm'),
       filename: 'index.js',
       libraryTarget: 'module',
+      chunkFormat: 'module',
     },
     experiments: {
       outputModule: true,
@@ -141,7 +144,6 @@ module.exports = [
       filename: 'index.js',
       libraryTarget: 'commonjs',
     },
-    ...baseConfig,
   },
   {
     name: 'umd',
