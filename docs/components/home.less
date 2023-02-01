@@ -14,9 +14,11 @@
     .alertContainer {
       display: flex;
       justify-content: space-between;
-      width: 500px;
+      width: 600px;
       margin: 0 auto;
       > a {
+        display: flex;
+        align-items: center;
         color: #fff;
         cursor: pointer;
         transition: all 0.3s;
@@ -50,9 +52,7 @@
           }
           @media (max-width: 1300px) {
             & {
-              width: 420px;
-              margin-left: -30%;
-              transform: translateX(30%);
+              width: 150px;
             }
           }
         }
@@ -66,13 +66,18 @@
         margin-top: 0;
         filter: blur(15px);
         .headerImage {
-          width: 250px;
+          width: 300px;
           height: 56px;
+          @media (max-width: 1300px) {
+            & {
+              width: 250px;
+            }
+          }
         }
       }
       .headerBottom {
         width: fit-content;
-        margin: -80px auto 0;
+        margin: -100px auto 0;
         text-align: center;
         .buttons {
           margin-top: 20px;
@@ -202,22 +207,39 @@
 }
 @media screen and (max-width: 769px) {
   .homePage {
+    .alert {
+      .alertContainer {
+        width: 350px;
+      }
+    }
     .main {
       padding: 0;
       .header {
-        padding-left: 40px;
-        .headerLeft {
-          margin-top: 30px;
+        width: 100vw;
+        .headerBottom {
+          margin: 30px 0;
         }
-        .headerRight {
+        .headerTop,
+        .headerBlur {
           display: none;
+        }
+        .headerBottom {
+          margin: 30px auto;
+          .buttons {
+            > a {
+              margin-right: 8px;
+              padding: 6px 14px;
+              &:last-child {
+                margin: 0;
+              }
+            }
+          }
         }
       }
       .group {
         padding: 0;
         ul.features {
           position: relative;
-          right: 20px;
           display: flex;
           flex-wrap: wrap;
           width: 100vw;

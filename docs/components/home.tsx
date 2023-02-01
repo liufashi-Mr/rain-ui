@@ -33,9 +33,9 @@ export default () => {
         <div className="alertContainer">
           <span>Rain-ui 期待更多小伙伴的加入 👏</span>
           <a href="https://github.com/liufashi-Mr/rain-ui">
+            <GithubOutlined style={{ marginRight: 8 }} />
             前往
-            <GithubOutlined style={{ margin: '0 8px 0 4px' }} />
-            <RightOutlined />
+            <RightOutlined style={{ marginLeft: 4 }} />
           </a>
         </div>
       </div>
