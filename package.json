@@ -1,7 +1,7 @@
 {
   "private": false,
   "name": "raind",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "a react components lib named rain-ui",
   "homepage": "https://rain-ui.liufashi.top",
   "keywords": [
@@ -32,8 +32,9 @@
     "start": "dumi dev",
     "docs:build": "dumi build",
     "docs:deploy": "gh-pages -d docs-dist",
-    "build": "rm -rf ./dist &&  npm run build:esm & npm run build:umd",
+    "build": "rm -rf ./dist &&  npm run build:esm & npm run build:umd & npm run build:cjs",
     "build:esm": "webpack --config-name esm",
+    "build:cjs": "webpack --config-name cjs",
     "build:umd": "webpack --config-name umd",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx",
     "lint:fix": "eslint --fix ./src --cache --cache-location './node_modules/.cache/.eslintcache' --ext .js,.jsx,.ts,.tsx --format=pretty ./src ",
@@ -83,6 +84,7 @@
   },
   "devDependencies": {
     "@babel/plugin-transform-runtime": "^7.19.6",
+    "@babel/preset-env": "^7.20.2",
     "@commitlint/cli": "^17.4.2",
     "@commitlint/config-conventional": "^17.1.0",
     "@testing-library/jest-dom": "^5.15.1",
@@ -97,6 +99,7 @@
     "babel-loader": "^9.1.0",
     "compression-webpack-plugin": "^10.0.0",
     "copy-webpack-plugin": "^11.0.0",
+    "core-js": "^3.27.2",
     "css-loader": "^6.7.2",
     "dumi": "1",
     "gh-pages": "^3.0.0",

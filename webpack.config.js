@@ -30,6 +30,22 @@ const getStyleLoaders = (preProcessor) => {
 
 const baseConfig = {
   entry: './src/index.ts',
+  externals: {
+    react: {
+      commonjs: 'react',
+      commonjs2: 'react',
+      module: 'react',
+      amd: 'react',
+      root: 'React',
+    },
+    'react-dom': {
+      commonjs: 'react-dom',
+      commonjs2: 'react-dom',
+      module: 'react-dom',
+      amd: 'react-dom',
+      root: 'ReactDOM',
+    },
+  },
   module: {
     rules: [
       {
@@ -119,26 +135,22 @@ module.exports = [
     ...baseConfig,
   },
   {
+    name: 'cjs',
+    output: {
+      path: path.resolve(__dirname, './dist/cjs'),
+      filename: 'index.js',
+      libraryTarget: 'commonjs',
+    },
+    ...baseConfig,
+  },
+  {
     name: 'umd',
     output: {
       path: path.resolve(__dirname, './dist/umd'),
       filename: 'index.js',
       libraryTarget: 'umd',
     },
-    externals: {
-      react: {
-        commonjs: 'react',
-        commonjs2: 'react',
-        amd: 'react',
-        root: 'React',
-      },
-      'react-dom': {
-        commonjs: 'react-dom',
-        commonjs2: 'react-dom',
-        amd: 'react-dom',
-        root: 'ReactDOM',
-      },
-    },
+
     ...baseConfig,
   },
 ];
