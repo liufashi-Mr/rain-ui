@@ -16,13 +16,13 @@ import { Section } from './site/Section';
 import './site/styles.less';
 export default () => (
   <Section
-    title="使用 codesandbox 在线体验 Rain-ui"
+    title="使用 stackblitz 在线体验 Rain-ui"
     style={{ marginTop: 56 }}
     titleStyle={{ paddingBottom: 100, fontWeight: 'bold' }}
   >
     <iframe
       className="codesandbox"
-      src="https://codesandbox.io/s/bzotei?file=/App.tsx:58-63"
+      src="https://stackblitz.com/edit/react-ts-zozztz?file=App.tsx"
       allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
       sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
     ></iframe>
