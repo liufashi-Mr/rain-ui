@@ -1,8 +1,8 @@
-import React from 'react';
-import './home.less';
-import packageJson from '../../package.json';
+import { GithubOutlined,RightOutlined } from '@ant-design/icons';
 import { Link } from 'dumi';
-import { GithubOutlined, RightOutlined } from '@ant-design/icons';
+import React from 'react';
+import packageJson from '../../package.json';
+import './home.less';
 const { version } = packageJson;
 export default () => {
   const characteristics = [
@@ -17,9 +17,9 @@ export default () => {
       txt: '使用 TypeScript 开发，提供完整的类型定义文件，更多的代码提示',
     },
     {
-      img: 'https://mdn.alipayobjects.com/yuyan_qk0oxh/afts/img/U3XjS5IA1tUAAAAAAAAAAAAAFl94AQBr',
-      title: '预设行为',
-      txt: '更少的代码，更少的 Bug',
+      img: 'https://gw.alipayobjects.com/zos/bmw-prod/b8570f4d-c1b1-45eb-a1da-abff53159967/kj9t990h_w144_h144.png',
+      title: '自定义主题',
+      txt: '支持自定义主题，深色主题，紧凑主题，以及局部主题，满足多样化的产品需求',
     },
     {
       img: 'https://mdn.alipayobjects.com/yuyan_qk0oxh/afts/img/q48YQ5X4ytAAAAAAAAAAAAAAFl94AQBr',

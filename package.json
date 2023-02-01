@@ -100,7 +100,7 @@
     "copy-webpack-plugin": "^11.0.0",
     "core-js": "^3.27.2",
     "css-loader": "^6.7.2",
-    "dumi": "1",
+    "dumi": "^1.1.47",
     "gh-pages": "^3.0.0",
     "husky": "^8.0.1",
     "less": "^4.1.3",
