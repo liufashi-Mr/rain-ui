@@ -54,8 +54,8 @@ jobs:
         env:
           # 私钥
           SSH_PRIVATE_KEY: ${{ secrets.SSH_KEY }}
-          ARGS: "-r"
-          SOURCE: "./docs-dist"
+          ARGS: ""-avzr --delete""
+          SOURCE: "docs-dist"
           REMOTE_HOST: ${{ secrets.HOST }}
           REMOTE_USER: "root"
           # 目标地址 你在服务器上部署代码的地方
