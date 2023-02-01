@@ -1,7 +1,7 @@
 import { defineConfig } from 'dumi';
 
 export default defineConfig({
-  title: 'rain-ui',
+  title: 'Rain-ui',
   mode: 'site',
   favicon: 'https://blog.liufashi.top/img/rain-ui.png',
   logo: 'https://blog.liufashi.top/img/rain-ui.png',

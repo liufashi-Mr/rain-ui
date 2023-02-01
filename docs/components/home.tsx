@@ -2,6 +2,7 @@ import React from 'react';
 import './home.less';
 import packageJson from '../../package.json';
 import { Link } from 'dumi';
+import { GithubOutlined, RightOutlined } from '@ant-design/icons';
 const { version } = packageJson;
 export default () => {
   const characteristics = [
@@ -13,7 +14,7 @@ export default () => {
     {
       img: 'https://gw.alipayobjects.com/zos/antfincdn/Eb8IHpb9jE/Typescript_logo_2020.svg',
       title: 'TypeScript',
-      txt: '使用 TypeScript 开发，提供完整的类型定义文件，提供更多的代码提示',
+      txt: '使用 TypeScript 开发，提供完整的类型定义文件，更多的代码提示',
     },
     {
       img: 'https://mdn.alipayobjects.com/yuyan_qk0oxh/afts/img/U3XjS5IA1tUAAAAAAAAAAAAAFl94AQBr',
@@ -23,27 +24,25 @@ export default () => {
     {
       img: 'https://mdn.alipayobjects.com/yuyan_qk0oxh/afts/img/q48YQ5X4ytAAAAAAAAAAAAAAFl94AQBr',
       title: '简单易用',
-      txt: '在 Ant Design 上进行了自己的封装，更加易用',
+      txt: '更简洁的API，更多默认配置',
     },
   ];
   return (
     <div className={'homePage'}>
+      <div className="alert">
+        <div className="alertContainer">
+          <span>Rain-ui 期待更多小伙伴的加入 👏</span>
+          <a href="https://github.com/liufashi-Mr/rain-ui">
+            前往
+            <GithubOutlined style={{ margin: '0 8px 0 4px' }} />
+            <RightOutlined />
+          </a>
+        </div>
+      </div>
       {/* 内容部分 */}
       <div className={'main'}>
         <div className={'header'}>
-          <div className={'headerLeft'}>
-            <h1 className={'title'}>Rain-ui</h1>
-            <p className={'description'}>
-              体验轻量级React Web开发体验
-              <span className={version}>v{version}</span>
-            </p>
-            <p className={'buttons'}>
-              <Link to="/guide">使用指南</Link>
-              <Link to="/components">组件</Link>
-              <a href="https://github.com/liufashi-Mr/rain-ui">在Github上查看</a>
-            </p>
-          </div>
-          <div className={'headerRight'}>
+          <div className={'headerTop'}>
             <img
               className={'headerImage'}
               alt="header-image"
@@ -51,10 +50,47 @@ export default () => {
             />
             <span className={'plus'}>+</span>
             <img
+              className={'headerImage  rotate'}
+              alt="header-image"
+              src="http://blog.liufashi.top/img/react.svg"
+            />
+            <span className={'plus'}>+</span>
+            <img
               className={'headerImage'}
               alt="header-image"
-              src="http://concis.org.cn/images/react-icon.svg"
+              src="http://blog.liufashi.top/img/typescript.svg"
             />
+          </div>
+          <div className={'headerTop headerBlur'}>
+            <img
+              className={'headerImage'}
+              alt="header-image"
+              src="https://blog.liufashi.top/img/rain-ui.png"
+            />
+            <span className={'plus'}>+</span>
+            <img
+              className={'headerImage  rotate'}
+              alt="header-image"
+              src="http://blog.liufashi.top/img/react.svg"
+            />
+            <span className={'plus'}>+</span>
+            <img
+              className={'headerImage'}
+              alt="header-image"
+              style={{ transform: 'scaleX(4.5)' }}
+              src="http://blog.liufashi.top/img/typescript.svg"
+            />
+          </div>
+          <div className={'headerBottom'}>
+            <h1 className={'title'}>
+              Rain-ui <span className={'version'}>v{version}</span>
+            </h1>
+            <p className={'description'}>智能设计体系，完整主题方案</p>
+            <p className={'buttons'}>
+              <Link to="/guide">使用指南</Link>
+              <Link to="/components">组件</Link>
+              <a href="https://github.com/liufashi-Mr/rain-ui">在Github上查看</a>
+            </p>
           </div>
         </div>
         {/* 功能特性 */}

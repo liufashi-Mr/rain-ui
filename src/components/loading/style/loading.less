@@ -38,15 +38,20 @@
       animation-name: ball-blossom-ball4;
     }
   }
-  &&-small {
+  &-small {
     width: 4px;
     height: 4px;
     > i {
       width: 6px;
       height: 6px;
     }
+    &.@{loading-prefix-cls}-blossom-compact {
+      >i {
+        display: none;
+      }
+    }
   }
-  &&-middle {
+  &-middle {
     width: 6px;
     height: 6px;
     > i {
@@ -54,7 +59,7 @@
       height: 9px;
     }
   }
-  &&-large {
+  &-large {
     width: 8px;
     height: 8px;
     > i {
@@ -202,7 +207,7 @@
       animation-delay: 0s;
     }
   }
-  &&-small {
+  &-small {
     width: 14px;
     height: 14px;
     > i {
@@ -210,7 +215,7 @@
       height: 4px;
     }
   }
-  &&-middle {
+  &-middle {
     width: 20px;
     height: 20px;
     > i {
@@ -218,7 +223,7 @@
       height: 6px;
     }
   }
-  &&-large {
+  &-large {
     width: 28px;
     height: 28px;
     > i {
@@ -264,19 +269,19 @@
       animation: ball-newton-cradle-right 1s 0s ease-out infinite;
     }
   }
-  &&-small {
+  &-small {
     > i {
       width: 6px;
       height: 6px;
     }
   }
-  &&-middle {
+  &-middle {
     > i {
       width: 9px;
       height: 9px;
     }
   }
-  &&-large {
+  &-large {
     > i {
       width: 12px;
       height: 12px;

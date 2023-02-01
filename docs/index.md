@@ -7,7 +7,7 @@ footer: Open-source MIT Licensed | Copyright © 2020<br />Powered by [dumi](http
 
 <code src="./components/home.tsx" inline="true"></code>
 
-```tsx | preview
+<!-- ```tsx | preview
 /**
  * inline: true
  */
@@ -28,7 +28,7 @@ export default () => (
     ></iframe>
   </Section>
 );
-```
+``` -->
 
 ```tsx | preview
 /**
@@ -40,41 +40,17 @@ import './site/styles.less';
 
 export default () => (
   <Section
-    title="Questions and errors, please contact me"
-    style={{ marginTop: 140, fontWeight: 'bold' }}
     titleStyle={{ paddingBottom: 140 }}
     scale={1.2}
   >
-    <a href="http://concis.org.cn/#/common/button" target="_blank" rel="noreferrer">
-      <img src="http://concis.org.cn/images/wechat-self.jpg" style={{ width: '400px' }} />
-    </a>
-  </Section>
-);
-```
-
-```tsx | preview
-/**
- * inline: true
- */
-import React from 'react';
-import { Section } from './site/Section';
-import './site/styles.less';
-
-export default () => (
-  <Section
-    style={{ marginTop: 140, fontWeight: 'bold' }}
-    titleStyle={{ paddingBottom: 140 }}
-    scale={1.2}
-  >
-    <div style={{ paddingBottom: 80 }}>
-      <span>Copyright © 2022-2022 Concis. All Rights Reserved. Concis 版权所有</span>
-      <a
-        href="https://beian.miit.gov.cn/"
+    <div style={{ paddingBottom: 30 }}>
+      <span>Copyright © 2022-2023 Rain-ui. All Rights Reserved. Rain-ui 版权所有</span>
+      <a href="https://beian.miit.gov.cn/"
         target="_blank"
         rel="noreferrer"
-        style={{ color: '#1890ff' }}
+        style={{ color: '#165dff' }}
       >
-        苏ICP备2022018060号
+         鄂ICP备2021022377号
       </a>
     </div>
   </Section>
