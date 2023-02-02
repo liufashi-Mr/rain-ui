@@ -5,9 +5,9 @@ const App: React.FC = () => {
   const [visible, setVisible] = React.useState(false);
   const [index, setIndex] = React.useState(0);
   const srcList = [
-    'https://images.tuyacn.com/oceanus/image/982e297b-c0a1-5ee6-8d75-1af3ca4b9c9a.jpg?imageMogr2/format/webp/thumbnail/570x548',
-    'https://images.tuyacn.com/oceanus/image/e37dd30c-7ebe-5518-b9a3-e8125ca1d7ae.jpg?imageMogr2/format/webp/thumbnail/570x548',
-    'https://i0.hippopx.com/photos/136/937/142/photography-the-scenery-bright-woman-preview.jpg',
+    'https://blog.liufashi.top/img/preview-tuya-1.webp',
+    'https://blog.liufashi.top/img/preview-tuya-2.webp',
+    'https://blog.liufashi.top/img/image-preview-1.jpeg',
   ];
   return (
     <>
