@@ -14,11 +14,11 @@ nav:
 **使用 npm 或 yarn 安装**
 
 ```shell
-npm install raind --save
+npm install raind@latest --save
 ```
 
 ```shell
-yarn add raind
+yarn add raind@latest
 ```
 
 为什么是 raind？因为 rain-ui 被别人用了

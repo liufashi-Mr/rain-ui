@@ -28,4 +28,4 @@ nav:
 
 ## 模块支持
 
-`rain-ui` 支持 esm、umd 两种模块支持，我们在[下载](./getting-start.md) `rain-ui` npm 包之后，会通过你的使用方式来将指定模块的包引入，`rain-ui` 采用 TypeScript 编写，提供完整的`typescript`类型，在引用时自动识别，无需特殊处理。在使用`ES Module`时将自动引入 esm 下的文件，支持 tree shaking 减少项目体积，在服务端使用时将自动引入 umd 下的文件，同事 umd 模块也支持 script 的当时引入
+`rain-ui` 支持 esm、umd、cjs 三种模块支持，我们在[下载](./getting-start.md) `rain-ui` npm 包之后，会通过你的使用方式来将指定模块的包引入，`rain-ui` 采用 TypeScript 编写，提供完整的`typescript`类型，在引用时自动识别，无需特殊处理。在使用`ES Module`时将自动引入 esm 下的文件，支持 tree shaking 减少项目体积，在非 es 模块使用时将自动引入 umd 下的文件，同时 umd 模块也支持 script 的方式引入，同样也可以手动引入 cjs 的模块 `raind/dist/cjs`。
