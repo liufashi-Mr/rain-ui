@@ -1,0 +1,134 @@
+@import '../../../styles/variables/index.less';
+
+@drawer-prefix-cls: ~'@{rain-prefix}-drawer';
+@rain-drawer-font-size: 16px;
+@drawer-direction: left, right, top, bottom;
+
+.@{drawer-prefix-cls} {
+  position: fixed;
+  overflow: hidden;
+  pointer-events: none;
+  inset: 0;
+  &-mask {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.45);
+    pointer-events: auto;
+    inset: 0;
+  }
+
+  &-content-wrapper {
+    position: absolute;
+    z-index: 1000;
+    overflow: hidden;
+    background-color: black;
+    box-shadow: -6px 0 16px -8px #00000014, -9px 0 28px #0000000d, -12px 0 48px 16px #00000008;
+  }
+
+  &-content {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    pointer-events: auto;
+  }
+
+  &-wrapper-body {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+  }
+
+  &-header {
+    display: flex;
+    flex: 0;
+    padding: 16px 24px;
+    font-size: @rain-drawer-font-size;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  }
+
+  &-header-title {
+    display: flex;
+    flex: 1;
+    align-items: center;
+  }
+
+  &-close {
+    margin-right: 12px;
+    color: rgba(0, 0, 0, 0.45);
+    font-weight: 600;
+    font-size: 16px;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  &-body {
+    flex: 1;
+    padding: 24px;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  &-footer {
+    flex-shrink: 0;
+    // text-align: right;
+    padding: 16px;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+  }
+
+  &-compact {
+    line-height: 18px;
+  }
+
+  &-mask-animation-enter {
+    opacity: 0;
+  }
+
+  &-mask-animation-enter-active {
+    opacity: 1;
+    transition: opacity 0.3s @default-transition-cubic;
+  }
+
+  &-mask-animation-exit {
+    opacity: 1;
+  }
+
+  &-mask-animation-exit-active {
+    opacity: 0;
+    transition: opacity 0.3s @default-transition-cubic;
+  }
+
+  each(@drawer-direction, {
+		@set-width: if(('@{value}'='left') or ('@{value}'='right'), 500px, 100%);
+		@set-height: if(('@{value}'='left') or ('@{value}'='right'), 100%, 500px);
+		@animation-width: if(('@{value}'='left') or ('@{value}'='right'), 0, 100%);
+		@animation-height: if(('@{value}'='left') or ('@{value}'='right'), 100%, 0);
+
+		&-content-wrapper-@{value} {
+			@{value}: 0;
+			// height: @set-height;
+			// max-height: @set-height;
+			// width: @set-width;
+			// max-width: @set-width;
+		}
+		&-animation-@{value}-enter,
+		&-animation-@{value}-appear {
+			width: @animation-width;
+			height: @animation-height;
+		}
+		&-animation-@{value}-enter-active,
+		&-animation-@{value}-appear-active {
+			width: 100%;
+			height: 100%;
+			transition: all 0.5s @default-transition-cubic;
+		}
+		&-animation-@{value}-exit {
+			width: 100%;
+			height: 100%;
+		}
+		&-animation-@{value}-exit-active {
+			width: @animation-width;
+			height: @animation-height;
+			transition: all 0.5s @default-transition-cubic;
+		}
+  });
+}
