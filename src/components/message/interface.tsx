@@ -38,11 +38,6 @@ interface MessageProps {
    * @default -
    */
   onClose?: () => void;
-  /**
-   * @description message的容器
-   * @default  document.body
-   */
-  container?: HTMLElement;
   handleClose?: () => void;
   loadingClose?: (callback: React.Dispatch<React.SetStateAction<boolean>>) => void;
 }

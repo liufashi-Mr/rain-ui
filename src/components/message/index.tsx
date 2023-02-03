@@ -93,9 +93,9 @@ const Message = (props: MessageProps) => {
 };
 let messageContainer: HTMLDivElement | null = null;
 const createMessage = (messageConfig: MessageProps) => {
-  const { container = document.body, ...rest } = messageConfig;
-  let { duration } = rest;
-  duration = rest.type === 'loading' && !duration ? 10000 : 3000;
+  const container = document.body;
+  let { duration } = messageConfig;
+  duration = messageConfig.type === 'loading' && !duration ? 10000 : 3000;
   messageContainer = messageContainer ? messageContainer : document.createElement('div');
   messageContainer.className = `${prefixCls}-container`;
   const divElement = document.createElement('div');
@@ -120,11 +120,10 @@ const createMessage = (messageConfig: MessageProps) => {
 
   ReactDOM.render(
     <Message
-      {...rest}
+      {...messageConfig}
       handleClose={handleClose}
       loadingClose={loadingClose}
       duration={duration}
-      container={container}
     />,
     divElement,
   );
