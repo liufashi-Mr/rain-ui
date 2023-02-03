@@ -198,7 +198,9 @@ const Layout: React.FC<IRouteComponentProps> = ({ children, location }) => {
                 style={{
                   background: x.background,
                   borderColor:
-                    x.title === currentThemeTitle ? 'var(--rain-primary-color)' : 'transparent',
+                    x.title === currentThemeTitle
+                      ? 'var(--rain-primary-color)'
+                      : 'var(--rain-border-color-base)',
                 }}
               >
                 {x.title}
