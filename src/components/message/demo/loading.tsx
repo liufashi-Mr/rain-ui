@@ -19,7 +19,7 @@ const App: React.FC = () => {
         message.success('fetching success');
       },
     });
-    console.log(hide)
+    console.log(hide);
     try {
       const res = await fetchInfo();
       if (res.success) {
