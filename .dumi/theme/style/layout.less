@@ -30,7 +30,7 @@ body {
     position: fixed;
     right: 20px;
     bottom: 50px;
-    z-index: 9999;
+    z-index: 999;
     width: 30px;
     height: auto;
     > div {
@@ -47,25 +47,40 @@ body {
       cursor: pointer;
       &:hover {
         color: #fff;
-        background-color: #2c97fb;
+        background-color: var(--rain-primary-color);
         transition: all 0.3s;
       }
     }
+    &-skin-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 180px;
+      height: 40px;
+      padding: 0 8px;
+      text-align: center;
+      background-repeat: no-repeat !important;
+      background-position: center !important;
+      background-size: 180px 40px !important;
+      border: 1px solid var(--rain-border-color-base);
+      border-radius: var(--rain-border-radius-base);
+      cursor: pointer;
+    }
     &-compact {
       color: #fff !important;
-      background-color: #2c97fb !important;
+      background-color: var(--rain-primary-color) !important;
     }
     &-dark {
       > div {
         color: #fff;
         background-color: #575757;
         &:hover {
-          background-color: #1f72c0;
+          background-color: var(--rain-primary-color);
           transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
         }
       }
       .@{prefix}-layout-controller-compact {
-        background-color: #1f72c0 !important;
+        background-color: var(--rain-primary-color) !important;
       }
     }
   }
@@ -338,18 +353,18 @@ body {
         }
 
         &:hover {
-          color: lighten(@c-primary, 5%);
+          color: var(--rain-primary-color-hover);
 
           [data-prefers-color='dark'] & {
-            color: lighten(@c-primary-dark, 5%);
+            color: var(--rain-primary-color-hover);
           }
         }
 
         &:active {
-          color: lighten(@c-primary, 3%);
+          color: var(--rain-primary-color-active);
 
           [data-prefers-color='dark'] & {
-            color: lighten(@c-primary-dark, 3%);
+            color: var(--rain-primary-color-active);
           }
         }
 

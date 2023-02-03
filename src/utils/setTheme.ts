@@ -46,14 +46,14 @@ const setColors = (element: HTMLElement, colors: string[], item: string) => {
   element.style.setProperty(`--rain-${item}-color-1`, colors[0]);
   element.style.setProperty(`--rain-${item}-color-2`, colors[1]);
   element.style.setProperty(`--rain-${item}-color-3`, colors[2]);
-  element.style.setProperty(`--rain-${item}-color-hover`, colors[3]);
-  element.style.setProperty(`--rain-${item}-color`, colors[4]);
-  element.style.setProperty(`--rain-${item}-color-active`, colors[5]);
-  element.style.setProperty(`--rain-${item}-color-7`, colors[6]);
+  element.style.setProperty(`--rain-${item}-color-4`, colors[3]);
+  element.style.setProperty(`--rain-${item}-color-hover`, colors[4]);
+  element.style.setProperty(`--rain-${item}-color`, colors[5]);
+  element.style.setProperty(`--rain-${item}-color-active`, colors[6]);
   element.style.setProperty(`--rain-${item}-color-8`, colors[7]);
   element.style.setProperty(`--rain-${item}-color-9`, colors[8]);
   element.style.setProperty(`--rain-${item}-color-10`, colors[9]);
-  element.style.setProperty(`--rain-${item}-color-outline`, colors[4] + '33');
+  element.style.setProperty(`--rain-${item}-color-outline`, colors[5] + '33');
 };
 
 // 主题配色

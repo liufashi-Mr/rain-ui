@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
 import type { IRouteComponentProps } from '@umijs/types';
 import { context, Link } from 'dumi/theme';
 import Navbar from './components/Navbar';
@@ -6,10 +6,15 @@ import SideMenu from './components/SideMenu';
 import SlugList from './components/SlugList';
 import SearchBar from './components/SearchBar';
 import { usePrefersColor } from 'dumi/theme';
-import { ConfigProvider } from 'raind/src';
-import { CompressOutlined, VerticalAlignTopOutlined } from '@ant-design/icons';
+import { ConfigProvider, Modal, Space, message } from 'raind/src';
+import {
+  CompressOutlined,
+  VerticalAlignTopOutlined,
+  SkinOutlined,
+  CheckCircleFilled,
+} from '@ant-design/icons';
 import './style/layout.less';
-
+import { skinList } from './theme';
 const Hero = (hero) => (
   <>
     <div className="__dumi-default-layout-hero">
@@ -51,6 +56,14 @@ const Layout: React.FC<IRouteComponentProps> = ({ children, location }) => {
   } = useContext(context);
   const [color, setColor] = usePrefersColor();
   const [compact, setCompact] = useState(false);
+
+  const [visible, setVisible] = useState(false);
+  const [currentThemeTitle, setCurrentThemeTitle] = useState<any>(
+    localStorage.getItem('currentThemeTitle') || 'default',
+  );
+  const [rainSkin, setRainSkin] = useState<any>(
+    skinList[skinList.findIndex((x) => x.title === currentThemeTitle)],
+  );
   const { url: repoUrl, branch, platform } = repository;
   const [menuCollapsed, setMenuCollapsed] = useState<boolean>(true);
   const isSiteMode = mode === 'site';
@@ -74,7 +87,12 @@ const Layout: React.FC<IRouteComponentProps> = ({ children, location }) => {
     ] || platform;
 
   return (
-    <ConfigProvider dark={color === 'dark'} compact={compact}>
+    <ConfigProvider
+      dark={color === 'dark'}
+      compact={compact}
+      theme={rainSkin.theme}
+      config={rainSkin.config}
+    >
       <div
         className="__dumi-default-layout"
         data-route={location.pathname}
@@ -126,6 +144,9 @@ const Layout: React.FC<IRouteComponentProps> = ({ children, location }) => {
             (color === 'dark' ? '__dumi-default-layout-controller-dark' : '')
           }
         >
+          <div onClick={() => setVisible(true)} title={'自定义主题'}>
+            <SkinOutlined />
+          </div>
           <div
             onClick={() => setColor(color === 'light' ? 'dark' : 'light')}
             title={color === 'light' ? '浅色主题' : '深色主题'}
@@ -146,6 +167,46 @@ const Layout: React.FC<IRouteComponentProps> = ({ children, location }) => {
             <VerticalAlignTopOutlined />
           </div>
         </div>
+        <Modal
+          type="info"
+          title="选择主题"
+          visible={visible}
+          width={604}
+          onCancel={() => setVisible(false)}
+          onConfirm={() => {
+            localStorage.setItem('currentThemeTitle', currentThemeTitle);
+            const index = skinList.findIndex((x) => x.title === currentThemeTitle);
+            const hide = message.loading({
+              content: `${currentThemeTitle}主题切换中`,
+              onClose() {
+                message.success(`已切换为${currentThemeTitle}主题`);
+              },
+            });
+            setTimeout(() => {
+              hide();
+              setRainSkin(skinList[index]);
+            }, 1000);
+            setVisible(false);
+          }}
+        >
+          <Space style={{ marginTop: 16 }} size={['16px', '8px']}>
+            {skinList.map((x) => (
+              <div
+                key={x.title}
+                className="__dumi-default-layout-controller-skin-item"
+                onClick={() => setCurrentThemeTitle(x.title)}
+                style={{
+                  background: x.background,
+                }}
+              >
+                {x.title}
+                {x.title === currentThemeTitle && (
+                  <CheckCircleFilled style={{ color: 'var(--rain-primary-color)' }} />
+                )}
+              </div>
+            ))}
+          </Space>
+        </Modal>
       </div>
     </ConfigProvider>
   );

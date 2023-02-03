@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ConfigProvider, Divider, Button, Tag } from 'raind';
+import { ConfigProvider, Divider, Button, Tag, Space } from 'raind';
 import { ClockCircleOutlined, MinusCircleOutlined } from '@ant-design/icons';
 const App: React.FC = () => {
   const [dark, setDark] = useState(false);
@@ -20,13 +20,15 @@ const App: React.FC = () => {
           local
           dark={dark}
         >
-          <Button>default</Button>
-          <Tag icon={<ClockCircleOutlined />} color="default" bordered>
-            waiting
-          </Tag>
-          <Tag icon={<MinusCircleOutlined />} color="default" bordered>
-            stop
-          </Tag>
+          <Space>
+            <Button>default</Button>
+            <Tag icon={<ClockCircleOutlined />} color="default" bordered>
+              waiting
+            </Tag>
+            <Tag icon={<MinusCircleOutlined />} color="default" bordered>
+              stop
+            </Tag>
+          </Space>
         </ConfigProvider>
       </div>
       <Divider>使用透明度</Divider>
@@ -40,6 +42,20 @@ const App: React.FC = () => {
           local
           dark={dark}
         >
+          <Space>
+            <Button>default</Button>
+            <Tag icon={<ClockCircleOutlined />} color="default" bordered>
+              waiting
+            </Tag>
+            <Tag icon={<MinusCircleOutlined />} color="default" bordered>
+              stop
+            </Tag>
+          </Space>
+        </ConfigProvider>
+      </div>
+      <Divider>默认值</Divider>
+      <div style={{ padding: 24 }}>
+        <Space>
           <Button>default</Button>
           <Tag icon={<ClockCircleOutlined />} color="default" bordered>
             waiting
@@ -47,17 +63,7 @@ const App: React.FC = () => {
           <Tag icon={<MinusCircleOutlined />} color="default" bordered>
             stop
           </Tag>
-        </ConfigProvider>
-      </div>
-      <Divider>默认值</Divider>
-      <div style={{ padding: 24 }}>
-        <Button>primary</Button>
-        <Tag icon={<ClockCircleOutlined />} color="default" bordered>
-          waiting
-        </Tag>
-        <Tag icon={<MinusCircleOutlined />} color="default" bordered>
-          stop
-        </Tag>
+        </Space>
       </div>
     </div>
   );
