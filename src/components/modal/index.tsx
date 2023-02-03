@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useMemo, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { createRoot } from 'react-dom/client';
+import ReactDOM from 'react-dom';
 import { CSSTransition } from 'react-transition-group';
 import { getBarWidth, hasScrollbar } from '../../utils/scrollBar';
 import { configCtx } from '../configProvider';
-import { Button, message, Space } from 'raind';
+import { Button, message, Space } from '../../index';
 import {
   ExclamationCircleFilled,
   CheckCircleFilled,
@@ -190,10 +190,11 @@ const createModal = (config: ModalConfigProps) => {
   const { content, ...rest } = config;
   const divElement = document.createElement('div');
   document.body.appendChild(divElement);
-  createRoot(divElement).render(
+  ReactDOM.render(
     <Modal {...rest} useFunction>
       {content}
     </Modal>,
+    divElement,
   );
 };
 Modal.open = (config: ModalConfigProps) => {

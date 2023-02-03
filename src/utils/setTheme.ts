@@ -1,10 +1,10 @@
 import type { ThemeVariables, OtherVariables } from 'src/components/configProvider/interface';
 import { generate } from '@ant-design/colors';
 const initTheme = {
-  primary: '#165dff',
-  success: '#52c41a',
-  warning: '#faad14',
-  error: '#f5222d',
+  primary: '#5e7ce0',
+  success: '#50d4ab',
+  warning: '#fac20a',
+  error: '#f66f6a',
 };
 
 const initVariables = {
@@ -13,7 +13,7 @@ const initVariables = {
   '--rain-text-color': '#000000d9', // 主文本色
   '--rain-text-color-secondary': '#00000073', // 次文本色
   '--rain-disabled-color': '#ffffff40', // 失效色
-  '--rain-border-radius-base': '8px', // 组件/浮层圆角
+  '--rain-border-radius-base': '2px', // 组件/浮层圆角
   '--rain-border-color-base': '#d9d9d9', // 边框色
   '--rain-background-color-base': '#fafafa', // 背景色
 };
@@ -23,7 +23,7 @@ const initVariablesDark = {
   '--rain-text-color': '#ffffffd9', // 主文本色
   '--rain-text-color-secondary': '#ffffff73', // 次文本色
   '--rain-disabled-color': '#ffffff40', // 失效色
-  '--rain-border-radius-base': '8px', // 组件/浮层圆角
+  '--rain-border-radius-base': '4px', // 组件/浮层圆角
   '--rain-border-color-base': '#434343', // 边框色
   '--rain-background-color-base': '#00000005', // 背景色
 };
@@ -46,14 +46,14 @@ const setColors = (element: HTMLElement, colors: string[], item: string) => {
   element.style.setProperty(`--rain-${item}-color-1`, colors[0]);
   element.style.setProperty(`--rain-${item}-color-2`, colors[1]);
   element.style.setProperty(`--rain-${item}-color-3`, colors[2]);
-  element.style.setProperty(`--rain-${item}-color-hover`, colors[3]);
-  element.style.setProperty(`--rain-${item}-color`, colors[4]);
-  element.style.setProperty(`--rain-${item}-color-active`, colors[5]);
-  element.style.setProperty(`--rain-${item}-color-7`, colors[6]);
+  element.style.setProperty(`--rain-${item}-color-4`, colors[3]);
+  element.style.setProperty(`--rain-${item}-color-hover`, colors[4]);
+  element.style.setProperty(`--rain-${item}-color`, colors[5]);
+  element.style.setProperty(`--rain-${item}-color-active`, colors[6]);
   element.style.setProperty(`--rain-${item}-color-8`, colors[7]);
   element.style.setProperty(`--rain-${item}-color-9`, colors[8]);
   element.style.setProperty(`--rain-${item}-color-10`, colors[9]);
-  element.style.setProperty(`--rain-${item}-color-outline`, colors[4] + '33');
+  element.style.setProperty(`--rain-${item}-color-outline`, colors[5] + '33');
 };
 
 // 主题配色

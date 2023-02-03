@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import type { LoadingProps } from './interface';
 import cls from 'classnames';
 import './style/index.less';
+import { configCtx } from '../configProvider';
 import Blossom from './Blossom';
 import Spin from './Spin';
 import Collide from './Collide';
@@ -11,7 +12,10 @@ const LoadingType: React.FC<Pick<LoadingProps, 'type' | 'size' | 'indicator'>> =
   size,
   indicator,
 }) => {
-  const classes = cls(`${prefixCls}-${type}`, `${prefixCls}-${type}-${size}`);
+  const { compact } = useContext(configCtx);
+  const classes = cls(`${prefixCls}-${type}`, `${prefixCls}-${type}-${size}`, {
+    [`${prefixCls}-${type}-compact`]: compact,
+  });
   if (indicator) return indicator as React.ReactElement;
   switch (type) {
     case 'blossom':

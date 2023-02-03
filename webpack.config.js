@@ -2,6 +2,7 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserWebpackPlugin = require('terser-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const CompressionPlugin = require('compression-webpack-plugin');
 const getStyleLoaders = (preProcessor) => {
   return [
     MiniCssExtractPlugin.loader,
@@ -29,6 +30,22 @@ const getStyleLoaders = (preProcessor) => {
 
 const baseConfig = {
   entry: './src/index.ts',
+  externals: {
+    react: {
+      commonjs: 'react',
+      commonjs2: 'react',
+      module: 'react',
+      amd: 'react',
+      root: 'React',
+    },
+    'react-dom': {
+      commonjs: 'react-dom',
+      commonjs2: 'react-dom',
+      module: 'react-dom',
+      amd: 'react-dom',
+      root: 'ReactDOM',
+    },
+  },
   module: {
     rules: [
       {
@@ -51,7 +68,9 @@ const baseConfig = {
                 options: {
                   cacheDirectory: true,
                   cacheCompression: false,
-                  plugins: ['@babel/plugin-transform-runtime'], // 减少代码体积
+                  plugins: [['@babel/plugin-transform-runtime']],
+                  presets: [['@babel/preset-env']],
+                  ignore: ['node_modules/**'],
                 },
               },
             ],
@@ -76,6 +95,13 @@ const baseConfig = {
           to: path.resolve(__dirname, './dist/style'),
         },
       ],
+    }),
+    new CompressionPlugin({
+      algorithm: 'gzip',
+      test: /\.(js|css|json|txt|html|ico|svg)(\?.*)?$/i,
+      threshold: 10240,
+      minRatio: 0.8,
+      deleteOriginalAssets: false,
     }),
   ],
   optimization: {
@@ -104,11 +130,20 @@ module.exports = [
       path: path.resolve(__dirname, './dist/esm'),
       filename: 'index.js',
       libraryTarget: 'module',
+      chunkFormat: 'module',
     },
     experiments: {
       outputModule: true,
     },
     ...baseConfig,
+  },
+  {
+    name: 'cjs',
+    output: {
+      path: path.resolve(__dirname, './dist/cjs'),
+      filename: 'index.js',
+      libraryTarget: 'commonjs',
+    },
   },
   {
     name: 'umd',
@@ -117,6 +152,7 @@ module.exports = [
       filename: 'index.js',
       libraryTarget: 'umd',
     },
+
     ...baseConfig,
   },
 ];

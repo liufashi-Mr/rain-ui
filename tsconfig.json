@@ -22,6 +22,6 @@
       "raind": ["src/index.ts"]
     }
   },
-  "include": ["index.d.ts", "src"],
+  "include": ["typing.d.ts", "src"],
   "exclude": ["src/.umi", "src/.umi-production"]
 }

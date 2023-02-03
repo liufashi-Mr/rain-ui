@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { SketchPicker } from 'react-color';
 import { Button, Tag, Loading, Divider, ConfigProvider, Space } from 'raind';
-import type { ThemeVariables } from '../interface';
+
 import {
   SyncOutlined,
   SearchOutlined,
@@ -19,7 +19,7 @@ const App: React.FC = () => {
   const [dark, setDark] = useState(false);
   const [compact, setCompact] = useState(false);
 
-  const handleColorChange = (val: ThemeVariables) => {
+  const handleColorChange = (val: any) => {
     setTheme((v) => ({ ...v, ...val }));
   };
   return (

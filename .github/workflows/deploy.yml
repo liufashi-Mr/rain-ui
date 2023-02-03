@@ -1,0 +1,59 @@
+# 指定工作流程的名称
+name: 文档部署
+# 指定此工作流程的触发事件Event。 此示例使用 推送 事件，即执行push后，触发该流水线的执行
+on:
+  push:
+    branches: ['master']
+  pull_request:
+    branches: ['master']
+# 存放 learn-github-actions 工作流程中的所有Job
+jobs:
+  # 指定一个Job的名称为check-bats-version
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      # 拉取项目代码
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      # 给当前环境下载node
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.x'
+      - name: use yarn.js 1.22.19
+        # 使用action库  actions/setup-node安装yarn
+        uses: actions/setup-node@v3
+        with:
+          yarn-version: 1.22.19
+      # 检查缓存
+      # 如果key命中缓存则直接将缓存的文件还原到 path 目录，从而减少流水线运行时间
+      # 若 key 没命中缓存时，在当前Job成功完成时将自动创建一个新缓存
+      - name: Cache
+        # 缓存命中结果会存储在steps.[id].outputs.cache-hit里，该变量在继后的step中可读
+        id: cache-dependencies
+        uses: actions/cache@v3
+        with:
+          # 缓存文件目录的路径
+          path: |
+            **/node_modules
+          # key中定义缓存标志位的生成方式。runner.OS指当前环境的系统。外加对yarn.lock内容生成哈希码作为key值，如果yarn.lock改变则代表依赖有变化。
+          # 这里用yarn.lock而不是package.json是因为package.json中还有version和description之类的描述项目但和依赖无关的属性
+          key: ${{runner.OS}}-${{hashFiles('**/yarn.lock')}}
+      # 安装依赖
+      - name: 安装依赖
+        # 如果缓存标志位没命中，则执行该step。否则就跳过该step
+        if: steps.cache-dependencies.outputs.cache-hit != 'true'
+        run: yarn
+      # 运行代码打包
+      - name: node.js构建
+        run: CI=false yarn docs:build
+      - name: 查看文件
+        run: ls -a # 查看打包后的目录文件
+      - name: oss上传
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.HOST }} # 服务器host
+          username: ${{ secrets.USER }} # 服务器用户名
+          password: ${{ secrets.PASSWORD }} # 服务器密码
+          source: 'docs-dist' # 需要上传的文件, 多文件使用逗号隔开
+          target: '/apps/rain-ui/' # 上传到服务器的什么位置

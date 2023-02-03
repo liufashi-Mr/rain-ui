@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { createRoot } from 'react-dom/client';
+import ReactDOM from 'react-dom';
 import {
   ExclamationCircleFilled,
   CheckCircleFilled,
@@ -30,8 +30,8 @@ const Message = (props: MessageProps) => {
   const classes = cls(prefixCls, className, {
     [`${prefixCls}-${type}`]: type,
   });
+  loadingClose?.(setVisible);
   useEffect(() => {
-    loadingClose?.(setVisible);
     if (visible) {
       const timer = setTimeout(() => {
         setVisible(false);
@@ -92,7 +92,7 @@ const Message = (props: MessageProps) => {
   );
 };
 let messageContainer: HTMLDivElement | null = null;
-const createMessage = async (messageConfig: MessageProps) => {
+const createMessage = (messageConfig: MessageProps) => {
   const { container = document.body, ...rest } = messageConfig;
   let { duration } = rest;
   duration = rest.type === 'loading' && !duration ? 10000 : 3000;
@@ -118,7 +118,7 @@ const createMessage = async (messageConfig: MessageProps) => {
     hide = () => setVisible(false);
   };
 
-  await createRoot(divElement).render(
+  ReactDOM.render(
     <Message
       {...rest}
       handleClose={handleClose}
@@ -126,6 +126,7 @@ const createMessage = async (messageConfig: MessageProps) => {
       duration={duration}
       container={container}
     />,
+    divElement,
   );
   return hide;
 };

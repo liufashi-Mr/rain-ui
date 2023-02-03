@@ -13,12 +13,13 @@ const App: React.FC = () => {
     });
 
   const getUserInfo = async () => {
-    const hide = await message.loading({
+    const hide = message.loading({
       content: 'fetching...',
       onClose() {
         message.success('fetching success');
       },
     });
+    console.log(hide);
     try {
       const res = await fetchInfo();
       if (res.success) {
