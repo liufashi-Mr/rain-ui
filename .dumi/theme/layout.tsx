@@ -90,8 +90,8 @@ const Layout: React.FC<IRouteComponentProps> = ({ children, location }) => {
     <ConfigProvider
       dark={color === 'dark'}
       compact={compact}
-      theme={rainSkin.theme}
-      config={rainSkin.config}
+      theme={rainSkin?.theme}
+      config={rainSkin?.config}
     >
       <div
         className="__dumi-default-layout"
@@ -197,6 +197,8 @@ const Layout: React.FC<IRouteComponentProps> = ({ children, location }) => {
                 onClick={() => setCurrentThemeTitle(x.title)}
                 style={{
                   background: x.background,
+                  borderColor:
+                    x.title === currentThemeTitle ? 'var(--rain-primary-color)' : 'transparent',
                 }}
               >
                 {x.title}

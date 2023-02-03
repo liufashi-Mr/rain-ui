@@ -1,10 +1,10 @@
 import type { ThemeVariables, OtherVariables } from 'src/components/configProvider/interface';
 import { generate } from '@ant-design/colors';
 const initTheme = {
-  primary: '#165dff',
-  success: '#52c41a',
-  warning: '#faad14',
-  error: '#f5222d',
+  primary: '#5e7ce0',
+  success: '#50d4ab',
+  warning: '#fac20a',
+  error: '#f66f6a',
 };
 
 const initVariables = {
@@ -13,7 +13,7 @@ const initVariables = {
   '--rain-text-color': '#000000d9', // 主文本色
   '--rain-text-color-secondary': '#00000073', // 次文本色
   '--rain-disabled-color': '#ffffff40', // 失效色
-  '--rain-border-radius-base': '4px', // 组件/浮层圆角
+  '--rain-border-radius-base': '2px', // 组件/浮层圆角
   '--rain-border-color-base': '#d9d9d9', // 边框色
   '--rain-background-color-base': '#fafafa', // 背景色
 };
