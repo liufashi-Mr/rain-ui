@@ -17,7 +17,7 @@ const Drawer = (props: DrawerProps) => {
     style,
     visible = false,
     width = 378,
-    title = 'header',
+    title,
     placement = 'right',
     afterOpenChange,
     bodyStyle,
@@ -39,6 +39,7 @@ const Drawer = (props: DrawerProps) => {
     maskClosable = true,
     height = 378,
     zIndex = 9999,
+    getContainer,
   } = props;
   const isTransverse = placement === 'left' || placement === 'right';
   const { compact } = useContext(configCtx);
@@ -47,7 +48,10 @@ const Drawer = (props: DrawerProps) => {
   });
   useEffect(() => {
     if (hasScrollbar()) {
-      if (visible) {
+      if (
+        visible ||
+        document.getElementsByClassName(`${prefixCls}-content-wrapper`)?.length - 1 > 0
+      ) {
         document.body.style.overflowY = 'hidden';
         document.body.style.width = `calc( 100% - ${getBarWidth()}px )`;
       } else {
@@ -60,6 +64,7 @@ const Drawer = (props: DrawerProps) => {
     }
     afterOpenChange?.(visible);
   }, [visible]);
+
   const handleOk = () => {
     onOk?.();
     onClose?.();
@@ -68,56 +73,59 @@ const Drawer = (props: DrawerProps) => {
     onCancel?.();
     onClose?.();
   };
-
   return createPortal(
-    <div>
-      <div className={classes} tabIndex={-1} style={{ zIndex }}>
-        {mask && (
-          <CSSTransition
-            appear
-            unmountOnExit
-            mountOnEnter
-            in={visible}
-            timeout={300}
-            classNames={`${prefixCls}-mask-animation`}
-          >
-            <div
-              className={`${prefixCls}-mask`}
-              style={maskStyle}
-              onClick={() => maskClosable && onClose?.()}
-             />
-          </CSSTransition>
-        )}
+    <div
+      className={classes}
+      tabIndex={-1}
+      style={{ zIndex, position: getContainer ? 'absolute' : undefined }}
+    >
+      {mask && (
         <CSSTransition
           appear
           unmountOnExit
           mountOnEnter
           in={visible}
-          timeout={500}
-          classNames={`${prefixCls}-animation-${placement}`}
+          timeout={300}
+          classNames={`${prefixCls}-mask-animation`}
         >
           <div
-            className={cls(
-              `${prefixCls}-content-wrapper`,
-              `${prefixCls}-content-wrapper-${placement}`,
-            )}
+            className={`${prefixCls}-mask`}
+            style={maskStyle}
+            onClick={() => maskClosable && onClose?.()}
+          />
+        </CSSTransition>
+      )}
+      <CSSTransition
+        appear
+        unmountOnExit
+        mountOnEnter
+        in={visible}
+        timeout={500}
+        classNames={`${prefixCls}-animation-${placement}`}
+      >
+        <div
+          className={cls(
+            `${prefixCls}-content-wrapper`,
+            `${prefixCls}-content-wrapper-${placement}`,
+          )}
+          style={{
+            maxWidth: isTransverse ? width : '100%',
+            width: isTransverse ? undefined : '100%',
+            maxHeight: isTransverse ? '100%' : height,
+            height: isTransverse ? '100%' : undefined,
+            ...style,
+          }}
+        >
+          <div
+            className={cls(`${prefixCls}-content`, className)}
             style={{
-              maxWidth: isTransverse ? width : '100%',
-              width: isTransverse ? undefined : '100%',
-              maxHeight: isTransverse ? '100%' : height,
-              height: isTransverse ? '100%' : undefined,
-              ...style,
+              ...drawerStyle,
+              width: isTransverse ? width : undefined,
+              height: isTransverse ? undefined : height,
             }}
           >
-            <div
-              className={cls(`${prefixCls}-content`, className)}
-              style={{
-                ...drawerStyle,
-                width: isTransverse ? width : undefined,
-                height: isTransverse ? undefined : height,
-              }}
-            >
-              <div className={`${prefixCls}-wrapper-body`}>
+            <div className={`${prefixCls}-wrapper-body`}>
+              {title !== null && (
                 <div className={`${prefixCls}-header`}>
                   <div className={`${prefixCls}-header-title`}>
                     {closable && (
@@ -125,15 +133,17 @@ const Drawer = (props: DrawerProps) => {
                         {closeIcon}
                       </div>
                     )}
-                    <div>{title}</div>
+                    {title}
                   </div>
                   {extra}
                 </div>
-                <div className={`${prefixCls}-body`} style={bodyStyle}>
-                  {children}
-                </div>
+              )}
+              <div className={`${prefixCls}-body`} style={bodyStyle}>
+                {children}
+              </div>
+              {footer !== null && (
                 <div className={`${prefixCls}-footer`} style={footerStyle}>
-                  {footer !== undefined ? (
+                  {footer ? (
                     footer
                   ) : (
                     <Space style={{ flexDirection: 'row-reverse' }}>
@@ -146,13 +156,13 @@ const Drawer = (props: DrawerProps) => {
                     </Space>
                   )}
                 </div>
-              </div>
+              )}
             </div>
           </div>
-        </CSSTransition>
-      </div>
+        </div>
+      </CSSTransition>
     </div>,
-    document.body,
+    getContainer ? getContainer : document.body,
   );
 };
 
