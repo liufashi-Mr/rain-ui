@@ -48,16 +48,15 @@ interface DrawerProps {
    */
   footerStyle?: CSSProperties;
   /**
-   * @description 用于设置 Drawer 弹出层的样式
-   * @default body
+   * @description 指定弹出框挂载的父节点
+   * @default document.body
    */
-  getContainer?: HTMLElement;
+  getContainer?: HTMLElement | null;
   /**
    * @description 用于设置 Drawer 头部的样式
    * @default -
    */
   headerStyle?: CSSProperties;
-
   /**
    * @description 高度, 在 placement 为 top 或 bottom 时使用
    * @default 378

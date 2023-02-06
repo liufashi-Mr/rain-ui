@@ -23,4 +23,22 @@ nav:
 
 <code src="./demo/position.tsx"/>
 
+## 自定义节点
+
+可以通过 title 属性和 footer 属性定制节点内容。当设置为 null 时，将不会渲染对应的 dom 节点。
+
+<code src="./demo/customNode.tsx"/>
+
+## 挂载节点
+
+可以通过 getPopupContainer 指定抽屉挂载的父级节点(父节点得指定 position: 'relative')。
+
+<code src="./demo/mountNode.tsx"/>
+
+## 多层抽屉
+
+在抽屉内打开新的抽屉。
+
+<code src="./demo/multiLayout.tsx"/>
+
 <API src="./index.tsx"/>

@@ -112,7 +112,7 @@ const Modal = (props: ModalProps) => {
     } else if (useFunction) setOpen(false);
   };
   return createPortal(
-    <div>
+    <>
       <CSSTransition
         in={useFunction ? open : visible}
         timeout={300}
@@ -178,7 +178,7 @@ const Modal = (props: ModalProps) => {
           )}
         </div>
       </CSSTransition>
-    </div>,
+    </>,
     document.body,
   );
 };
