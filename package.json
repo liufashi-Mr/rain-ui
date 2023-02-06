@@ -50,6 +50,7 @@
   "main": "dist/umd/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/types/index.d.ts",
+  "unpkg": "dist/umd/index.js",
   "gitHooks": {
     "pre-commit": "lint-staged"
   },
