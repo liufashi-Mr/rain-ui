@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Drawer } from 'raind';
-const App: React.FC<Record<string, never>> = () => {
+const App: React.FC = () => {
   const [show, setShow] = useState(false);
   return (
     <>
