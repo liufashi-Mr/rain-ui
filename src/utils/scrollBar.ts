@@ -14,5 +14,7 @@ export const getBarWidth = () => {
   return widthNoBar - widthBar;
 };
 
-export const hasScrollbar = () =>
-  document.body.scrollHeight > (window.innerHeight || document.documentElement.clientHeight);
+export const hasScrollbar = (container?: HTMLElement | null) =>
+  container
+    ? container.scrollHeight > container.clientHeight
+    : document.body.scrollHeight > (window.innerHeight || document.documentElement.clientHeight);

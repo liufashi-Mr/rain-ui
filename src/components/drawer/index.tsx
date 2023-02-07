@@ -47,17 +47,28 @@ const Drawer = (props: DrawerProps) => {
     [`${prefixCls}-compact`]: compact,
   });
   useEffect(() => {
-    if (hasScrollbar()) {
+    if (hasScrollbar(getContainer)) {
+      console.log(document.getElementsByClassName(`${prefixCls}-content-wrapper`));
       if (
         visible ||
         document.getElementsByClassName(`${prefixCls}-content-wrapper`)?.length - 1 > 0
       ) {
-        document.body.style.overflowY = 'hidden';
-        document.body.style.width = `calc( 100% - ${getBarWidth()}px )`;
+        if (getContainer) {
+          getContainer.style.overflowY = 'hidden';
+          getContainer.style.width = `calc( 100% - ${getBarWidth()}px )`;
+        } else {
+          document.body.style.overflowY = 'hidden';
+          document.body.style.width = `calc( 100% - ${getBarWidth()}px )`;
+        }
       } else {
         const timer = setTimeout(() => {
-          document.body.style.width = '';
-          document.body.style.overflowY = '';
+          if (getContainer) {
+            getContainer.style.overflowY = '';
+            getContainer.style.width = ``;
+          } else {
+            document.body.style.width = '';
+            document.body.style.overflowY = '';
+          }
           clearTimeout(timer);
         }, 300);
       }

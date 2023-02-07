@@ -138,7 +138,7 @@ const Modal = (props: ModalProps) => {
         <div {...modalAttributes}>
           {closeIcon && (
             <span
-              className={`${prefixCls}-closed`}
+              className={`${prefixCls}-close`}
               onClick={() => (useFunction ? setOpen(false) : onCancel?.())}
             >
               {closeIcon}

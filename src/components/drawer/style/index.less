@@ -1,14 +1,12 @@
 @import '../../../styles/variables/index.less';
 
 @drawer-prefix-cls: ~'@{rain-prefix}-drawer';
-@rain-drawer-font-size: 16px;
 @drawer-direction: left, right, top, bottom;
 
 .@{drawer-prefix-cls} {
   position: fixed;
   width: 100%;
   height: 100%;
-  overflow: hidden;
   pointer-events: none;
   inset: 0;
   &-mask {
@@ -21,15 +19,14 @@
   &-content-wrapper {
     position: absolute;
     z-index: 1000;
-    overflow: hidden;
-    background-color: black;
     box-shadow: -6px 0 16px -8px #00000014, -9px 0 28px #0000000d, -12px 0 48px 16px #00000008;
   }
 
   &-content {
     width: 100%;
     height: 100%;
-    background-color: #fff;
+    color: @neutral-color-12;
+    background-color: @neutral-color-3;
     pointer-events: auto;
   }
 
@@ -42,41 +39,46 @@
 
   &-header {
     display: flex;
-    flex: 0;
-    padding: 16px 24px;
-    font-size: @rain-drawer-font-size;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-  }
-
-  &-header-title {
-    display: flex;
-    flex: 1;
     align-items: center;
-    font-weight: 500;
+    padding: 16px 24px;
     font-size: 16px;
+    border-bottom: 1px solid @border-color-base;
+    &-title {
+      display: flex;
+      flex: 1;
+      align-items: center;
+      font-weight: 500;
+    }
   }
 
   &-close {
+    width: 22px;
+    height: 22px;
     margin-right: 12px;
-    color: rgba(0, 0, 0, 0.45);
-    font-weight: 600;
+    color: @neutral-color-7;
     font-size: 16px;
-    background: transparent;
-    cursor: pointer;
+    line-height: 22px;
+    text-align: center;
+    border-radius: @border-radius-base;
+    transition: all @default-transition;
+
+    &:hover {
+      color: @neutral-color-12;
+      background-color: @neutral-color-5;
+      cursor: pointer;
+    }
   }
 
   &-body {
     flex: 1;
     padding: 24px;
-    overflow-x: hidden;
-    overflow-y: auto;
     font-size: 14px;
   }
 
   &-footer {
     flex-shrink: 0;
     padding: 16px;
-    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    border-top: 1px solid @border-color-base;
   }
 
   &-compact {
@@ -89,13 +91,21 @@
       padding: 16px;
       font-size: 12px;
     }
+    .@{drawer-prefix-cls}-close {
+      width: 20px;
+      height: 20px;
+      font-size: 14px;
+      line-height: 20px;
+    }
   }
 
-  &-mask-animation-enter {
+  &-mask-animation-enter,
+  &-mask-animation-appear {
     opacity: 0;
   }
 
-  &-mask-animation-enter-active {
+  &-mask-animation-enter-active,
+  &-mask-animation-appear-active {
     opacity: 1;
     transition: opacity 0.3s @default-transition-cubic;
   }
@@ -110,31 +120,30 @@
   }
 
   each(@drawer-direction, {
-		@animation-width: if(('@{value}'='left') or ('@{value}'='right'), 0, 100%);
-		@animation-height: if(('@{value}'='left') or ('@{value}'='right'), 100%, 0);
+  	@animation-translate: if('@{value}'='left',
+        translate(-100%,0), 
+            if('@{value}'='right',translate(100%,0),
+                if('@{value}'='top',translate(0,-100%),
+                  translate(0,100%))));
 
-		&-content-wrapper-@{value} {
-			@{value}: 0;
-		}
-		&-animation-@{value}-enter,
-		&-animation-@{value}-appear {
-			width: @animation-width;
-			height: @animation-height;
-		}
-		&-animation-@{value}-enter-active,
-		&-animation-@{value}-appear-active {
-			width: 100%;
-			height: 100%;
-			transition: all 0.3s @default-transition-cubic;
-		}
-		&-animation-@{value}-exit {
-			width: 100%;
-			height: 100%;
-		}
-		&-animation-@{value}-exit-active {
-			width: @animation-width;
-			height: @animation-height;
-			transition: all 0.3s @default-transition-cubic;
-		}
+  	&-content-wrapper-@{value} {
+  		@{value}: 0;
+  	}
+  	&-animation-@{value}-enter,
+  	&-animation-@{value}-appear {
+  		transform: @animation-translate;
+  	}
+  	&-animation-@{value}-enter-active,
+  	&-animation-@{value}-appear-active {
+  	transform: translate(0, 0);
+  		transition: all 0.3s @default-transition-cubic;
+  	}
+  	&-animation-@{value}-exit {
+  		transform: translate(0, 0);
+  	}
+  	&-animation-@{value}-exit-active {
+  		  		transform: @animation-translate;
+  		transition: all 0.3s @default-transition-cubic;
+    }
   });
 }
