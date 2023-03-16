@@ -7,7 +7,7 @@ import cls from 'classnames';
 import { CloseOutlined } from '@ant-design/icons';
 import './style/index.less';
 import { getBarWidth, hasScrollbar } from '../../utils/scrollBar';
-import { Button, Space } from 'raind';
+import { Button, Space } from '../../index';
 
 const prefixCls = 'rain-drawer';
 const Drawer = (props: DrawerProps) => {
