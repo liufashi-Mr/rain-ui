@@ -3,8 +3,8 @@ import { defineConfig } from 'dumi';
 export default defineConfig({
   title: 'Rain-ui',
   mode: 'site',
-  favicon: 'https://blog.liufashi.top/img/rain-ui.png',
-  logo: 'https://blog.liufashi.top/img/rain-ui.png',
+  favicon: 'https://blog.liufashi.top/img/rain-ui.svg',
+  logo: 'https://blog.liufashi.top/img/rain-ui.svg',
   outputPath: 'docs-dist',
   apiParser: {
     // 自定义属性过滤配置，也可以是一个函数，用法参考：https://github.com/styleguidist/react-docgen-typescript/#propfilter

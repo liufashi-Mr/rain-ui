@@ -46,7 +46,7 @@ export default () => {
             <img
               className={'headerImage'}
               alt="header-image"
-              src="https://blog.liufashi.top/img/rain-ui.png"
+              src="https://blog.liufashi.top/img/rain-ui.svg"
             />
             <span className={'plus'}>+</span>
             <img
@@ -65,7 +65,7 @@ export default () => {
             <img
               className={'headerImage'}
               alt="header-image"
-              src="https://blog.liufashi.top/img/rain-ui.png"
+              src="https://blog.liufashi.top/img/rain-ui.svg"
             />
             <span className={'plus'}>+</span>
             <img
