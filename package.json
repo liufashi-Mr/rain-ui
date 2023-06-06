@@ -36,7 +36,7 @@
     "build:cjs": "webpack --config-name cjs",
     "build:umd": "webpack --config-name umd",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx",
-    "lint:fix": "eslint --fix ./src --cache --cache-location './node_modules/.cache/.eslintcache' --ext .js,.jsx,.ts,.tsx --format=pretty ./src ",
+    "lint:fix": "eslint --fix ./src --cache --cache-location node_modules/.cache/.eslintcache --ext .js,.jsx,.ts,.tsx --format=pretty ./src ",
     "lint:style": "stylelint {src,docs}/**/*.{less,css} --fix",
     "deploy": "npm run docs:build && npm run docs:deploy",
     "prettier": "prettier --write \"**/*.{js,jsx,tsx,ts,less,md,json}\"",
