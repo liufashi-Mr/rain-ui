@@ -9,26 +9,23 @@
     <link
       rel="shortcut icon"
       type="image/x-icon"
-      href="https://blog.liufashi.top/img/rain-ui.png"
+      href="https://blog.liufashi.top/img/rain-ui.svg"
     />
     <link rel="stylesheet" href="/umi.css" />
     <script>
       window.routerBase = "/";
     </script>
     <script>
-      //! umi version: 3.5.35
+      //! umi version: 3.5.36
     </script>
     <script>
       !(function () {
-        var e =
-            navigator.cookieEnabled && void 0 !== window.localStorage
-              ? localStorage.getItem("dumi:prefers-color")
-              : "auto",
-          o = window.matchMedia("(prefers-color-scheme: dark)").matches,
-          t = ["light", "dark", "auto"];
+        var e = localStorage.getItem("dumi:prefers-color"),
+          t = window.matchMedia("(prefers-color-scheme: dark)").matches,
+          r = ["light", "dark", "auto"];
         document.documentElement.setAttribute(
           "data-prefers-color",
-          e === t[2] ? (o ? t[1] : t[0]) : t.indexOf(e) > -1 ? e : t[0]
+          e === r[2] ? (t ? r[1] : r[0]) : r.indexOf(e) > -1 ? e : r[0]
         );
       })();
     </script>
