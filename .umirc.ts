@@ -37,5 +37,6 @@ export default defineConfig({
       path: 'https://github.com/liufashi-Mr/rain-ui',
     },
   ],
+  base: process.env.NODE_ENV === 'production' ? `/${APP_NAME}/` : '/',
   publicPath: process.env.NODE_ENV === 'production' ? `/${APP_NAME}/` : '/',
 });
