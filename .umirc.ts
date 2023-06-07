@@ -1,6 +1,6 @@
 import { defineConfig } from 'dumi';
 
-const APP_NAME = 'rain-ui';
+const BASE_PATH = process.argv[process.argv.length - 1] === 'gh-pages' ? '/rain-ui/' : '/';
 
 export default defineConfig({
   title: 'Rain-ui',
@@ -37,6 +37,6 @@ export default defineConfig({
       path: 'https://github.com/liufashi-Mr/rain-ui',
     },
   ],
-  base: process.env.NODE_ENV === 'production' ? `/${APP_NAME}/` : '/',
-  publicPath: process.env.NODE_ENV === 'production' ? `/${APP_NAME}/` : '/',
+  base: BASE_PATH,
+  publicPath: BASE_PATH,
 });
