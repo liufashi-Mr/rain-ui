@@ -1,0 +1,10 @@
+# dependencies
+node_modules
+# production
+.vscode
+.umi
+.github
+webpack.config.js
+.eslintrc.js
+dist
+docs-dist

@@ -11,10 +11,10 @@ dependencies:
     specifier: ^2.3.2
     version: 2.3.2
   react:
-    specifier: '>=16.14.0'
+    specifier: '>=16.9.0'
     version: 16.14.0
   react-dom:
-    specifier: '>=16.14.0'
+    specifier: '>=16.9.0'
     version: 16.14.0(react@16.14.0)
 
 devDependencies:
@@ -39,11 +39,14 @@ devDependencies:
   '@types/jest':
     specifier: ^27.0.3
     version: 27.0.3
+  '@types/react':
+    specifier: ^18.0.0
+    version: 18.2.14
   '@types/react-color':
     specifier: ^3.0.6
     version: 3.0.6
   '@types/react-dom':
-    specifier: ^18.0.10
+    specifier: ^18.0.0
     version: 18.0.10
   '@types/react-transition-group':
     specifier: ^4.4.5
@@ -3971,7 +3974,7 @@ packages:
   /@types/react-color@3.0.6:
     resolution: {integrity: sha512-OzPIO5AyRmLA7PlOyISlgabpYUa3En74LP8mTMa0veCA719SvYQov4WLMsHvCgXP+L+KI9yGhYnqZafVGG0P4w==}
     dependencies:
-      '@types/react': 18.2.8
+      '@types/react': 18.2.14
       '@types/reactcss': 1.2.6
     dev: true
 
@@ -3984,14 +3987,14 @@ packages:
   /@types/react-dom@18.0.10:
     resolution: {integrity: sha512-E42GW/JA4Qv15wQdqJq8DL4JhNpB3prJgjgapN3qJT9K2zO5IIAQh4VXvCEDupoqAwnz0cY4RlXeC/ajX5SFHg==}
     dependencies:
-      '@types/react': 18.2.8
+      '@types/react': 18.2.14
     dev: true
 
   /@types/react-router-config@5.0.2:
     resolution: {integrity: sha512-WOSetDV3YPxbkVJAdv/bqExJjmcdCi/vpCJh3NfQOy1X15vHMSiMioXIcGekXDJJYhqGUMDo9e337mh508foAA==}
     dependencies:
       '@types/history': 5.0.0
-      '@types/react': 18.2.8
+      '@types/react': 18.2.14
       '@types/react-router': 5.1.20
     dev: true
 
@@ -3999,7 +4002,7 @@ packages:
     resolution: {integrity: sha512-pFFVXUIydHlcJP6wJm7sDii5mD/bCmmAY0wQzq+M+uX7bqS95AQqHZWP1iNMKrWVQSuHIzj5qi9BvrtLX2/T4w==}
     dependencies:
       '@types/history': 4.7.11
-      '@types/react': 16.14.42
+      '@types/react': 18.2.14
       '@types/react-router': 5.1.20
     dev: true
 
@@ -4007,7 +4010,7 @@ packages:
     resolution: {integrity: sha512-D5mHD6TbdV/DNHYsnwBTv+y73ei+mMjrkGrla86HthE4/PVvL1J94Bu3qABU+COXzpL23T1EZapVVpwHuBXiUg==}
     dependencies:
       '@types/history': 5.0.0
-      '@types/react': 18.2.8
+      '@types/react': 18.2.14
       '@types/react-router': 5.1.12
     dev: true
 
@@ -4015,20 +4018,20 @@ packages:
     resolution: {integrity: sha512-0bhXQwHYfMeJlCh7mGhc0VJTRm0Gk+Z8T00aiP4702mDUuLs9SMhnd2DitpjWFjdOecx2UXtICK14H9iMnziGA==}
     dependencies:
       '@types/history': 5.0.0
-      '@types/react': 18.2.8
+      '@types/react': 18.2.14
     dev: true
 
   /@types/react-router@5.1.20:
     resolution: {integrity: sha512-jGjmu/ZqS7FjSH6owMcD5qpq19+1RS9DeVRqfl1FeBMxTDQAGwlMWOcs52NDoXaNKyG3d1cYQFMs9rCrb88o9Q==}
     dependencies:
       '@types/history': 4.7.11
-      '@types/react': 18.2.8
+      '@types/react': 18.2.14
     dev: true
 
   /@types/react-transition-group@4.4.5:
     resolution: {integrity: sha512-juKD/eiSM3/xZYzjuzH6ZwpP+/lejltmiS3QEzV/vmb/Q8+HfDmxu+Baga8UEMGBqV88Nbg4l2hY/K2DkyaLLA==}
     dependencies:
-      '@types/react': 18.2.8
+      '@types/react': 18.2.14
     dev: true
 
   /@types/react@16.14.42:
@@ -4039,8 +4042,8 @@ packages:
       csstype: 3.1.2
     dev: true
 
-  /@types/react@18.2.8:
-    resolution: {integrity: sha512-lTyWUNrd8ntVkqycEEplasWy2OxNlShj3zqS0LuB1ENUGis5HodmhM7DtCoUGbxj3VW/WsGA0DUhpG6XrM7gPA==}
+  /@types/react@18.2.14:
+    resolution: {integrity: sha512-A0zjq+QN/O0Kpe30hA1GidzyFjatVvrpIvWLxD+xv67Vt91TWWgco9IvrJBkeyHm1trGaFS/FSGqPlhyeZRm0g==}
     dependencies:
       '@types/prop-types': 15.7.5
       '@types/scheduler': 0.16.3
@@ -4050,7 +4053,7 @@ packages:
   /@types/reactcss@1.2.6:
     resolution: {integrity: sha512-qaIzpCuXNWomGR1Xq8SCFTtF4v8V27Y6f+b9+bzHiv087MylI/nTCqqdChNeWS7tslgROmYB7yeiruWX7WnqNg==}
     dependencies:
-      '@types/react': 18.2.8
+      '@types/react': 18.2.14
     dev: true
 
   /@types/resolve@1.14.0:

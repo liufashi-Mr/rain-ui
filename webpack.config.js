@@ -144,6 +144,7 @@ module.exports = [
       filename: 'index.js',
       libraryTarget: 'commonjs',
     },
+    ...baseConfig,
   },
   {
     name: 'umd',

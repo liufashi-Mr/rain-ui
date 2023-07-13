@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useMemo } from 'react';
 import type { ButtonProps } from './interface';
 import cls from 'classnames';
 import { configCtx } from '../configProvider';
@@ -30,40 +30,48 @@ const Button: React.ForwardRefRenderFunction<HTMLButtonElement, ButtonProps> = (
   if (loading) {
     mergeIcon = <LoadingOutlined />;
   }
-  const classes = cls(prefixCls, className || '', {
-    [`${prefixCls}-${type}`]: type,
-    [`${prefixCls}-${size}`]: size,
-    [`${prefixCls}-${shape}`]: shape,
-    [`${prefixCls}-ghost`]: ghost,
-    [`${prefixCls}-loading`]: loading,
-    [`${prefixCls}-danger`]: danger,
-    [`${prefixCls}-compact`]: compact,
-    [`${prefixCls}-block`]: block,
-  });
-  const buttonAttributes = {
-    className: classes,
-    style: {
-      ...style,
-      borderRadius: rest.radius + 'px' || '',
-    },
-    type: htmlType || 'button',
-    ref,
-    ...rest,
-    onClick(e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement, MouseEvent>) {
-      if (loading) {
-        e.preventDefault();
-        return;
-      }
-      const { onClick } = rest;
-      setClickAnimation(true);
-      const timer = setTimeout(() => {
-        clearTimeout(timer);
-        setClickAnimation(false);
-      }, 200);
+  const classes = useMemo(
+    () =>
+      cls(prefixCls, className || '', {
+        [`${prefixCls}-${type}`]: type,
+        [`${prefixCls}-${size}`]: size,
+        [`${prefixCls}-${shape}`]: shape,
+        [`${prefixCls}-ghost`]: ghost,
+        [`${prefixCls}-loading`]: loading,
+        [`${prefixCls}-danger`]: danger,
+        [`${prefixCls}-compact`]: compact,
+        [`${prefixCls}-block`]: block,
+      }),
+    [block, className, compact, danger, ghost, loading, shape, size, type],
+  );
+  const buttonAttributes = useMemo(
+    () => ({
+      className: classes,
+      style: {
+        ...style,
+        borderRadius: rest.radius + 'px' || '',
+      },
+      type: htmlType || 'button',
+      ref,
+      ...rest,
+      onClick(e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement, MouseEvent>) {
+        if (loading) {
+          e.preventDefault();
+          return;
+        }
+        const { onClick } = rest;
+        setClickAnimation(true);
+        const timer = setTimeout(() => {
+          clearTimeout(timer);
+          setClickAnimation(false);
+        }, 200);
 
-      (onClick as React.MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>)?.(e);
-    },
-  };
+        (onClick as React.MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>)?.(e);
+      },
+    }),
+    [classes, htmlType, loading, ref, rest, style],
+  );
+
   if (type === 'link') {
     return (
       <a className={classes} style={style} {...rest}>
