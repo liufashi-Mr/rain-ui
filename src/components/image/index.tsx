@@ -5,7 +5,9 @@ import './style/index.less';
 import { EyeOutlined } from '@ant-design/icons';
 import { errorFallback } from './defaultError';
 import ImagePreview from './ImagePreview';
+import type { ImagePreviewProps } from './interface';
 import PreviewGroup from './PreviewGroup';
+import type { PreviewGroupProps } from './interface';
 
 const prefixCls = 'rain-image';
 
@@ -83,3 +85,5 @@ const Image: CompositionImage<ImageProps> = ({
 Image.ImagePreview = ImagePreview;
 Image.PreviewGroup = PreviewGroup;
 export default Image;
+
+export type { ImageProps, ImagePreviewProps, PreviewGroupProps };

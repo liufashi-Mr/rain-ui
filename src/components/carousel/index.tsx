@@ -241,3 +241,4 @@ const Carousel: React.ForwardRefRenderFunction<CarouselHandle, CarouselProps> = 
 };
 
 export default React.forwardRef<CarouselHandle, CarouselProps>(Carousel);
+export type { CarouselProps };

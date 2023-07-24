@@ -226,3 +226,4 @@ Modal.error = (config: ModalConfigProps) => {
 };
 
 export default Modal;
+export type { ModalProps };

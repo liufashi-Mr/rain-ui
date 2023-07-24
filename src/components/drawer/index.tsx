@@ -178,3 +178,4 @@ const Drawer = (props: DrawerProps) => {
 };
 
 export default Drawer;
+export type { DrawerProps };

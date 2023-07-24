@@ -143,3 +143,5 @@ Message.error = (props: MessageProps | string) => getMessageType('error', props)
 Message.loading = (props: MessageProps | string) => getMessageType('loading', props);
 
 export default Message;
+
+export type { MessageProps, MessageType };

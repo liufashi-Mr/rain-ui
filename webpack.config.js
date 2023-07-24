@@ -3,6 +3,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserWebpackPlugin = require('terser-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
+
 const getStyleLoaders = (preProcessor) => {
   return [
     MiniCssExtractPlugin.loader,
@@ -51,9 +52,7 @@ const baseConfig = {
       {
         oneOf: [
           {
-            // 用来匹配 .css 结尾的文件
             test: /\.css$/,
-            // use 数组里面 Loader 执行顺序是从右到左
             use: getStyleLoaders(),
           },
           {
@@ -78,6 +77,7 @@ const baseConfig = {
           {
             test: /\.(ts|tsx)$/,
             use: 'ts-loader',
+            exclude: '/src/*',
           },
         ],
       },
@@ -153,7 +153,6 @@ module.exports = [
       filename: 'index.js',
       libraryTarget: 'umd',
     },
-
     ...baseConfig,
   },
 ];

@@ -23,3 +23,4 @@ const ConfigProvider: React.FC<ConfigProviderProps> = ({ children, ...rest }) =>
 };
 
 export default ConfigProvider;
+export type { ConfigProviderProps };

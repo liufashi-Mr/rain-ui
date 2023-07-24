@@ -51,3 +51,4 @@ const Space: React.FC<SpaceProps> = ({
 };
 
 export default Space;
+export type { SpaceProps };

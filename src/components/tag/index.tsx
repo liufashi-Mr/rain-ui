@@ -73,3 +73,4 @@ const Tag: React.ForwardRefRenderFunction<HTMLSpanElement, TagProps> = (props, r
 };
 
 export default React.forwardRef<unknown, TagProps>(Tag);
+export type { TagProps };
