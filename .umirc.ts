@@ -5,8 +5,8 @@ const BASE_PATH = process.argv[process.argv.length - 1] === 'gh-pages' ? '/rain-
 export default defineConfig({
   title: 'Rain-ui',
   mode: 'site',
-  favicon: 'https://blog.liufashi.top/img/rain-ui.svg',
-  logo: 'https://blog.liufashi.top/img/rain-ui.svg',
+  favicon: 'http://blog.liufashi.top/img/rain-ui.svg',
+  logo: 'http://blog.liufashi.top/img/rain-ui.svg',
   outputPath: 'docs-dist',
   apiParser: {
     // 自定义属性过滤配置，也可以是一个函数，用法参考：https://github.com/styleguidist/react-docgen-typescript/#propfilter
@@ -30,7 +30,7 @@ export default defineConfig({
     null, // null 值代表保留约定式生成的导航，只做增量配置
     {
       title: '博客',
-      path: 'https://blog.liufashi.top/',
+      path: 'http://blog.liufashi.top/',
     },
     {
       title: 'GitHub',

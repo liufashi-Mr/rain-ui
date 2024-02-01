@@ -30,7 +30,7 @@ const App: React.FC = () => {
             ? resolve({
                 code: 200,
                 success: true,
-                data: { name: 'liu', url: 'https://blog.liufashi.top' },
+                data: { name: 'liu', url: 'http://blog.liufashi.top' },
               })
             : reject('something error'),
         1500,

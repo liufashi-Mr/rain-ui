@@ -10,7 +10,7 @@ const App: React.FC = () => {
       <Button type="text" danger>
         text
       </Button>
-      <Button type="link" danger href="https://blog.liufashi.top" target="_blank">
+      <Button type="link" danger href="http://blog.liufashi.top" target="_blank">
         link
       </Button>
       <Button disabled>danger</Button>
@@ -20,7 +20,7 @@ const App: React.FC = () => {
       <Button type="text" disabled>
         text
       </Button>
-      <Button type="link" disabled href="https://blog.liufashi.top" target="_blank">
+      <Button type="link" disabled href="http://blog.liufashi.top" target="_blank">
         link
       </Button>
     </Space>

@@ -2,7 +2,7 @@ import React from 'react';
 import { Space, Image } from 'raind';
 import { EyeOutlined, DownloadOutlined } from '@ant-design/icons';
 const App: React.FC = () => {
-  const src = 'https://blog.liufashi.top/img/image-preview-1.jpeg';
+  const src = 'http://blog.liufashi.top/img/image-preview-1.jpeg';
   return (
     <Space size="middle">
       <Image height={150} src={src} preview />

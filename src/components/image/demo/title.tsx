@@ -1,7 +1,7 @@
 import React from 'react';
 import { Space, Image, Divider } from 'raind';
 const App: React.FC = () => {
-  const src = 'https://blog.liufashi.top/img/image-preview-1.jpeg';
+  const src = 'http://blog.liufashi.top/img/image-preview-1.jpeg';
   return (
     <>
       <Divider>inner title</Divider>

@@ -5,9 +5,9 @@ const App: React.FC = () => {
   const [visible, setVisible] = React.useState(false);
   const [index, setIndex] = React.useState(0);
   const srcList = [
-    'https://blog.liufashi.top/img/preview-tuya-1.webp',
-    'https://blog.liufashi.top/img/preview-tuya-2.webp',
-    'https://blog.liufashi.top/img/image-preview-1.jpeg',
+    'http://blog.liufashi.top/img/preview-tuya-1.webp',
+    'http://blog.liufashi.top/img/preview-tuya-2.webp',
+    'http://blog.liufashi.top/img/image-preview-1.jpeg',
   ];
   return (
     <>

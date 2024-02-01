@@ -4,7 +4,7 @@ const App: React.FC = () => {
   return (
     <Space size="middle">
       <Image height={150} src="error" />
-      <Image height={150} src="error" error="https://blog.liufashi.top/img/footer-box/5.jpg" />
+      <Image height={150} src="error" error="http://blog.liufashi.top/img/footer-box/5.jpg" />
     </Space>
   );
 };
